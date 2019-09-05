@@ -1,9 +1,11 @@
 import React from 'react';
+import { Router } from '@reach/router';
 import { ThemeProvider } from '@material-ui/styles';
-import theme from './ui/theme';
-import Navbar from './layout/Navbar';
 
 import { IdsProvider } from './contexts/idsContext';
+import theme from './ui/theme';
+import Navbar from './layout/Navbar';
+import StatusPage from './components/Status/StatusPage';
 
 function App() {
   return (
@@ -11,6 +13,9 @@ function App() {
       <IdsProvider>
         <div className="App">
           <Navbar />
+          <Router>
+            <StatusPage path="/" />
+          </Router>
         </div>
       </IdsProvider>
     </ThemeProvider>

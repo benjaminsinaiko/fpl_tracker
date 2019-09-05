@@ -4,7 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import MenuIcon from '@material-ui/icons/Menu';
+import SettingsIcon from '@material-ui/icons/SettingsApplicationsRounded';
 
 import NavDrawer from './NavDrawer';
 
@@ -58,7 +58,7 @@ export default function Navbar() {
             color="secondary"
             className={classes.setTeamButton}>
             Set Team
-            <MenuIcon className={classes.rightIcon} />
+            <SettingsIcon className={classes.rightIcon} color="secondary" />
           </Button>
         </Toolbar>
       </AppBar>

@@ -1,14 +1,8 @@
 export default function idsReducer(state, action) {
   switch (action.type) {
-    case 'LOADING':
-      return {
-        ...state,
-        loading: true,
-      };
     case 'SET_TEAM':
       return {
         ...state,
-        loading: false,
         teamId: action.teamId,
       };
     case 'CLEAR_TEAM':
@@ -19,7 +13,6 @@ export default function idsReducer(state, action) {
     case 'SET_LEAGUE':
       return {
         ...state,
-        loading: false,
         leagueId: action.leagueId,
       };
     case 'CLEAR_LEAGUE':

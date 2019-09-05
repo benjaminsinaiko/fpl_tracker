@@ -4,7 +4,6 @@ import idsReducer from '../reducers/idsReducer';
 import useLocalStorageReducer from '../hooks/useLocalStorageReducer';
 
 const initialState = {
-  loading: true,
   teamId: null,
   leagueId: null,
 };
