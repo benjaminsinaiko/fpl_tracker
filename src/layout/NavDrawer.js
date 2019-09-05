@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
@@ -11,6 +11,8 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
+
+import { IdsContext, IdsDispatchContext } from '../contexts/idsContext';
 
 const useStyles = makeStyles(theme => ({
   drawerRoot: {
@@ -25,6 +27,17 @@ const useStyles = makeStyles(theme => ({
 
 export default function NavDrawer({ open, toggle }) {
   const classes = useStyles();
+  const ids = useContext(IdsContext);
+  const dispatch = useContext(IdsDispatchContext);
+
+  console.log('ids', ids);
+
+  function handleSetTeam(params) {
+    dispatch({ type: 'SET_TEAM', teamId: 12345 });
+  }
+  function handleClearTeam(params) {
+    dispatch({ type: 'CLEAR_TEAM' });
+  }
 
   return (
     <div>
@@ -42,8 +55,11 @@ export default function NavDrawer({ open, toggle }) {
             margin="normal"
             variant="outlined"
           />
-          <Button variant="outlined" color="primary">
+          <Button variant="outlined" color="primary" onClick={handleSetTeam}>
             Set
+          </Button>
+          <Button variant="outlined" color="primary" onClick={handleClearTeam}>
+            clear
           </Button>
         </div>
       </Drawer>
