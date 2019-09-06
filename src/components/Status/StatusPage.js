@@ -11,7 +11,7 @@ export default function StatusPage() {
   return (
     <Container className={classes.statusRoot}>
       <StatusEventTable />
-      {/* <StatusCard /> */}
+      <StatusCard />
     </Container>
   );
 }

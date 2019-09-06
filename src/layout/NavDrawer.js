@@ -23,8 +23,6 @@ export default function NavDrawer({ open, toggle }) {
   const ids = useContext(IdsContext);
   const dispatch = useContext(IdsDispatchContext);
 
-  console.log('ids', ids);
-
   function handleSetTeam(params) {
     dispatch({ type: 'SET_TEAM', teamId: 12345 });
   }

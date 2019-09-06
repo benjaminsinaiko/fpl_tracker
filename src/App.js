@@ -2,6 +2,7 @@ import React from 'react';
 import { Router } from '@reach/router';
 import { ThemeProvider } from '@material-ui/styles';
 
+import { AllDataProvider } from './contexts/allDataContext';
 import { IdsProvider } from './contexts/idsContext';
 import theme from './ui/theme';
 import Navbar from './layout/Navbar';
@@ -12,10 +13,12 @@ function App() {
     <ThemeProvider theme={theme}>
       <IdsProvider>
         <div className="App">
-          <Navbar />
-          <Router>
-            <StatusPage path="/" />
-          </Router>
+          <AllDataProvider>
+            <Navbar />
+            <Router>
+              <StatusPage path="/" />
+            </Router>
+          </AllDataProvider>
         </div>
       </IdsProvider>
     </ThemeProvider>
