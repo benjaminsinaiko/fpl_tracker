@@ -5,6 +5,7 @@ import useStyles from './styles/StatusPageStyles';
 import StatusEventTable from './StatusEventTable';
 import StatusCard from './StatusCard';
 import StatusCountdown from './StatusCountdown';
+import StatusPointsChart from './StatusPointsChart';
 
 import { AllDataContext } from '../../contexts/allDataContext';
 
@@ -26,6 +27,7 @@ export default function StatusPage() {
       {next && <StatusCountdown current={current} next={next} />}
       <StatusCard current={current} />
       <StatusEventTable />
+      <StatusPointsChart events={events} />
     </Container>
   );
 }
