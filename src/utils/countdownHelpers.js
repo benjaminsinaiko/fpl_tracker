@@ -15,3 +15,12 @@ export function daysToDeadline(current, next) {
 export function longDisplayDate(date) {
   return moment(date).format('dddd, MMMM Do YYYY, h:mm:ss a');
 }
+
+export function checkTimeLeft(countdownTime) {
+  const msValue = moment(countdownTime).valueOf();
+  if (msValue > 0) {
+    return true;
+  } else {
+    return false;
+  }
+}

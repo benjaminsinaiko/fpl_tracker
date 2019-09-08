@@ -42,11 +42,24 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 600,
     textTransform: 'uppercase',
   },
+  gameLockedContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: theme.spacing(4),
+  },
+  gameLockedLabel: {
+    width: 'fit-content',
+    padding: theme.spacing(1),
+    color: '#fff',
+    backgroundColor: '#f6a418',
+  },
 }));
 
 export default function StatusCountdown({ current, next }) {
   const classes = useStyles();
-  const [days, hours, minutes, seconds] = useCountdown(next.deadline_time);
+  const [days, hours, minutes, seconds, timeLeft] = useCountdown(
+    next.deadline_time,
+  );
   const deadlineDays = useMemo(
     () => daysToDeadline(current.deadline_time, next.deadline_time),
     [current, next],
@@ -64,28 +77,39 @@ export default function StatusCountdown({ current, next }) {
       <Typography align="center" className={classes.deadlineText}>
         {longDisplayDate(next.deadline_time)}
       </Typography>
-      <div className={classes.timer}>
-        <div className={classes.countdownItem}>
-          <CountdownCircle radius={daysRadius} />
-          <Typography className={classes.count}>{days}</Typography>
-          <Typography className={classes.countLabel}>days</Typography>
+      {timeLeft ? (
+        <div className={classes.timer}>
+          <div className={classes.countdownItem}>
+            <CountdownCircle radius={daysRadius} />
+            <Typography className={classes.count}>{days}</Typography>
+            <Typography className={classes.countLabel}>days</Typography>
+          </div>
+          <div className={classes.countdownItem}>
+            <CountdownCircle radius={hoursRadius} />
+            <Typography className={classes.count}>{hours}</Typography>
+            <Typography className={classes.countLabel}>hours</Typography>
+          </div>
+          <div className={classes.countdownItem}>
+            <CountdownCircle radius={minutesRadius} />
+            <Typography className={classes.count}>{minutes}</Typography>
+            <Typography className={classes.countLabel}>minutes</Typography>
+          </div>
+          <div className={classes.countdownItem}>
+            <CountdownCircle radius={secondsRadius} />
+            <Typography className={classes.count}>{seconds}</Typography>
+            <Typography className={classes.countLabel}>seconds</Typography>
+          </div>
         </div>
-        <div className={classes.countdownItem}>
-          <CountdownCircle radius={hoursRadius} />
-          <Typography className={classes.count}>{hours}</Typography>
-          <Typography className={classes.countLabel}>hours</Typography>
+      ) : (
+        <div className={classes.gameLockedContainer}>
+          <Typography
+            variant="h3"
+            align="center"
+            className={classes.gameLockedLabel}>
+            GW Locked
+          </Typography>
         </div>
-        <div className={classes.countdownItem}>
-          <CountdownCircle radius={minutesRadius} />
-          <Typography className={classes.count}>{minutes}</Typography>
-          <Typography className={classes.countLabel}>minutes</Typography>
-        </div>
-        <div className={classes.countdownItem}>
-          <CountdownCircle radius={secondsRadius} />
-          <Typography className={classes.count}>{seconds}</Typography>
-          <Typography className={classes.countLabel}>seconds</Typography>
-        </div>
-      </div>
+      )}
     </div>
   );
 }

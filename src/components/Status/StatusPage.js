@@ -21,11 +21,6 @@ export default function StatusPage() {
     setNext(next);
   }, [events]);
 
-  // useEffect(() => {
-  //   const next = events.find(event => event.is_next === true);
-  //   setNext(next);
-  // }, [events]);
-
   return (
     <Container className={classes.statusRoot}>
       <StatusEventTable />

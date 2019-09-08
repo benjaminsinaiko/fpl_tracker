@@ -1,28 +1,36 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import moment from 'moment';
 
-export default function useCountdown(deadline, prevDeadline) {
+import { checkTimeLeft } from '../utils/countdownHelpers';
+
+export default function useCountdown(deadline) {
   const [days, setDays] = useState(null);
   const [hours, setHours] = useState(null);
   const [minutes, setMinutes] = useState(null);
   const [seconds, setSeconds] = useState(null);
+  const [timeLeft, setTimeLeft] = useState(true);
+  const deadlineTime = useMemo(() => moment(deadline), [deadline]);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const then = moment(deadline);
       const now = moment().utc();
-      const countdown = moment(then - now);
-      setDays(countdown.format('D'));
-      setHours(countdown.format('HH'));
-      setMinutes(countdown.format('mm'));
-      setSeconds(countdown.format('ss'));
+      const countdown = moment.utc(deadlineTime - now);
+      if (checkTimeLeft(countdown)) {
+        setDays(countdown.format('D') - 1);
+        setHours(countdown.format('HH'));
+        setMinutes(countdown.format('mm'));
+        setSeconds(countdown.format('ss'));
+      } else {
+        setTimeLeft(false);
+        clearInterval(interval);
+      }
     }, 1000);
     return () => {
       if (interval) {
         clearInterval(interval);
       }
     };
-  }, [deadline]);
+  }, [deadlineTime]);
 
-  return [days, hours, minutes, seconds];
+  return [days, hours, minutes, seconds, timeLeft];
 }
