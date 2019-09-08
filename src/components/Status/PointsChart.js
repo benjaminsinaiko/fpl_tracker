@@ -22,9 +22,9 @@ export default function PointsChart({ data }) {
         tickPadding: 5,
         tickRotation: 0,
       }}
-      colors={['#e2f700', '#01f780']}
+      colors={['#f6247b', '#04e8f7']}
       enableArea={true}
-      areaOpacity={0.8}
+      areaOpacity={1}
       enableGridX={false}
       enableGridY={false}
       enableCrosshair={false}
