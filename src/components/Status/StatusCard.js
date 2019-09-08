@@ -4,23 +4,30 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Chip from '@material-ui/core/Chip';
 import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   card: {
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
     minWidth: 275,
+    boxShadow:
+      '0px 1px 8px 0px rgba(1,85,162,0.6), 0px 3px 4px 0px rgba(1,85,162,0.5), 0px 3px 3px -2px rgba(1,85,162,0.24)',
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
+  header: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: theme.spacing(1),
+  },
+  scoreBox: {
+    marginTop: theme.spacing(2),
   },
   title: {
-    fontSize: 14,
+    color: '#0155a2',
+    fontSize: '1.3em',
   },
-  pos: {
-    marginBottom: 12,
-  },
-});
+}));
 
 export default function StatusCard({ current }) {
   const classes = useStyles();
@@ -30,33 +37,26 @@ export default function StatusCard({ current }) {
   }
 
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} raised>
       <CardContent>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom>
-          {current.name}
-        </Typography>
-        <Chip
-          size="small"
-          label={current.finished ? 'Finished' : 'In Progress'}
-          className={classes.chip}
-          color={current.finished ? 'secondary' : 'primary'}
-          variant="outlined"
-        />
-        <Typography variant="subtitle1" component="h2">
-          Average Score
-        </Typography>
-        <Typography variant="h5" component="h2">
-          {current.average_entry_score}
-        </Typography>
-        <Typography variant="subtitle1" component="h2">
-          Highest Score
-        </Typography>
-        <Typography variant="h5" component="h2">
-          {current.highest_score}
-        </Typography>
+        <div className={classes.header}>
+          <Typography className={classes.title} color="textSecondary">
+            {current.name}
+          </Typography>
+          <Chip
+            size="small"
+            label={current.finished ? 'Finished' : 'In Progress'}
+            color={current.finished ? 'secondary' : 'primary'}
+            variant="outlined"
+          />
+        </div>
+        <Divider color="primary" />
+        <div className={classes.scoreBox}>
+          <Typography variant="subtitle1">Average Score</Typography>
+          <Typography variant="h5">{current.average_entry_score}</Typography>
+          <Typography variant="subtitle1">Highest Score</Typography>
+          <Typography variant="h5">{current.highest_score}</Typography>
+        </div>
       </CardContent>
     </Card>
   );

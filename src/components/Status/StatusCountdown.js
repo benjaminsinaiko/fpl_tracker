@@ -13,7 +13,6 @@ import CountdownCircle from './CountdownCircle';
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-    margin: theme.spacing(2),
   },
   deadlineText: {
     fontSize: '.8em',

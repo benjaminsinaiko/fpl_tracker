@@ -23,9 +23,9 @@ export default function StatusPage() {
 
   return (
     <Container className={classes.statusRoot}>
-      <StatusEventTable />
-      <StatusCard current={current} />
       {next && <StatusCountdown current={current} next={next} />}
+      <StatusCard current={current} />
+      <StatusEventTable />
     </Container>
   );
 }
