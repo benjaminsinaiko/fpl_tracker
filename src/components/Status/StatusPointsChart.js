@@ -20,7 +20,6 @@ const useStyles = makeStyles(theme => ({
 export default function StatusPointsChart({ events }) {
   const classes = useStyles();
   const [data, setData] = useState(null);
-  console.log('data', data);
 
   useEffect(() => {
     const playedGWs = events.filter(event => event.finished === true);

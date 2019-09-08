@@ -6,6 +6,7 @@ import { AllDataProvider } from './contexts/allDataContext';
 import { IdsProvider } from './contexts/idsContext';
 import theme from './ui/theme';
 import Navbar from './layout/Navbar';
+import BottomNav from './layout/BottomNav';
 import StatusPage from './components/Status/StatusPage';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <Router>
               <StatusPage path="/" />
             </Router>
+            <BottomNav />
           </AllDataProvider>
         </div>
       </IdsProvider>
