@@ -40,22 +40,22 @@ export default function StatusCard({ current }) {
     <Card className={classes.card} raised>
       <CardContent>
         <div className={classes.header}>
-          <Typography className={classes.title} color="textSecondary">
+          <Typography className={classes.title} color='textSecondary'>
             {current.name}
           </Typography>
           <Chip
-            size="small"
+            size='small'
             label={current.finished ? 'Finished' : 'In Progress'}
             color={current.finished ? 'secondary' : 'primary'}
-            variant="outlined"
+            variant='outlined'
           />
         </div>
-        <Divider color="primary" />
+        <Divider color='primary' />
         <div className={classes.scoreBox}>
-          <Typography variant="subtitle1">Average Score</Typography>
-          <Typography variant="h5">{current.average_entry_score}</Typography>
-          <Typography variant="subtitle1">Highest Score</Typography>
-          <Typography variant="h5">{current.highest_score}</Typography>
+          <Typography variant='subtitle1'>Average Score</Typography>
+          <Typography variant='h5'>{current.average_entry_score}</Typography>
+          <Typography variant='subtitle1'>Highest Score</Typography>
+          <Typography variant='h5'>{current.highest_score}</Typography>
         </div>
       </CardContent>
     </Card>

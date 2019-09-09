@@ -32,11 +32,11 @@ export default function PointsChart({ data }) {
       pointColor={'#fff'}
       pointBorderWidth={2}
       pointBorderColor={{ from: 'serieColor' }}
-      pointLabel="y"
+      pointLabel='y'
       pointLabelYOffset={-12}
       useMesh={true}
       yFormat={value => `${value}pts`}
-      enableSlices="x"
+      enableSlices='x'
       sliceTooltip={({ slice }) => {
         return (
           <div

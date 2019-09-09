@@ -49,9 +49,9 @@ export default function CountdownCircle({ radius }) {
   return (
     <svg className={classes.root}>
       <path
-        fill="none"
+        fill='none'
         stroke={radius > 275 ? '#e0004c' : '#01f780'}
-        strokeWidth="4"
+        strokeWidth='4'
         d={describeArc(50, 50, 48, 0, radius)}
       />
     </svg>

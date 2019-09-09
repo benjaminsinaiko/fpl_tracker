@@ -24,10 +24,10 @@ export default function StatusPage() {
 
   return (
     <Container className={classes.statusRoot}>
-      {next && <StatusCountdown current={current} next={next} />}
+      {/* {next && <StatusCountdown current={current} next={next} />} */}
       <StatusCard current={current} />
-      <StatusEventTable />
-      <StatusPointsChart events={events} />
+      {/* <StatusEventTable /> */}
+      {/* <StatusPointsChart events={events} /> */}
     </Container>
   );
 }

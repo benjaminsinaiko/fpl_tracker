@@ -65,25 +65,25 @@ export default function StatusEventTable() {
 
   return (
     <Paper className={classes.root} elevation={3}>
-      <Typography variant="h6">Points Status</Typography>
+      <Typography variant='h6'>Points Status</Typography>
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
             <TableCell>Date</TableCell>
-            <TableCell align="right">Match Points</TableCell>
-            <TableCell align="right">Bonus Points</TableCell>
+            <TableCell align='right'>Match Points</TableCell>
+            <TableCell align='right'>Bonus Points</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {eventStatus.status.map(event => (
             <TableRow key={event.date}>
-              <TableCell component="th" scope="row">
+              <TableCell component='th' scope='row'>
                 {dateDisplay(event.date)}
               </TableCell>
-              <TableCell align="right">
+              <TableCell align='right'>
                 {event.points === 'r' ? 'Confirmed' : '-'}
               </TableCell>
-              <TableCell align="right">
+              <TableCell align='right'>
                 {event.bonus_added === true ? 'Added' : '-'}
               </TableCell>
             </TableRow>
@@ -91,7 +91,7 @@ export default function StatusEventTable() {
         </TableBody>
       </Table>
       <div className={classes.footer}>
-        <Typography align="center">
+        <Typography align='center'>
           League Tables: <span>{eventStatus.leagues}</span>
         </Typography>
       </div>

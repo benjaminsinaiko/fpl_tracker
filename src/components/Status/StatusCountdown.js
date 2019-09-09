@@ -70,10 +70,10 @@ export default function StatusCountdown({ current, next }) {
 
   return (
     <div className={classes.root}>
-      <Typography align="center" variant="h6">
+      <Typography align='center' variant='h6'>
         Next Deadline:
       </Typography>
-      <Typography align="center" className={classes.deadlineText}>
+      <Typography align='center' className={classes.deadlineText}>
         {longDisplayDate(next.deadline_time)}
       </Typography>
       {timeLeft ? (
@@ -102,8 +102,8 @@ export default function StatusCountdown({ current, next }) {
       ) : (
         <div className={classes.gameLockedContainer}>
           <Typography
-            variant="h3"
-            align="center"
+            variant='h3'
+            align='center'
             className={classes.gameLockedLabel}>
             GW Locked
           </Typography>
