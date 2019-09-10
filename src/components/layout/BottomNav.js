@@ -1,4 +1,5 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { Link } from '@reach/router';
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
@@ -19,12 +20,13 @@ const useStyles = makeStyles({
   },
 });
 
-export default function LabelBottomNavigation() {
+export default function LabelBottomNavigation({ path }) {
   const classes = useStyles();
   const [value, setValue] = React.useState('status');
-  function handleChange(event, newValue) {
-    setValue(newValue);
-  }
+
+  useEffect(() => {
+    setValue(path);
+  }, [path]);
 
   const { leagueId, teamId } = useContext(IdsContext);
   const noIds = !leagueId && !teamId;
@@ -40,28 +42,29 @@ export default function LabelBottomNavigation() {
   };
 
   return (
-    <BottomNavigation
-      value={value}
-      onChange={handleChange}
-      className={classes.root}>
+    <BottomNavigation value={value} className={classes.root}>
       <BottomNavigationAction
         label='Status'
-        value='status'
+        value='/'
+        component={Link}
+        to='/'
         icon={<StatusIcon />}
       />
       <BottomNavigationAction
         label='League'
-        value='league'
+        value='/league'
+        component={Link}
+        to='/league'
         icon={<LeagueIcon />}
       />
       <BottomNavigationAction
         label='Stats'
-        value='stats'
+        value='/stats'
+        component={Link}
+        to='/stats'
         icon={<StatsIcon />}
       />
       <BottomNavigationAction
-        label='Settings'
-        value='settings'
         icon={<SettingsIcon />}
         onClick={toggleDrawer(true)}
       />
