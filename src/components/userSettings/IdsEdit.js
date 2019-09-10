@@ -1,25 +1,32 @@
 import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import EditIcon from '@material-ui/icons/Edit';
 import TextField from '@material-ui/core/TextField';
+import Slide from '@material-ui/core/Slide';
+
+import { IdsContext, IdsDispatchContext } from '../../contexts/idsContext';
 
 const useStyles = makeStyles(theme => ({
   editRoot: {
     width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: theme.spacing(2),
   },
   editButton: {
     width: '100%',
+    marginTop: theme.spacing(3),
   },
   buttonIcon: {
     marginLeft: theme.spacing(1),
   },
   editBox: {
     display: 'flex',
+    '& div': {
+      marginRight: theme.spacing(0.25),
+      marginLeft: theme.spacing(0.25),
+    },
+    '& input': {
+      color: '#212121',
+    },
   },
   editActionsBox: {
     display: 'flex',
@@ -32,64 +39,89 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const initialState = { leagueId: '', teamId: '' };
+
 export default function IdsEdit() {
   const classes = useStyles();
-  const [isEdit, setIsEdit] = useState(false);
+  const dispatch = useContext(IdsDispatchContext);
 
-  function handleEdit() {
+  const { leagueId, teamId } = useContext(IdsContext);
+  const noIds = !leagueId && !teamId;
+  const [isEdit, setIsEdit] = useState(noIds ? true : false);
+  const [ids, setIds] = useState(initialState);
+
+  function handleOpenEdit() {
     setIsEdit(true);
   }
+  const handleChange = name => e => {
+    setIds({ ...ids, [name]: e.target.value });
+  };
   function handleCancel() {
     setIsEdit(false);
   }
   function handleUpdate() {
     setIsEdit(false);
+    ids.leagueId && dispatch({ type: 'SET_LEAGUE', leagueId: ids.leagueId });
+    ids.teamId && dispatch({ type: 'SET_TEAM', teamId: ids.teamId });
+    setIds(initialState);
   }
 
   return (
     <div className={classes.editRoot}>
       {isEdit ? (
-        <div>
-          <div className={classes.editBox}>
-            <TextField
-              id='league-id'
-              label='Set League ID'
-              autoFocus
-              autoComplete='league-id'
-              type='number'
-              margin='normal'
-              variant='outlined'
-            />
-            <TextField
-              id='team-id'
-              label='Set Team ID'
-              autoComplete='team-id'
-              type='number'
-              margin='normal'
-              variant='outlined'
-            />
-          </div>
-          <div className={classes.editActionsBox}>
-            <Button
-              onClick={handleCancel}
-              variant='outlined'
-              size='small'
-              className={classes.editActionsButton}>
-              Cancel
-            </Button>
-            <Button
-              onClick={handleUpdate}
-              variant='contained'
-              size='small'
-              color='secondary'
-              className={classes.editActionsButton}>
-              Update
-            </Button>
-          </div>
-        </div>
+        <Slide direction='left' in={isEdit} mountOnEnter unmountOnExit>
+          <form>
+            <div className={classes.editBox}>
+              <TextField
+                id='league-id'
+                label='Set League ID'
+                onChange={handleChange('leagueId')}
+                value={ids.leagueId}
+                autoComplete='league-id'
+                type='number'
+                margin='normal'
+                variant='outlined'
+                inputProps={{
+                  maxLength: 8,
+                }}
+              />
+              <TextField
+                id='team-id'
+                label='Set Team ID'
+                onChange={handleChange('teamId')}
+                value={ids.teamId}
+                autoComplete='team-id'
+                type='number'
+                margin='normal'
+                variant='outlined'
+                inputProps={{
+                  max: '99999999',
+                }}
+              />
+            </div>
+            <div className={classes.editActionsBox}>
+              <Button
+                onClick={handleCancel}
+                variant='outlined'
+                size='small'
+                className={classes.editActionsButton}>
+                Cancel
+              </Button>
+              <Button
+                disabled={!ids.leagueId && !ids.teamId}
+                onClick={handleUpdate}
+                variant='contained'
+                size='small'
+                color='secondary'
+                className={classes.editActionsButton}>
+                Update
+              </Button>
+            </div>
+          </form>
+        </Slide>
       ) : (
         <Button
-          onClick={handleEdit}
+          onClick={handleOpenEdit}
           variant='contained'
           color='primary'
           className={classes.editButton}>

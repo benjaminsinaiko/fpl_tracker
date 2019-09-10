@@ -4,8 +4,8 @@ import idsReducer from '../reducers/idsReducer';
 import useLocalStorageReducer from '../hooks/useLocalStorageReducer';
 
 const initialState = {
-  teamId: null,
-  leagueId: null,
+  leagueId: '',
+  teamId: '',
 };
 
 export const IdsContext = createContext();
@@ -19,11 +19,9 @@ export function IdsProvider({ children }) {
   );
 
   useEffect(() => {
-    const cachedIds = JSON.parse(window.localStorage.getItem('ids'));
-    if (cachedIds) {
-      dispatch({ type: 'SET_TEAM', teamId: cachedIds.teamId || null });
-      dispatch({ type: 'SET_LEAGE', teamId: cachedIds.leagueId || null });
-    }
+    const { leagueId, teamId } = JSON.parse(window.localStorage.getItem('ids'));
+    leagueId && dispatch({ type: 'SET_LEAGUE', leagueId: leagueId });
+    teamId && dispatch({ type: 'SET_TEAM', teamId: teamId });
   }, [dispatch]);
 
   return (

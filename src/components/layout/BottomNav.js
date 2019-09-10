@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
@@ -7,6 +7,7 @@ import StatsIcon from '@material-ui/icons/Equalizer';
 import LeagueIcon from '@material-ui/icons/FormatListNumbered';
 import SettingsIcon from '@material-ui/icons/SettingsApplications';
 
+import { IdsContext } from '../../contexts/idsContext';
 import SettingsDrawer from '../userSettings/SettingsDrawer';
 
 const useStyles = makeStyles({
@@ -21,12 +22,13 @@ const useStyles = makeStyles({
 export default function LabelBottomNavigation() {
   const classes = useStyles();
   const [value, setValue] = React.useState('status');
-
   function handleChange(event, newValue) {
     setValue(newValue);
   }
 
-  const [drawerOpen, setDrawerOpen] = useState(true);
+  const { leagueId, teamId } = useContext(IdsContext);
+  const noIds = !leagueId && !teamId;
+  const [drawerOpen, setDrawerOpen] = useState(noIds ? true : false);
   const toggleDrawer = open => event => {
     if (
       event.type === 'keydown' &&

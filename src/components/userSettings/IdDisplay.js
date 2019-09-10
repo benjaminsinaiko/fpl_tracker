@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+
+import { IdsContext } from '../../contexts/idsContext';
 
 const useStyles = makeStyles(theme => ({
   displayRoot: {
@@ -10,30 +12,34 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     textAlign: 'center',
     marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(2),
   },
-  IdLabel: {},
   IdNumber: {
-    fontSize: '2em',
+    fontSize: '2.4em',
+    color: '#f6247b',
   },
 }));
 
 export default function IdDisplay() {
   const classes = useStyles();
+  const ids = useContext(IdsContext);
 
   return (
     <div className={classes.displayRoot}>
       <div>
         <Typography variant='subtitle1' className={classes.IdLabel}>
-          Team ID
+          League ID
         </Typography>
-        <Typography className={classes.IdNumber}>12345</Typography>
+        <Typography className={classes.IdNumber}>
+          {ids.leagueId ? ids.leagueId : '-'}
+        </Typography>
       </div>
       <div>
         <Typography variant='subtitle1' className={classes.IdLabel}>
-          League ID
+          Team ID
         </Typography>
-        <Typography className={classes.IdNumber}>678910</Typography>
+        <Typography className={classes.IdNumber}>
+          {ids.teamId ? ids.teamId : '-'}
+        </Typography>
       </div>
     </div>
   );
