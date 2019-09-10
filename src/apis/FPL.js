@@ -14,6 +14,6 @@ export async function getGWStatus() {
     const { data } = await axios('/api/event-status');
     return data;
   } catch (err) {
-    return err;
+    return err.response;
   }
 }
