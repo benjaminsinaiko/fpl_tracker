@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Drawer from '@material-ui/core/Drawer';
+import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
@@ -10,7 +11,7 @@ import IdEdit from './IdsEdit';
 const useStyles = makeStyles(theme => ({
   drawerRoot: {
     width: '100%',
-    minHeight: '30vh',
+    minHeight: '34vh',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -47,6 +48,7 @@ export default function SettingsDrawer({ open, toggle }) {
           aria-label='close'>
           <CloseIcon color='primary' />
         </IconButton>
+        <Typography variant='h4'>Settings</Typography>
         <div className={classes.idSection}>
           <IdDisplay />
           <IdEdit />
