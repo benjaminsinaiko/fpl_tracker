@@ -28,9 +28,10 @@ export default function LabelBottomNavigation({ path }) {
     setValue(path);
   }, [path]);
 
-  const { leagueId, teamId } = useContext(IdsContext);
-  const noIds = !leagueId && !teamId;
+  const { leagueData, teamData } = useContext(IdsContext);
+  const noIds = !leagueData && !teamData;
   const [drawerOpen, setDrawerOpen] = useState(noIds ? true : false);
+
   const toggleDrawer = open => event => {
     if (
       event.type === 'keydown' &&

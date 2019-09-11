@@ -3,22 +3,22 @@ export default function idsReducer(state, action) {
     case 'SET_LEAGUE':
       return {
         ...state,
-        leagueId: action.leagueId,
+        leagueData: action.leagueData,
       };
     case 'CLEAR_LEAGUE':
       return {
         ...state,
-        leagueId: '',
+        leagueData: '',
       };
     case 'SET_TEAM':
       return {
         ...state,
-        teamId: action.teamId,
+        teamData: action.teamData,
       };
     case 'CLEAR_TEAM':
       return {
         ...state,
-        teamId: '',
+        teamData: '',
       };
     default:
       return state;

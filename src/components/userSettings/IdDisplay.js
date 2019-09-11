@@ -30,7 +30,7 @@ export default function IdDisplay() {
           League ID
         </Typography>
         <Typography className={classes.IdNumber}>
-          {ids.leagueId ? ids.leagueId : '-'}
+          {ids.leagueData ? ids.leagueData.league.id : '-'}
         </Typography>
       </div>
       <div>
@@ -38,7 +38,7 @@ export default function IdDisplay() {
           Team ID
         </Typography>
         <Typography className={classes.IdNumber}>
-          {ids.teamId ? ids.teamId : '-'}
+          {ids.teamData ? ids.teamData.id : '-'}
         </Typography>
       </div>
     </div>

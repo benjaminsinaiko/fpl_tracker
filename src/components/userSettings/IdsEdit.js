@@ -1,11 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import EditIcon from '@material-ui/icons/Edit';
 import TextField from '@material-ui/core/TextField';
 import Slide from '@material-ui/core/Slide';
 
-import { IdsContext, IdsDispatchContext } from '../../contexts/idsContext';
+import { IdsDispatchContext } from '../../contexts/idsContext';
+import useDataApi from '../../hooks/useDataApi';
+import { leagueUrl, teamUrl } from '../../apis/FPL';
 
 const useStyles = makeStyles(theme => ({
   editRoot: {
@@ -43,12 +45,38 @@ const initialState = { leagueId: '', teamId: '' };
 
 export default function IdsEdit() {
   const classes = useStyles();
-  const dispatch = useContext(IdsDispatchContext);
-
-  const { leagueId, teamId } = useContext(IdsContext);
-  const noIds = !leagueId && !teamId;
-  const [isEdit, setIsEdit] = useState(noIds ? true : false);
+  const [isEdit, setIsEdit] = useState(false);
   const [ids, setIds] = useState(initialState);
+  const dispatch = useContext(IdsDispatchContext);
+  const {
+    data: leagueData,
+    error: leagueError,
+    callApi: callLeagueApi,
+  } = useDataApi();
+  const {
+    data: teamData,
+    error: teamError,
+    callApi: callTeamApi,
+  } = useDataApi();
+
+  useEffect(() => {
+    if (leagueData) {
+      dispatch({ type: 'SET_LEAGUE', leagueData: leagueData });
+    }
+  }, [leagueData, dispatch]);
+  useEffect(() => {
+    if (teamData) {
+      dispatch({ type: 'SET_TEAM', teamData: teamData });
+    }
+  }, [teamData, dispatch]);
+  useEffect(() => {
+    if (leagueData && teamData) {
+      setIsEdit(false);
+      callLeagueApi('');
+      callTeamApi('');
+      setIds(initialState);
+    }
+  }, [leagueData, teamData, callLeagueApi, callTeamApi]);
 
   function handleOpenEdit() {
     setIsEdit(true);
@@ -60,10 +88,12 @@ export default function IdsEdit() {
     setIsEdit(false);
   }
   function handleUpdate() {
-    setIsEdit(false);
-    ids.leagueId && dispatch({ type: 'SET_LEAGUE', leagueId: ids.leagueId });
-    ids.teamId && dispatch({ type: 'SET_TEAM', teamId: ids.teamId });
-    setIds(initialState);
+    if (ids.leagueId) {
+      callLeagueApi(leagueUrl(ids.leagueId));
+    }
+    if (ids.teamId) {
+      callTeamApi(teamUrl(ids.teamId));
+    }
   }
 
   return (
@@ -73,6 +103,7 @@ export default function IdsEdit() {
           <form>
             <div className={classes.editBox}>
               <TextField
+                error={leagueError !== null}
                 id='league-id'
                 label='Set League ID'
                 onChange={handleChange('leagueId')}
@@ -81,11 +112,10 @@ export default function IdsEdit() {
                 type='number'
                 margin='normal'
                 variant='outlined'
-                inputProps={{
-                  maxLength: 8,
-                }}
+                helperText={leagueError !== null ? 'Invalid League ID' : ''}
               />
               <TextField
+                error={teamError !== null}
                 id='team-id'
                 label='Set Team ID'
                 onChange={handleChange('teamId')}
@@ -94,9 +124,7 @@ export default function IdsEdit() {
                 type='number'
                 margin='normal'
                 variant='outlined'
-                inputProps={{
-                  max: '99999999',
-                }}
+                helperText={teamError !== null ? 'Invalid Team ID' : ''}
               />
             </div>
             <div className={classes.editActionsBox}>
@@ -125,7 +153,7 @@ export default function IdsEdit() {
           variant='contained'
           color='primary'
           className={classes.editButton}>
-          Edit IDs
+          Add / Edit
           <EditIcon className={classes.buttonIcon} />
         </Button>
       )}
