@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   },
   card: {
     height: '40vh',
-    maxWidth: 275,
+    width: 275,
     padding: 8,
     display: 'flex',
     flexDirection: 'column',

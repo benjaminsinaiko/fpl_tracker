@@ -1,12 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 
 import useAxios from '../../hooks/useAxios';
 import MissingID from '../userSettings/MissingID';
+import LeagueTable from './LeagueTable';
+
+import SampleLeague from '../../apis/sampleLeagueData.json';
 
 const useStyles = makeStyles(theme => ({
   leagueRoot: {
     display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    minHeight: '90vh',
+    paddingBottom: 60,
+  },
+  leagueName: {
+    fontSize: '2em',
+    color: '#320336',
+    margin: '24px 16px',
+    wordBreak: 'break-all',
   },
 }));
 
@@ -17,20 +31,26 @@ function leagueDataUrl(leagueId) {
 export default function LeaguePage() {
   const classes = useStyles();
   // const { response, error } = useAxios(leagueDataUrl(leagueId));
-  // console.log('res', response);
-  // console.log('err', error);
+  const error = null;
+  const response = SampleLeague;
 
-  // if (error) {
-  //   return <MissingID />;
-  // }
-  return <MissingID idName='League' />;
+  if (error) {
+    return <MissingID />;
+  }
 
   // if (response) {
-  //   return (
-  //     <div>
-  //       <h1>League Page</h1>
-  //     </div>
-  //   );
-  // }
-  // return <h1>Loading...</h1>;
+  return (
+    <div className={classes.leagueRoot}>
+      {response ? (
+        <>
+          <Typography variant='h1' className={classes.leagueName}>
+            {response.league.name}
+          </Typography>
+          <LeagueTable league={response.standings.results} />
+        </>
+      ) : (
+        <h1>Loading...</h1>
+      )}
+    </div>
+  );
 }

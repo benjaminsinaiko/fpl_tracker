@@ -1,0 +1,139 @@
+import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableFooter from '@material-ui/core/TableFooter';
+import TablePagination from '@material-ui/core/TablePagination';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import IconButton from '@material-ui/core/IconButton';
+import FirstPageIcon from '@material-ui/icons/FirstPage';
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import LastPageIcon from '@material-ui/icons/LastPage';
+import Typography from '@material-ui/core/Typography';
+
+import { toLeagueTable } from '../../utils/fplDataHelpers';
+import TablePaginationActions from './TablePaginationActions';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '95vw',
+    maxWidth: 650,
+    boxShadow:
+      '0px 1px 8px 0px rgba(246,164,24,0.6), 0px 3px 4px 0px rgba(246,164,24,0.5), 0px 3px 3px -2px rgba(246,164,24,0.24)',
+    '& p': {
+      alignSelf: 'flex-end',
+      fontSize: '.6em',
+      margin: theme.spacing(1),
+      right: 0,
+      color: '#8d36f7',
+    },
+    [theme.breakpoints.down('xs')]: {
+      '& th,td': {
+        padding: theme.spacing(2),
+      },
+    },
+  },
+  table: {
+    overflowX: 'auto',
+    '& th': {
+      backgroundColor: '#f6a418',
+    },
+  },
+}));
+
+export default function LeagueTable({ league }) {
+  const classes = useStyles();
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+
+  const emptyRows =
+    page !== 0
+      ? rowsPerPage - Math.min(rowsPerPage, league.length - page * rowsPerPage)
+      : 0;
+
+  function handleChangePage(event, newPage) {
+    setPage(newPage);
+  }
+
+  function handleChangeRowsPerPage(event) {
+    setPage(0);
+    setRowsPerPage(+event.target.value);
+  }
+  console.log(emptyRows);
+
+  return (
+    <Paper className={classes.root} elevation={3}>
+      <div className={classes.table}>
+        <Table size={rowsPerPage === 5 ? 'medium' : 'small'}>
+          <TableHead>
+            <TableRow>
+              <TableCell>Team</TableCell>
+              <TableCell component='th' align='center'>
+                Rank
+              </TableCell>
+              <TableCell component='th' align='center'>
+                Last
+              </TableCell>
+              <TableCell component='th' align='center'>
+                GW Points
+              </TableCell>
+              <TableCell component='th' align='center'>
+                Total Points
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {league
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map(team => (
+                <TableRow key={team.id}>
+                  <TableCell scope='row'>{team.entry_name}</TableCell>
+                  <TableCell align='center'>{team.rank}</TableCell>
+                  <TableCell align='center'>{team.last_rank}</TableCell>
+                  <TableCell align='center'>{team.event_total}</TableCell>
+                  <TableCell align='center'>{team.total}</TableCell>
+                </TableRow>
+              ))}
+            {emptyRows > 0 && (
+              <TableRow
+                style={{
+                  height: (rowsPerPage === 5 ? 49 : 33) * emptyRows,
+                }}>
+                <TableCell colSpan={5} />
+              </TableRow>
+            )}
+          </TableBody>
+          <TableFooter>
+            <TableRow></TableRow>
+          </TableFooter>
+        </Table>
+      </div>
+      <TablePagination
+        rowsPerPageOptions={[5, 10, 20]}
+        component='div'
+        count={league.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        backIconButtonProps={{
+          'aria-label': 'previous page',
+        }}
+        nextIconButtonProps={{
+          'aria-label': 'next page',
+        }}
+        SelectProps={{
+          inputProps: { 'aria-label': 'rows per page' },
+          native: true,
+        }}
+        onChangePage={handleChangePage}
+        onChangeRowsPerPage={handleChangeRowsPerPage}
+      />
+      <Typography variant='body1'>*top 20 teams only</Typography>
+    </Paper>
+  );
+}

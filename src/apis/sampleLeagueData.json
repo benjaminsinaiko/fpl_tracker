@@ -1,0 +1,114 @@
+{
+  "league": {
+    "id": 55013,
+    "name": "Fish & Crumple-Ones",
+    "created": "2019-06-29T06:58:51.141551Z",
+    "closed": false,
+    "rank": null,
+    "max_entries": null,
+    "league_type": "x",
+    "scoring": "c",
+    "admin_entry": 223253,
+    "start_event": 1,
+    "code_privacy": "p"
+  },
+  "new_entries": {
+    "has_next": false,
+    "page": 1,
+    "results": []
+  },
+  "standings": {
+    "has_next": false,
+    "page": 1,
+    "results": [
+      {
+        "id": 6586580,
+        "event_total": 64,
+        "player_name": "alex balick",
+        "rank": 1,
+        "last_rank": 2,
+        "rank_sort": 1,
+        "total": 248,
+        "entry": 1233172,
+        "entry_name": "salahdtrossar"
+      },
+      {
+        "id": 20602687,
+        "event_total": 54,
+        "player_name": "Benjamin Sinaiko",
+        "rank": 2,
+        "last_rank": 1,
+        "rank_sort": 2,
+        "total": 242,
+        "entry": 3551977,
+        "entry_name": "Why You Maupay?"
+      },
+      {
+        "id": 11845934,
+        "event_total": 68,
+        "player_name": "Brett Saltzman",
+        "rank": 3,
+        "last_rank": 5,
+        "rank_sort": 3,
+        "total": 241,
+        "entry": 2145332,
+        "entry_name": "Tan Guy"
+      },
+      {
+        "id": 32600887,
+        "event_total": 93,
+        "player_name": "Jonathan Mirkin",
+        "rank": 4,
+        "last_rank": 8,
+        "rank_sort": 4,
+        "total": 241,
+        "entry": 5238500,
+        "entry_name": "Christian Pullschics"
+      },
+      {
+        "id": 23092847,
+        "event_total": 57,
+        "player_name": "Joe Goodman",
+        "rank": 5,
+        "last_rank": 3,
+        "rank_sort": 5,
+        "total": 234,
+        "entry": 1951544,
+        "entry_name": "Joe's FC"
+      },
+      {
+        "id": 28082149,
+        "event_total": 52,
+        "player_name": "paul damato",
+        "rank": 6,
+        "last_rank": 4,
+        "rank_sort": 6,
+        "total": 229,
+        "entry": 4629482,
+        "entry_name": "Pot1StrikesAgain"
+      },
+      {
+        "id": 27978764,
+        "event_total": 68,
+        "player_name": "andy Rosenband",
+        "rank": 7,
+        "last_rank": 7,
+        "rank_sort": 7,
+        "total": 221,
+        "entry": 4614722,
+        "entry_name": "aro"
+      },
+      {
+        "id": 1140387,
+        "event_total": 48,
+        "player_name": "Benjamin Lurie",
+        "rank": 8,
+        "last_rank": 6,
+        "rank_sort": 8,
+        "total": 216,
+        "entry": 223253,
+        "entry_name": "Kim Jong Kün"
+      }
+    ]
+  }
+}
