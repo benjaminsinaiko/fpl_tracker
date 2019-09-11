@@ -20,10 +20,9 @@ const useStyles = makeStyles({
   },
 });
 
-export default function LabelBottomNavigation({ path }) {
+export default function BottomNav({ path }) {
   const classes = useStyles();
-  const [value, setValue] = React.useState('status');
-
+  const [value, setValue] = useState('status');
   useEffect(() => {
     setValue(path);
   }, [path]);

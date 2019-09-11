@@ -57,7 +57,6 @@ export default function LeagueTable({ league }) {
     setPage(0);
     setRowsPerPage(+event.target.value);
   }
-  console.log(emptyRows);
 
   return (
     <Paper className={classes.root} elevation={3}>
