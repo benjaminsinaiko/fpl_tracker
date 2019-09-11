@@ -7,15 +7,26 @@ import { IdsContext } from '../../contexts/idsContext';
 const useStyles = makeStyles(theme => ({
   displayRoot: {
     width: '100%',
+    height: 130,
     display: 'flex',
     justifyContent: 'space-evenly',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     textAlign: 'center',
     marginTop: theme.spacing(1),
   },
-  IdNumber: {
+  idBox: {
+    width: '50%',
+  },
+  idNumber: {
     fontSize: '2.4em',
     color: '#f6247b',
+  },
+  idName: {
+    fontSize: '.8em',
+    color: '#8d36f7',
+    fontStyle: 'italic',
+    wordWrap: 'break-word',
+    wordBreak: 'break-all',
   },
 }));
 
@@ -25,20 +36,26 @@ export default function IdDisplay() {
 
   return (
     <div className={classes.displayRoot}>
-      <div>
+      <div className={classes.idBox}>
         <Typography variant='subtitle1' className={classes.IdLabel}>
           League ID
         </Typography>
-        <Typography className={classes.IdNumber}>
+        <Typography className={classes.idNumber}>
           {ids.leagueData ? ids.leagueData.league.id : '-'}
         </Typography>
+        <Typography className={classes.idName}>
+          {ids.leagueData ? ids.leagueData.league.name : ''}
+        </Typography>
       </div>
-      <div>
+      <div className={classes.idBox}>
         <Typography variant='subtitle1' className={classes.IdLabel}>
           Team ID
         </Typography>
-        <Typography className={classes.IdNumber}>
+        <Typography className={classes.idNumber}>
           {ids.teamData ? ids.teamData.id : '-'}
+        </Typography>
+        <Typography className={classes.idName}>
+          {ids.teamData ? ids.teamData.name : ''}
         </Typography>
       </div>
     </div>

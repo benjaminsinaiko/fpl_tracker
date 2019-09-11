@@ -11,12 +11,21 @@ import IdEdit from './IdsEdit';
 const useStyles = makeStyles(theme => ({
   drawerRoot: {
     width: '100%',
-    minHeight: '34vh',
+    minHeight: '50vh',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     paddingTop: theme.spacing(2),
     backgroundColor: '#04e8f7',
+  },
+  drawerContent: {
+    width: '100%',
+    maxWidth: 650,
+    display: 'flex',
+    flexDirection: 'column',
+    '& h4': {
+      alignSelf: 'center',
+    },
   },
   closeButton: {
     position: 'absolute',
@@ -24,15 +33,10 @@ const useStyles = makeStyles(theme => ({
     left: 0,
   },
   idSection: {
-    maxWidth: 600,
-    height: '45%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
     padding: theme.spacing(1),
-    [theme.breakpoints.down('xs')]: {
-      width: '90vw',
-    },
   },
 }));
 
@@ -48,10 +52,12 @@ export default function SettingsDrawer({ open, toggle }) {
           aria-label='close'>
           <CloseIcon color='primary' />
         </IconButton>
-        <Typography variant='h4'>Settings</Typography>
-        <div className={classes.idSection}>
-          <IdDisplay />
-          <IdEdit />
+        <div className={classes.drawerContent}>
+          <Typography variant='h4'>Settings</Typography>
+          <div className={classes.idSection}>
+            <IdDisplay />
+            <IdEdit />
+          </div>
         </div>
       </div>
     </Drawer>

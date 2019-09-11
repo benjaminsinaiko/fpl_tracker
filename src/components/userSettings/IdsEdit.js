@@ -11,10 +11,12 @@ import { leagueUrl, teamUrl } from '../../apis/FPL';
 
 const useStyles = makeStyles(theme => ({
   editRoot: {
+    display: 'flex',
+    justifyContent: 'center',
     width: '100%',
   },
   editButton: {
-    width: '100%',
+    width: '75%',
     marginTop: theme.spacing(3),
   },
   buttonIcon: {
@@ -22,6 +24,7 @@ const useStyles = makeStyles(theme => ({
   },
   editBox: {
     display: 'flex',
+    justifyContent: 'center',
     '& div': {
       marginRight: theme.spacing(0.25),
       marginLeft: theme.spacing(0.25),
@@ -99,7 +102,7 @@ export default function IdsEdit() {
   return (
     <div className={classes.editRoot}>
       {isEdit ? (
-        <Slide direction='left' in={isEdit} mountOnEnter unmountOnExit>
+        <Slide direction='down' in={isEdit} mountOnEnter unmountOnExit>
           <form>
             <div className={classes.editBox}>
               <TextField
