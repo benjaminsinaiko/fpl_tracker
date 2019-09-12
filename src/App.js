@@ -2,8 +2,9 @@ import React from 'react';
 import { Router, Location } from '@reach/router';
 import { ThemeProvider } from '@material-ui/styles';
 
-import { AllDataProvider } from './contexts/allDataContext';
 import { IdsProvider } from './contexts/idsContext';
+import { AllDataProvider } from './contexts/allDataContext';
+import { LeagueTeamsProvider } from './contexts/leagueTeamsContext';
 import theme from './ui/theme';
 import Navbar from './components/layout/Navbar';
 import BottomNav from './components/layout/BottomNav';
@@ -17,15 +18,17 @@ function App() {
       <IdsProvider>
         <div className='App'>
           <AllDataProvider>
-            <Navbar />
-            <Router>
-              <StatusPage path='/' />
-              <LeaguePage path='/league' />
-              <StatsPage path='/stats' />
-            </Router>
-            <Location>
-              {({ location }) => <BottomNav path={location.pathname} />}
-            </Location>
+            <LeagueTeamsProvider>
+              <Navbar />
+              <Router>
+                <StatusPage path='/' />
+                <LeaguePage path='/league' />
+                <StatsPage path='/stats' />
+              </Router>
+              <Location>
+                {({ location }) => <BottomNav path={location.pathname} />}
+              </Location>
+            </LeagueTeamsProvider>
           </AllDataProvider>
         </div>
       </IdsProvider>

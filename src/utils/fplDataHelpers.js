@@ -1,3 +1,3 @@
-export function toLeagueTable(leagueData) {
-  console.log(leagueData);
+export function getTeamUrl(team) {
+  return `/api/entry/${team.entry}/history/`;
 }

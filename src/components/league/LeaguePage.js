@@ -3,8 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
 import { IdsContext } from '../../contexts/idsContext';
+import { LeagueTeamsContext } from '../../contexts/leagueTeamsContext';
 import MissingID from '../userSettings/MissingID';
 import LeagueTable from './LeagueTable';
+import LeagueTeamCards from './LeagueTeamCards';
 
 const useStyles = makeStyles(theme => ({
   leagueRoot: {
@@ -25,6 +27,8 @@ const useStyles = makeStyles(theme => ({
 export default function LeaguePage() {
   const classes = useStyles();
   const { leagueData, teamData } = useContext(IdsContext);
+  const leagueTeams = useContext(LeagueTeamsContext);
+  // console.log(leagueTeams);
 
   if (!leagueData) {
     return <MissingID />;
@@ -35,7 +39,8 @@ export default function LeaguePage() {
       <Typography variant='h1' className={classes.leagueName}>
         {leagueData.league.name}
       </Typography>
-      <LeagueTable league={leagueData.standings.results} />
+      {/* <LeagueTable league={leagueData.standings.results} /> */}
+      <LeagueTeamCards teams={leagueTeams} />
     </div>
   );
 }
