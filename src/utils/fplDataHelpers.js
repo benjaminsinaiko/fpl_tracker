@@ -6,7 +6,8 @@ export function convertTeamData(teamData) {
   const currentGW = teamData[teamData.length - 1];
   const currentTotals = {
     totalPoints: currentGW.total_points,
-    rank: currentGW.overall_rank,
+    gwRank: currentGW.rank,
+    overallRank: currentGW.overall_rank,
     value: currentGW.value,
     bank: currentGW.bank,
   };
