@@ -22,14 +22,17 @@ export default function StatusPointsChart({ events }) {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    const playedGWs = events.filter(event => event.finished === true);
-    const avg = { id: 'Average Score', data: [] };
-    const high = { id: 'High Score', data: [] };
-    playedGWs.forEach(week => {
-      avg.data.push({ x: `GW ${week.id}`, y: week.average_entry_score });
-      high.data.push({ x: `GW ${week.id}`, y: week.highest_score });
-    }, {});
-    setData([avg, high]);
+    function getData(params) {
+      const playedGWs = events.filter(event => event.finished === true);
+      const avg = { id: 'Average Score', data: [] };
+      const high = { id: 'High Score', data: [] };
+      playedGWs.forEach(week => {
+        avg.data.push({ x: `GW ${week.id}`, y: week.average_entry_score });
+        high.data.push({ x: `GW ${week.id}`, y: week.highest_score });
+      }, {});
+      setData([avg, high]);
+    }
+    events && getData();
   }, [events]);
 
   return (

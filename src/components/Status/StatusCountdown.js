@@ -74,6 +74,9 @@ export default function StatusCountdown({ current, next }) {
         Next Deadline:
       </Typography>
       <Typography align='center' className={classes.deadlineText}>
+        {next.name}
+      </Typography>
+      <Typography align='center' className={classes.deadlineText}>
         {longDisplayDate(next.deadline_time)}
       </Typography>
       {timeLeft ? (

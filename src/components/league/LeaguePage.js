@@ -26,9 +26,8 @@ const useStyles = makeStyles(theme => ({
 
 export default function LeaguePage() {
   const classes = useStyles();
-  const { leagueData, teamData } = useContext(IdsContext);
+  const { leagueData } = useContext(IdsContext);
   const leagueTeams = useContext(LeagueTeamsContext);
-  // console.log(leagueTeams);
 
   if (!leagueData) {
     return <MissingID />;
@@ -39,7 +38,7 @@ export default function LeaguePage() {
       <Typography variant='h1' className={classes.leagueName}>
         {leagueData.league.name}
       </Typography>
-      {/* <LeagueTable league={leagueData.standings.results} /> */}
+      <LeagueTable league={leagueData.standings.results} />
       <LeagueTeamCards teams={leagueTeams} />
     </div>
   );
