@@ -1,9 +1,6 @@
 import React from 'react';
+import MissingID from '../userSettings/MissingID';
 
 export default function StatsPage() {
-  return (
-    <div>
-      <h1>Stats Page</h1>
-    </div>
-  );
+  return <MissingID idName='Team' />;
 }

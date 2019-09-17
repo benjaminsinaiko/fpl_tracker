@@ -30,7 +30,7 @@ export default function LeaguePage() {
   const leagueTeams = useContext(LeagueTeamsContext);
 
   if (!leagueData) {
-    return <MissingID />;
+    return <MissingID idName='League' />;
   }
 
   return (

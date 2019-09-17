@@ -1,0 +1,3 @@
+/api/* https://fantasy.premierleague.com/api/:splat  200
+/accounts/* https://users.premierleague.com/:splat  200
+/*  /index.html  200
