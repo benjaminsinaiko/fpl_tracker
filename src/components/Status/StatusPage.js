@@ -14,8 +14,6 @@ export default function StatusPage() {
   const { events } = useContext(AllDataContext);
   const [current, setCurrent] = useState(null);
   const [next, setNext] = useState(null);
-  console.log('next', next);
-  console.log('cur', current);
 
   useEffect(() => {
     function getEvents() {
