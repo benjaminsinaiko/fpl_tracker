@@ -20,6 +20,12 @@ export default function idsReducer(state, action) {
         ...state,
         teamData: '',
       };
+    case 'CLEAR_IDS':
+      return {
+        ...state,
+        leagueData: '',
+        teamData: '',
+      };
     default:
       return state;
   }

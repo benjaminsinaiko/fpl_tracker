@@ -38,17 +38,6 @@ export default function IdDisplay() {
     <div className={classes.displayRoot}>
       <div className={classes.idBox}>
         <Typography variant='subtitle1' className={classes.IdLabel}>
-          League ID
-        </Typography>
-        <Typography className={classes.idNumber}>
-          {ids.leagueData ? ids.leagueData.league.id : '-'}
-        </Typography>
-        <Typography className={classes.idName}>
-          {ids.leagueData ? ids.leagueData.league.name : ''}
-        </Typography>
-      </div>
-      <div className={classes.idBox}>
-        <Typography variant='subtitle1' className={classes.IdLabel}>
           Team ID
         </Typography>
         <Typography className={classes.idNumber}>
@@ -56,6 +45,17 @@ export default function IdDisplay() {
         </Typography>
         <Typography className={classes.idName}>
           {ids.teamData ? ids.teamData.name : ''}
+        </Typography>
+      </div>
+      <div className={classes.idBox}>
+        <Typography variant='subtitle1' className={classes.IdLabel}>
+          League ID
+        </Typography>
+        <Typography className={classes.idNumber}>
+          {ids.leagueData ? ids.leagueData.league.id : '-'}
+        </Typography>
+        <Typography className={classes.idName}>
+          {ids.leagueData ? ids.leagueData.league.name : ''}
         </Typography>
       </div>
     </div>

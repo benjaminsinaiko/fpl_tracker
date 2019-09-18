@@ -58,10 +58,10 @@ export default function BottomNav({ path }) {
         icon={<LeagueIcon />}
       />
       <BottomNavigationAction
-        label='Stats'
-        value='/stats'
+        label='Team'
+        value='/team'
         component={Link}
-        to='/stats'
+        to='/team'
         icon={<StatsIcon />}
       />
       <BottomNavigationAction

@@ -10,7 +10,7 @@ import Navbar from './components/layout/Navbar';
 import BottomNav from './components/layout/BottomNav';
 import StatusPage from './components/status/StatusPage';
 import LeaguePage from './components/league/LeaguePage';
-import StatsPage from './components/stats/StatsPage';
+import TeamPage from './components/team/TeamPage';
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
               <Router>
                 <StatusPage path='/' />
                 <LeaguePage path='/league' />
-                <StatsPage path='/stats' />
+                <TeamPage path='/team' />
               </Router>
               <Location>
                 {({ location }) => <BottomNav path={location.pathname} />}

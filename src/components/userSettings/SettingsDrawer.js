@@ -5,7 +5,6 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
-import IdDisplay from './IdDisplay';
 import IdEdit from './IdsEdit';
 
 const useStyles = makeStyles(theme => ({
@@ -55,7 +54,6 @@ export default function SettingsDrawer({ open, toggle }) {
         <div className={classes.drawerContent}>
           <Typography variant='h4'>Settings</Typography>
           <div className={classes.idSection}>
-            <IdDisplay />
             <IdEdit />
           </div>
         </div>
