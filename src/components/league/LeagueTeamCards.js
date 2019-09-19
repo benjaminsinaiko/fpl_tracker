@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import NextIcon from '@material-ui/icons/NavigateNext';
+import BeforeIcon from '@material-ui/icons/NavigateBefore';
 
 import { convertTeamData } from '../../utils/fplDataHelpers';
 import TeamCard from './TeamCard';
@@ -18,13 +21,27 @@ const useStyles = makeStyles(theme => ({
       width: 0,
       background: 'transparent',
     },
+    '&::-ms-overflow-style': '-ms-autohiding-scrollbar',
+    '&::-webkit-overflow-scrolling': 'touch',
+  },
+  nextIcon: {
+    margin: theme.spacing(-2),
+    alignSelf: 'center',
+    color: '#f6a418',
+    fontSize: 70,
   },
 }));
 
+const cardsPerPage = 10;
+
 export default function LeagueTeamCards({ teams }) {
   const classes = useStyles();
-  const [cardData, setCardData] = useState();
   const [expanded, setExpanded] = useState(false);
+  const [cardData, setCardData] = useState();
+  const [page, setPage] = useState(0);
+  const numPages = Math.ceil(teams.length / cardsPerPage) - 1;
+
+  console.log('page', page);
 
   useEffect(() => {
     if (teams.length) {
@@ -41,19 +58,38 @@ export default function LeagueTeamCards({ teams }) {
     }
   }, [teams]);
 
+  function handlePageNext() {
+    setPage(page => page + 1);
+  }
+  function handlePageBack() {
+    setPage(page => page - 1);
+  }
+
   return (
     <div className={classes.teamCardRoot}>
       <div className={classes.scrollWrapper}>
+        {page > 0 ? (
+          <IconButton onClick={handlePageBack}>
+            <BeforeIcon className={classes.nextIcon} />
+          </IconButton>
+        ) : null}
         {cardData &&
-          cardData.map(card => (
-            <TeamCard
-              key={card.id}
-              teamData={card}
-              expanded={expanded}
-              setExpanded={setExpanded}
-              className={classes.scrollCard}
-            />
-          ))}
+          cardData
+            .slice(page * cardsPerPage, page * cardsPerPage + cardsPerPage)
+            .map(card => (
+              <TeamCard
+                key={card.id}
+                teamData={card}
+                expanded={expanded}
+                setExpanded={setExpanded}
+                className={classes.scrollCard}
+              />
+            ))}
+        {page < numPages ? (
+          <IconButton onClick={handlePageNext}>
+            <NextIcon className={classes.nextIcon} />
+          </IconButton>
+        ) : null}
       </div>
     </div>
   );

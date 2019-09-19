@@ -13,7 +13,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles(theme => ({
   cardRoot: {
-    width: 345,
+    width: 305,
     height: 'fit-content',
     flex: '0 0 auto',
     margin: theme.spacing(2),
