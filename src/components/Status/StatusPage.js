@@ -1,9 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
 
 import useStyles from './styles/StatusPageStyles';
 import StatusEventTable from './StatusEventTable';
 import StatusCard from './StatusCard';
+import ChipsUsed from './ChipsUsed';
 import StatusCountdown from './StatusCountdown';
 import StatusPointsChart from './StatusPointsChart';
 
@@ -31,8 +33,15 @@ export default function StatusPage() {
 
   return (
     <Container className={classes.statusRoot}>
+      <Typography align='center' variant='h5' gutterBottom>
+        Next Deadline
+      </Typography>
       <StatusCountdown current={current} next={next} />
+      <Typography align='center' variant='h5' gutterBottom>
+        Current Gameweek
+      </Typography>
       <StatusCard current={current} />
+      <ChipsUsed chips={current.chip_plays} />
       <StatusEventTable />
       <StatusPointsChart events={events} />
     </Container>

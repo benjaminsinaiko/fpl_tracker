@@ -13,6 +13,7 @@ import CountdownCircle from './CountdownCircle';
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
+    marginBottom: theme.spacing(2),
   },
   deadlineText: {
     fontSize: '.8em',
@@ -70,9 +71,6 @@ export default function StatusCountdown({ current, next }) {
 
   return (
     <div className={classes.root}>
-      <Typography align='center' variant='h6'>
-        Next Deadline:
-      </Typography>
       <Typography align='center' className={classes.deadlineText}>
         {next.name}
       </Typography>
