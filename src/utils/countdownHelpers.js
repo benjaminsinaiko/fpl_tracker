@@ -13,7 +13,7 @@ export function daysToDeadline(current, next) {
 }
 
 export function longDisplayDate(date) {
-  return moment(date).format('dddd, MMMM Do YYYY, h:mm:ss a');
+  return moment(date).format('dddd, MMMM Do YYYY, h:mm a');
 }
 
 export function checkTimeLeft(countdownTime) {

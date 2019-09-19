@@ -41,8 +41,6 @@ export default function LeagueTeamCards({ teams }) {
   const [page, setPage] = useState(0);
   const numPages = Math.ceil(teams.length / cardsPerPage) - 1;
 
-  console.log('page', page);
-
   useEffect(() => {
     if (teams.length) {
       const cardData = teams.map(team => {
