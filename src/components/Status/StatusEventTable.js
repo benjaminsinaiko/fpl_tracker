@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -9,10 +9,11 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
-import { getGWStatus } from '../../apis/FPL';
+import useDataApi from '../../hooks/useDataApi';
 
 const useStyles = makeStyles(theme => ({
   root: {
+    minWidth: 350,
     maxWidth: '100%',
     marginTop: theme.spacing(2),
     overflowX: 'auto',
@@ -41,6 +42,13 @@ const useStyles = makeStyles(theme => ({
       color: '#8d36f7',
     },
   },
+  updating: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: '#f6247b',
+    fontStyle: 'italic',
+  },
 }));
 
 function dateDisplay(date) {
@@ -49,52 +57,58 @@ function dateDisplay(date) {
 
 export default function StatusEventTable() {
   const classes = useStyles();
-  const [eventStatus, setEventStatus] = useState(null);
+  const { data: eventStatus, error, callApi } = useDataApi();
 
   useEffect(() => {
-    async function setStatus() {
-      const eventResponse = await getGWStatus();
-      setEventStatus(eventResponse);
-    }
-    setStatus();
-  }, []);
-
-  if (!eventStatus) {
-    return null;
-  }
+    callApi('/api/event-status');
+  }, [callApi]);
 
   return (
     <Paper className={classes.root} elevation={3}>
       <Typography variant='h6'>Points Status</Typography>
-      <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
-            <TableCell>Date</TableCell>
-            <TableCell align='right'>Match Points</TableCell>
-            <TableCell align='right'>Bonus Points</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {eventStatus.status.map(event => (
-            <TableRow key={event.date}>
-              <TableCell component='th' scope='row'>
-                {dateDisplay(event.date)}
-              </TableCell>
-              <TableCell align='right'>
-                {event.points === 'r' ? 'Confirmed' : '-'}
-              </TableCell>
-              <TableCell align='right'>
-                {event.bonus_added === true ? 'Added' : '-'}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-      <div className={classes.footer}>
-        <Typography align='center'>
-          League Tables: <span>{eventStatus.leagues}</span>
-        </Typography>
-      </div>
+      {error || !eventStatus ? (
+        <div className={classes.updating}>
+          <h2>Games updating</h2>
+        </div>
+      ) : (
+        <>
+          <Table className={classes.table}>
+            <TableHead>
+              <TableRow>
+                <TableCell>Date</TableCell>
+                <TableCell align='right'>Match Points</TableCell>
+                <TableCell align='right'>Bonus Points</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {eventStatus.status.map(event => (
+                <TableRow key={event.date}>
+                  <TableCell component='th' scope='row'>
+                    {dateDisplay(event.date)}
+                  </TableCell>
+                  <TableCell align='right'>
+                    {event.points === 'r' ? 'Confirmed' : '-'}
+                  </TableCell>
+                  <TableCell align='right'>
+                    {event.bonus_added === true ? 'Added' : '-'}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+
+          <div className={classes.footer}>
+            <Typography align='center'>
+              League Tables:{' '}
+              <span style={{ marginLeft: '10px' }}>
+                {eventStatus.leagues === ''
+                  ? 'Not Started'
+                  : eventStatus.leagues}
+              </span>
+            </Typography>
+          </div>
+        </>
+      )}
     </Paper>
   );
 }

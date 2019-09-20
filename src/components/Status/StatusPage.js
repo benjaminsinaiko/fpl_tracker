@@ -41,7 +41,7 @@ export default function StatusPage() {
         Current Gameweek
       </Typography>
       <StatusCard current={current} />
-      <ChipsUsed chips={current.chip_plays} />
+      {current.chip_plays && <ChipsUsed chips={current.chip_plays} />}
       <StatusEventTable />
       <StatusPointsChart events={events} />
     </Container>

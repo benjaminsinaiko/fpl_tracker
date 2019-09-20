@@ -31,6 +31,8 @@ const useStyles = makeStyles(theme => ({
 
 export default function StatusCard({ current }) {
   const classes = useStyles();
+  const avgScore = current.average_entry_score;
+  const hightScore = current.average_highest_score;
 
   if (!current) {
     return null;
@@ -53,9 +55,9 @@ export default function StatusCard({ current }) {
         <Divider color='primary' />
         <div className={classes.scoreBox}>
           <Typography variant='subtitle1'>Average Score</Typography>
-          <Typography variant='h5'>{current.average_entry_score}</Typography>
+          <Typography variant='h5'>{avgScore ? avgScore : '-'}</Typography>
           <Typography variant='subtitle1'>Highest Score</Typography>
-          <Typography variant='h5'>{current.highest_score}</Typography>
+          <Typography variant='h5'>{hightScore ? hightScore : '-'}</Typography>
         </div>
       </CardContent>
     </Card>
