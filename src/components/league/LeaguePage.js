@@ -7,6 +7,7 @@ import { LeagueTeamsContext } from '../../contexts/leagueTeamsContext';
 import MissingID from '../userSettings/MissingID';
 import LeagueTable from './LeagueTable';
 import LeagueTeamCards from './LeagueTeamCards';
+import WeeklyWinners from './WeeklyWinners';
 
 const useStyles = makeStyles(theme => ({
   leagueRoot: {
@@ -38,8 +39,9 @@ export default function LeaguePage() {
       <Typography variant='h1' className={classes.leagueName}>
         {leagueData.league.name}
       </Typography>
-      <LeagueTable league={leagueData.standings.results} />
-      <LeagueTeamCards teams={leagueTeams} />
+      {/* <LeagueTable league={leagueData.standings.results} />
+      <LeagueTeamCards teams={leagueTeams} /> */}
+      <WeeklyWinners />
     </div>
   );
 }

@@ -1,0 +1,1007 @@
+[
+  {
+    "id": 6586580,
+    "event_total": 40,
+    "player_name": "alex balick",
+    "rank": 1,
+    "last_rank": 1,
+    "rank_sort": 1,
+    "total": 288,
+    "entry": 1233172,
+    "entry_name": "salahdtrossar",
+    "url": "/api/entry/1233172/history/",
+    "current": [
+      {
+        "event": 1,
+        "points": 84,
+        "total_points": 84,
+        "rank": 669876,
+        "rank_sort": 692108,
+        "overall_rank": 669883,
+        "bank": 0,
+        "value": 1000,
+        "event_transfers": 0,
+        "event_transfers_cost": 0,
+        "points_on_bench": 15
+      },
+      {
+        "event": 2,
+        "points": 47,
+        "total_points": 131,
+        "rank": 1700327,
+        "rank_sort": 1714360,
+        "overall_rank": 557458,
+        "bank": 5,
+        "value": 1002,
+        "event_transfers": 1,
+        "event_transfers_cost": 0,
+        "points_on_bench": 5
+      },
+      {
+        "event": 3,
+        "points": 53,
+        "total_points": 184,
+        "rank": 1626807,
+        "rank_sort": 1638790,
+        "overall_rank": 422737,
+        "bank": 5,
+        "value": 1003,
+        "event_transfers": 0,
+        "event_transfers_cost": 0,
+        "points_on_bench": 5
+      },
+      {
+        "event": 4,
+        "points": 64,
+        "total_points": 248,
+        "rank": 1940147,
+        "rank_sort": 1946167,
+        "overall_rank": 306867,
+        "bank": 0,
+        "value": 1007,
+        "event_transfers": 2,
+        "event_transfers_cost": 0,
+        "points_on_bench": 0
+      },
+      {
+        "event": 5,
+        "points": 40,
+        "total_points": 288,
+        "rank": 5568143,
+        "rank_sort": 5579163,
+        "overall_rank": 865498,
+        "bank": 0,
+        "value": 1008,
+        "event_transfers": 0,
+        "event_transfers_cost": 0,
+        "points_on_bench": 6
+      }
+    ],
+    "past": [
+      {
+        "season_name": "2006/07",
+        "total_points": 1845,
+        "rank": 73944
+      },
+      {
+        "season_name": "2007/08",
+        "total_points": 1949,
+        "rank": 260006
+      },
+      {
+        "season_name": "2008/09",
+        "total_points": 1891,
+        "rank": 110424
+      },
+      {
+        "season_name": "2009/10",
+        "total_points": 2134,
+        "rank": 153358
+      },
+      {
+        "season_name": "2010/11",
+        "total_points": 1903,
+        "rank": 280158
+      },
+      {
+        "season_name": "2011/12",
+        "total_points": 2075,
+        "rank": 61322
+      },
+      {
+        "season_name": "2012/13",
+        "total_points": 1913,
+        "rank": 497090
+      },
+      {
+        "season_name": "2013/14",
+        "total_points": 2132,
+        "rank": 520127
+      },
+      {
+        "season_name": "2014/15",
+        "total_points": 1715,
+        "rank": 1548955
+      },
+      {
+        "season_name": "2015/16",
+        "total_points": 2170,
+        "rank": 74201
+      },
+      {
+        "season_name": "2016/17",
+        "total_points": 1923,
+        "rank": 1023254
+      },
+      {
+        "season_name": "2017/18",
+        "total_points": 2057,
+        "rank": 748943
+      },
+      {
+        "season_name": "2018/19",
+        "total_points": 2214,
+        "rank": 225360
+      }
+    ],
+    "chips": []
+  },
+  {
+    "id": 23092847,
+    "event_total": 54,
+    "player_name": "Joe Goodman",
+    "rank": 1,
+    "last_rank": 5,
+    "rank_sort": 2,
+    "total": 288,
+    "entry": 1951544,
+    "entry_name": "Joe's FC",
+    "url": "/api/entry/1951544/history/",
+    "current": [
+      {
+        "event": 1,
+        "points": 83,
+        "total_points": 83,
+        "rank": 750047,
+        "rank_sort": 786327,
+        "overall_rank": 750059,
+        "bank": 0,
+        "value": 1000,
+        "event_transfers": 0,
+        "event_transfers_cost": 0,
+        "points_on_bench": 3
+      },
+      {
+        "event": 2,
+        "points": 42,
+        "total_points": 125,
+        "rank": 2643356,
+        "rank_sort": 2682279,
+        "overall_rank": 890231,
+        "bank": 0,
+        "value": 1002,
+        "event_transfers": 0,
+        "event_transfers_cost": 0,
+        "points_on_bench": 3
+      },
+      {
+        "event": 3,
+        "points": 52,
+        "total_points": 177,
+        "rank": 1849502,
+        "rank_sort": 1861580,
+        "overall_rank": 722974,
+        "bank": 2,
+        "value": 1001,
+        "event_transfers": 1,
+        "event_transfers_cost": 0,
+        "points_on_bench": 4
+      },
+      {
+        "event": 4,
+        "points": 57,
+        "total_points": 234,
+        "rank": 3179402,
+        "rank_sort": 3191904,
+        "overall_rank": 853975,
+        "bank": 1,
+        "value": 1001,
+        "event_transfers": 2,
+        "event_transfers_cost": 0,
+        "points_on_bench": 1
+      },
+      {
+        "event": 5,
+        "points": 54,
+        "total_points": 288,
+        "rank": 2850116,
+        "rank_sort": 2877093,
+        "overall_rank": 865498,
+        "bank": 1,
+        "value": 1002,
+        "event_transfers": 0,
+        "event_transfers_cost": 0,
+        "points_on_bench": 0
+      }
+    ],
+    "past": [
+      {
+        "season_name": "2018/19",
+        "total_points": 1908,
+        "rank": 2999907
+      }
+    ],
+    "chips": []
+  },
+  {
+    "id": 11845934,
+    "event_total": 40,
+    "player_name": "Brett Saltzman",
+    "rank": 3,
+    "last_rank": 3,
+    "rank_sort": 3,
+    "total": 281,
+    "entry": 2145332,
+    "entry_name": "Tan Guy",
+    "url": "/api/entry/2145332/history/",
+    "current": [
+      {
+        "event": 1,
+        "points": 89,
+        "total_points": 89,
+        "rank": 343605,
+        "rank_sort": 367823,
+        "overall_rank": 343610,
+        "bank": 0,
+        "value": 1000,
+        "event_transfers": 0,
+        "event_transfers_cost": 0,
+        "points_on_bench": 10
+      },
+      {
+        "event": 2,
+        "points": 48,
+        "total_points": 137,
+        "rank": 1435539,
+        "rank_sort": 1463829,
+        "overall_rank": 287801,
+        "bank": 0,
+        "value": 1001,
+        "event_transfers": 0,
+        "event_transfers_cost": 0,
+        "points_on_bench": 5
+      },
+      {
+        "event": 3,
+        "points": 36,
+        "total_points": 173,
+        "rank": 4648645,
+        "rank_sort": 4662075,
+        "overall_rank": 938975,
+        "bank": 11,
+        "value": 1003,
+        "event_transfers": 1,
+        "event_transfers_cost": 0,
+        "points_on_bench": 4
+      },
+      {
+        "event": 4,
+        "points": 68,
+        "total_points": 241,
+        "rank": 1299148,
+        "rank_sort": 1316681,
+        "overall_rank": 520392,
+        "bank": 0,
+        "value": 1010,
+        "event_transfers": 0,
+        "event_transfers_cost": 0,
+        "points_on_bench": 4
+      },
+      {
+        "event": 5,
+        "points": 40,
+        "total_points": 281,
+        "rank": 5647889,
+        "rank_sort": 5658701,
+        "overall_rank": 1240460,
+        "bank": 3,
+        "value": 1015,
+        "event_transfers": 1,
+        "event_transfers_cost": 0,
+        "points_on_bench": 2
+      }
+    ],
+    "past": [
+      {
+        "season_name": "2017/18",
+        "total_points": 2255,
+        "rank": 43635
+      },
+      {
+        "season_name": "2018/19",
+        "total_points": 2089,
+        "rank": 939374
+      }
+    ],
+    "chips": [
+      {
+        "name": "wildcard",
+        "time": "2019-08-27T12:55:15.318217Z",
+        "event": 4
+      }
+    ]
+  },
+  {
+    "id": 20602687,
+    "event_total": 38,
+    "player_name": "Benjamin Sinaiko",
+    "rank": 4,
+    "last_rank": 2,
+    "rank_sort": 4,
+    "total": 280,
+    "entry": 3551977,
+    "entry_name": "Why You Maupay?",
+    "url": "/api/entry/3551977/history/",
+    "current": [
+      {
+        "event": 1,
+        "points": 84,
+        "total_points": 84,
+        "rank": 669876,
+        "rank_sort": 725345,
+        "overall_rank": 669883,
+        "bank": 15,
+        "value": 1000,
+        "event_transfers": 0,
+        "event_transfers_cost": 0,
+        "points_on_bench": 0
+      },
+      {
+        "event": 2,
+        "points": 45,
+        "total_points": 129,
+        "rank": 1983904,
+        "rank_sort": 2042372,
+        "overall_rank": 636590,
+        "bank": 15,
+        "value": 1001,
+        "event_transfers": 0,
+        "event_transfers_cost": 0,
+        "points_on_bench": 3
+      },
+      {
+        "event": 3,
+        "points": 59,
+        "total_points": 188,
+        "rank": 926050,
+        "rank_sort": 941737,
+        "overall_rank": 302587,
+        "bank": 5,
+        "value": 999,
+        "event_transfers": 2,
+        "event_transfers_cost": 0,
+        "points_on_bench": 3
+      },
+      {
+        "event": 4,
+        "points": 54,
+        "total_points": 242,
+        "rank": 3731316,
+        "rank_sort": 3762873,
+        "overall_rank": 495139,
+        "bank": 3,
+        "value": 1002,
+        "event_transfers": 1,
+        "event_transfers_cost": 0,
+        "points_on_bench": 1
+      },
+      {
+        "event": 5,
+        "points": 38,
+        "total_points": 280,
+        "rank": 5829897,
+        "rank_sort": 5861015,
+        "overall_rank": 1308345,
+        "bank": 3,
+        "value": 1005,
+        "event_transfers": 0,
+        "event_transfers_cost": 0,
+        "points_on_bench": 9
+      }
+    ],
+    "past": [
+      {
+        "season_name": "2006/07",
+        "total_points": 1928,
+        "rank": 23104
+      },
+      {
+        "season_name": "2007/08",
+        "total_points": 2004,
+        "rank": 168097
+      },
+      {
+        "season_name": "2008/09",
+        "total_points": 1872,
+        "rank": 135866
+      },
+      {
+        "season_name": "2009/10",
+        "total_points": 2367,
+        "rank": 5719
+      },
+      {
+        "season_name": "2010/11",
+        "total_points": 1949,
+        "rank": 169017
+      },
+      {
+        "season_name": "2011/12",
+        "total_points": 2060,
+        "rank": 76326
+      },
+      {
+        "season_name": "2012/13",
+        "total_points": 2135,
+        "rank": 38761
+      },
+      {
+        "season_name": "2013/14",
+        "total_points": 2222,
+        "rank": 231527
+      },
+      {
+        "season_name": "2014/15",
+        "total_points": 1960,
+        "rank": 333928
+      },
+      {
+        "season_name": "2015/16",
+        "total_points": 2058,
+        "rank": 369052
+      },
+      {
+        "season_name": "2016/17",
+        "total_points": 2069,
+        "rank": 329005
+      },
+      {
+        "season_name": "2017/18",
+        "total_points": 2129,
+        "rank": 348566
+      },
+      {
+        "season_name": "2018/19",
+        "total_points": 2080,
+        "rank": 1019401
+      }
+    ],
+    "chips": [
+      {
+        "name": "wildcard",
+        "time": "2019-09-13T15:48:24.448870Z",
+        "event": 5
+      }
+    ]
+  },
+  {
+    "id": 27978764,
+    "event_total": 58,
+    "player_name": "andy Rosenband",
+    "rank": 5,
+    "last_rank": 7,
+    "rank_sort": 5,
+    "total": 279,
+    "entry": 4614722,
+    "entry_name": "aro",
+    "url": "/api/entry/4614722/history/",
+    "current": [
+      {
+        "event": 1,
+        "points": 65,
+        "total_points": 65,
+        "rank": 2761086,
+        "rank_sort": 2868405,
+        "overall_rank": 2761141,
+        "bank": 0,
+        "value": 1000,
+        "event_transfers": 0,
+        "event_transfers_cost": 0,
+        "points_on_bench": 3
+      },
+      {
+        "event": 2,
+        "points": 64,
+        "total_points": 129,
+        "rank": 158755,
+        "rank_sort": 167854,
+        "overall_rank": 636590,
+        "bank": 0,
+        "value": 1001,
+        "event_transfers": 0,
+        "event_transfers_cost": 0,
+        "points_on_bench": 5
+      },
+      {
+        "event": 3,
+        "points": 24,
+        "total_points": 153,
+        "rank": 6083162,
+        "rank_sort": 6092085,
+        "overall_rank": 2401968,
+        "bank": 0,
+        "value": 1002,
+        "event_transfers": 1,
+        "event_transfers_cost": 0,
+        "points_on_bench": 4
+      },
+      {
+        "event": 4,
+        "points": 68,
+        "total_points": 221,
+        "rank": 1299148,
+        "rank_sort": 1340263,
+        "overall_rank": 1647639,
+        "bank": 0,
+        "value": 1004,
+        "event_transfers": 0,
+        "event_transfers_cost": 0,
+        "points_on_bench": 7
+      },
+      {
+        "event": 5,
+        "points": 58,
+        "total_points": 279,
+        "rank": 2198923,
+        "rank_sort": 2221595,
+        "overall_rank": 1369491,
+        "bank": 0,
+        "value": 1003,
+        "event_transfers": 2,
+        "event_transfers_cost": 0,
+        "points_on_bench": 10
+      }
+    ],
+    "past": [
+      {
+        "season_name": "2007/08",
+        "total_points": 1844,
+        "rank": 464118
+      },
+      {
+        "season_name": "2009/10",
+        "total_points": 1975,
+        "rank": 492984
+      },
+      {
+        "season_name": "2010/11",
+        "total_points": 1704,
+        "rank": 1010787
+      },
+      {
+        "season_name": "2011/12",
+        "total_points": 1846,
+        "rank": 627137
+      },
+      {
+        "season_name": "2012/13",
+        "total_points": 1970,
+        "rank": 303596
+      },
+      {
+        "season_name": "2013/14",
+        "total_points": 2152,
+        "rank": 447244
+      },
+      {
+        "season_name": "2014/15",
+        "total_points": 1884,
+        "rank": 664393
+      },
+      {
+        "season_name": "2015/16",
+        "total_points": 1957,
+        "rank": 886906
+      },
+      {
+        "season_name": "2016/17",
+        "total_points": 1970,
+        "rank": 753125
+      },
+      {
+        "season_name": "2017/18",
+        "total_points": 2002,
+        "rank": 1157925
+      },
+      {
+        "season_name": "2018/19",
+        "total_points": 1957,
+        "rank": 2404713
+      }
+    ],
+    "chips": [
+      {
+        "name": "wildcard",
+        "time": "2019-08-15T11:54:09.040018Z",
+        "event": 2
+      }
+    ]
+  },
+  {
+    "id": 32600887,
+    "event_total": 36,
+    "player_name": "Jonathan Mirkin",
+    "rank": 6,
+    "last_rank": 4,
+    "rank_sort": 6,
+    "total": 277,
+    "entry": 5238500,
+    "entry_name": "Christian Pullschics",
+    "url": "/api/entry/5238500/history/",
+    "current": [
+      {
+        "event": 1,
+        "points": 51,
+        "total_points": 51,
+        "rank": 4376033,
+        "rank_sort": 4464452,
+        "overall_rank": 4376139,
+        "bank": 5,
+        "value": 1000,
+        "event_transfers": 0,
+        "event_transfers_cost": 0,
+        "points_on_bench": 8
+      },
+      {
+        "event": 2,
+        "points": 49,
+        "total_points": 100,
+        "rank": 1280953,
+        "rank_sort": 1343868,
+        "overall_rank": 3254309,
+        "bank": 5,
+        "value": 999,
+        "event_transfers": 0,
+        "event_transfers_cost": 0,
+        "points_on_bench": 6
+      },
+      {
+        "event": 3,
+        "points": 48,
+        "total_points": 148,
+        "rank": 2418046,
+        "rank_sort": 2482276,
+        "overall_rank": 2796967,
+        "bank": 5,
+        "value": 998,
+        "event_transfers": 0,
+        "event_transfers_cost": 0,
+        "points_on_bench": 2
+      },
+      {
+        "event": 4,
+        "points": 93,
+        "total_points": 241,
+        "rank": 52767,
+        "rank_sort": 54338,
+        "overall_rank": 524125,
+        "bank": 11,
+        "value": 998,
+        "event_transfers": 2,
+        "event_transfers_cost": 0,
+        "points_on_bench": 2
+      },
+      {
+        "event": 5,
+        "points": 36,
+        "total_points": 277,
+        "rank": 6103486,
+        "rank_sort": 6118488,
+        "overall_rank": 1495352,
+        "bank": 15,
+        "value": 1001,
+        "event_transfers": 1,
+        "event_transfers_cost": 0,
+        "points_on_bench": 4
+      }
+    ],
+    "past": [
+      {
+        "season_name": "2012/13",
+        "total_points": 1913,
+        "rank": 496503
+      },
+      {
+        "season_name": "2013/14",
+        "total_points": 2209,
+        "rank": 266720
+      },
+      {
+        "season_name": "2014/15",
+        "total_points": 2033,
+        "rank": 140071
+      },
+      {
+        "season_name": "2015/16",
+        "total_points": 2020,
+        "rank": 540937
+      },
+      {
+        "season_name": "2016/17",
+        "total_points": 1742,
+        "rank": 2216433
+      },
+      {
+        "season_name": "2017/18",
+        "total_points": 2121,
+        "rank": 384220
+      },
+      {
+        "season_name": "2018/19",
+        "total_points": 1924,
+        "rank": 2812410
+      }
+    ],
+    "chips": []
+  },
+  {
+    "id": 1140387,
+    "event_total": 60,
+    "player_name": "Benjamin Lurie",
+    "rank": 7,
+    "last_rank": 8,
+    "rank_sort": 7,
+    "total": 272,
+    "entry": 223253,
+    "entry_name": "Kim Jong Kün",
+    "url": "/api/entry/223253/history/",
+    "current": [
+      {
+        "event": 1,
+        "points": 97,
+        "total_points": 97,
+        "rank": 90732,
+        "rank_sort": 91769,
+        "overall_rank": 90732,
+        "bank": 5,
+        "value": 1000,
+        "event_transfers": 0,
+        "event_transfers_cost": 0,
+        "points_on_bench": 7
+      },
+      {
+        "event": 2,
+        "points": 31,
+        "total_points": 128,
+        "rank": 5266942,
+        "rank_sort": 5268595,
+        "overall_rank": 725734,
+        "bank": 0,
+        "value": 1001,
+        "event_transfers": 1,
+        "event_transfers_cost": 0,
+        "points_on_bench": 17
+      },
+      {
+        "event": 3,
+        "points": 40,
+        "total_points": 168,
+        "rank": 3850410,
+        "rank_sort": 3852784,
+        "overall_rank": 1250109,
+        "bank": 1,
+        "value": 1006,
+        "event_transfers": 0,
+        "event_transfers_cost": 0,
+        "points_on_bench": 4
+      },
+      {
+        "event": 4,
+        "points": 48,
+        "total_points": 216,
+        "rank": 4902546,
+        "rank_sort": 4904982,
+        "overall_rank": 2018792,
+        "bank": 15,
+        "value": 1013,
+        "event_transfers": 1,
+        "event_transfers_cost": 0,
+        "points_on_bench": 7
+      },
+      {
+        "event": 5,
+        "points": 60,
+        "total_points": 272,
+        "rank": 1835827,
+        "rank_sort": 1837005,
+        "overall_rank": 1840226,
+        "bank": 0,
+        "value": 1017,
+        "event_transfers": 2,
+        "event_transfers_cost": 4,
+        "points_on_bench": 7
+      }
+    ],
+    "past": [
+      {
+        "season_name": "2007/08",
+        "total_points": 1199,
+        "rank": 1425143
+      },
+      {
+        "season_name": "2010/11",
+        "total_points": 1663,
+        "rank": 1170175
+      },
+      {
+        "season_name": "2011/12",
+        "total_points": 1914,
+        "rank": 384316
+      },
+      {
+        "season_name": "2012/13",
+        "total_points": 2063,
+        "rank": 107942
+      },
+      {
+        "season_name": "2013/14",
+        "total_points": 2185,
+        "rank": 339074
+      },
+      {
+        "season_name": "2014/15",
+        "total_points": 2151,
+        "rank": 23368
+      },
+      {
+        "season_name": "2015/16",
+        "total_points": 2112,
+        "rank": 189264
+      },
+      {
+        "season_name": "2016/17",
+        "total_points": 1967,
+        "rank": 772364
+      },
+      {
+        "season_name": "2017/18",
+        "total_points": 2157,
+        "rank": 243626
+      },
+      {
+        "season_name": "2018/19",
+        "total_points": 2155,
+        "rank": 473653
+      }
+    ],
+    "chips": [
+      {
+        "name": "wildcard",
+        "time": "2019-08-22T22:48:37.728119Z",
+        "event": 3
+      }
+    ]
+  },
+  {
+    "id": 28082149,
+    "event_total": 40,
+    "player_name": "paul damato",
+    "rank": 8,
+    "last_rank": 6,
+    "rank_sort": 8,
+    "total": 269,
+    "entry": 4629482,
+    "entry_name": "Pot1StrikesAgain",
+    "url": "/api/entry/4629482/history/",
+    "current": [
+      {
+        "event": 1,
+        "points": 85,
+        "total_points": 85,
+        "rank": 593499,
+        "rank_sort": 659805,
+        "overall_rank": 593504,
+        "bank": 0,
+        "value": 1000,
+        "event_transfers": 0,
+        "event_transfers_cost": 0,
+        "points_on_bench": 8
+      },
+      {
+        "event": 2,
+        "points": 41,
+        "total_points": 126,
+        "rank": 2885756,
+        "rank_sort": 2977996,
+        "overall_rank": 823458,
+        "bank": 0,
+        "value": 1001,
+        "event_transfers": 0,
+        "event_transfers_cost": 0,
+        "points_on_bench": 16
+      },
+      {
+        "event": 3,
+        "points": 51,
+        "total_points": 177,
+        "rank": 2039110,
+        "rank_sort": 2063125,
+        "overall_rank": 733939,
+        "bank": 0,
+        "value": 1000,
+        "event_transfers": 2,
+        "event_transfers_cost": 0,
+        "points_on_bench": 11
+      },
+      {
+        "event": 4,
+        "points": 52,
+        "total_points": 229,
+        "rank": 4136495,
+        "rank_sort": 4176679,
+        "overall_rank": 1137421,
+        "bank": 9,
+        "value": 1000,
+        "event_transfers": 1,
+        "event_transfers_cost": 0,
+        "points_on_bench": 2
+      },
+      {
+        "event": 5,
+        "points": 40,
+        "total_points": 269,
+        "rank": 5647889,
+        "rank_sort": 5669645,
+        "overall_rank": 2047513,
+        "bank": 11,
+        "value": 1002,
+        "event_transfers": 1,
+        "event_transfers_cost": 0,
+        "points_on_bench": 9
+      }
+    ],
+    "past": [
+      {
+        "season_name": "2011/12",
+        "total_points": 1937,
+        "rank": 314736
+      },
+      {
+        "season_name": "2012/13",
+        "total_points": 1943,
+        "rank": 389526
+      },
+      {
+        "season_name": "2013/14",
+        "total_points": 2152,
+        "rank": 448544
+      },
+      {
+        "season_name": "2014/15",
+        "total_points": 2033,
+        "rank": 139496
+      },
+      {
+        "season_name": "2015/16",
+        "total_points": 1987,
+        "rank": 716891
+      },
+      {
+        "season_name": "2016/17",
+        "total_points": 1920,
+        "rank": 1040915
+      },
+      {
+        "season_name": "2017/18",
+        "total_points": 2034,
+        "rank": 913559
+      },
+      {
+        "season_name": "2018/19",
+        "total_points": 2022,
+        "rank": 1623175
+      }
+    ],
+    "chips": []
+  }
+]
