@@ -39,8 +39,8 @@ export default function LeaguePage() {
       <Typography variant='h1' className={classes.leagueName}>
         {leagueData.league.name}
       </Typography>
-      {/* <LeagueTable league={leagueData.standings.results} />
-      <LeagueTeamCards teams={leagueTeams} /> */}
+      <LeagueTable league={leagueData.standings.results} />
+      {leagueTeams && <LeagueTeamCards teams={leagueTeams} />}
       <WeeklyWinners />
     </div>
   );

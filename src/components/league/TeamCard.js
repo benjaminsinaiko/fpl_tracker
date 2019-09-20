@@ -140,8 +140,12 @@ export default function TeamCard({ teamData, expanded, setExpanded }) {
         action={
           <Typography aria-label='points'>{current.totalPoints}pts</Typography>
         }
-        title={`Global Rank: ${current.overallRank.toLocaleString('en')}`}
-        subheader={`GW Rank: ${current.gwRank.toLocaleString('en')}`}
+        title={`Global Rank: ${
+          current.overallRank ? current.overallRank.toLocaleString('en') : '-'
+        }`}
+        subheader={`GW Rank: ${
+          current.gwRank ? current.gwRank.toLocaleString('en') : '-'
+        }`}
       />
       <CardContent className={classes.nameContent}>
         <Typography variant='h5'>{teamData.entry_name}</Typography>

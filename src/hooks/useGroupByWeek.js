@@ -1,45 +1,63 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useContext } from 'react';
 
-function getGWNet(team) {
-  return team.current.flatMap(week => {
-    const netPoints = week.points - week.event_transfers_cost;
-    return {
-      event: week.event,
-      id: team.id,
-      team: team.entry_name,
-      player: team.player_name,
-      netPoints: netPoints,
-    };
-  });
-}
+import { LeagueTeamsContext } from '../contexts/leagueTeamsContext';
 
-function getAllPoints(teams) {
-  const scores = teams.flatMap(team => {
-    return getGWNet(team);
-  });
-  return [...scores];
-}
+function groupPtsByWeek(teams) {
+  const allPoints = teams.reduce((acc, team) => {
+    const teamPoints = team.current.map(week => {
+      const netPoints = week.points - week.event_transfers_cost;
+      const weekPoints = {
+        event: week.event,
+        id: team.id,
+        team: team.entry_name,
+        player: team.player_name,
+        rank: week.rank,
+        points: week.points,
+        transfersCost: week.event_transfers_cost,
+        netPoints: netPoints,
+      };
+      return weekPoints;
+    });
+    acc.push(...teamPoints);
+    return acc;
+  }, []);
 
-function groupByWeek(pointsArray) {
-  const group = pointsArray.reduce((acc, cur) => {
-    acc[cur.event] = acc[cur.event] || [];
-    acc[cur.event].push(cur);
+  const groupByWeek = allPoints.reduce((acc, team) => {
+    acc[team.event] = acc[team.event] || [];
+    acc[team.event].push(team);
     return acc;
   }, {});
-  return Object.values(group);
+
+  return Object.values(groupByWeek);
 }
 
-export default function useGroupByWeek(leagueTeams) {
-  const [data, setData] = useState([]);
-
-  const weekGroup = useMemo(
-    () => groupByWeek(getAllPoints(leagueTeams)),
-    leagueTeams,
+function getWeeklyWinners(ptsArray) {
+  const maxScores = ptsArray.map(week =>
+    Math.max(...week.map(team => team.netPoints)),
   );
 
+  const findWinners = maxScores.map((highScore, index) => {
+    const winners = ptsArray[index].filter(
+      score => score.netPoints === highScore,
+    );
+    return { highScore: highScore, winners: winners };
+  });
+  return findWinners;
+}
+
+export default function useGroupByWeek() {
+  const leagueTeams = useContext(LeagueTeamsContext);
+
+  const [weeklyData, setWeeklyData] = useState([]);
+  const [weeklyWinners, setWeeklyWinners] = useState([]);
+
   useEffect(() => {
-    setData(weekGroup);
+    if (leagueTeams) {
+      const weekly = groupPtsByWeek(leagueTeams);
+      setWeeklyData(weekly);
+      setWeeklyWinners(getWeeklyWinners(weekly).reverse());
+    }
   }, [leagueTeams]);
 
-  return { data };
+  return { weeklyData, weeklyWinners };
 }
