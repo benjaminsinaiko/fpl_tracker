@@ -28,8 +28,8 @@ export default function BottomNav({ path }) {
   }, [path]);
 
   const { leagueData, teamData } = useContext(IdsContext);
-  const noIds = !leagueData && !teamData;
-  const [drawerOpen, setDrawerOpen] = useState(noIds ? true : false);
+  // const noIds = !leagueData && !teamData;
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = open => event => {
     if (
