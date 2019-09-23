@@ -8,7 +8,7 @@ function groupPtsByWeek(teams) {
       const netPoints = week.points - week.event_transfers_cost;
       const weekPoints = {
         event: week.event,
-        id: team.id,
+        id: team.entry,
         team: team.entry_name,
         player: team.player_name,
         rank: week.rank,

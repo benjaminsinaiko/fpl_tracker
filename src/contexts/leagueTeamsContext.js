@@ -30,7 +30,7 @@ export function LeagueTeamsProvider({ children }) {
         );
         try {
           const teamsData = await Promise.all(promiseArray);
-          setLeagueTeams(teamsData);
+          setLeagueTeams(teamsData.sort((a, b) => a.rank_sort - b.rank_sort));
         } catch (err) {
           console.log(err);
         }

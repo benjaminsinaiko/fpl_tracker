@@ -4,10 +4,11 @@ import Typography from '@material-ui/core/Typography';
 
 import { IdsContext } from '../../contexts/idsContext';
 import { LeagueTeamsContext } from '../../contexts/leagueTeamsContext';
+import useWeeklyWinners from '../../hooks/useWeeklyWinners';
 import MissingID from '../userSettings/MissingID';
 import LeagueTable from './LeagueTable';
 import LeagueTeamCards from './LeagueTeamCards';
-import WeeklyWinners from './WeeklyWinners';
+import WeeklyWinnersList from './WeeklyWinnersList';
 
 const useStyles = makeStyles(theme => ({
   leagueRoot: {
@@ -29,6 +30,7 @@ export default function LeaguePage() {
   const classes = useStyles();
   const { leagueData } = useContext(IdsContext);
   const leagueTeams = useContext(LeagueTeamsContext);
+  const { weeklyWinners } = useWeeklyWinners();
 
   if (!leagueData) {
     return <MissingID idName='League' />;
@@ -39,9 +41,9 @@ export default function LeaguePage() {
       <Typography variant='h1' className={classes.leagueName}>
         {leagueData.league.name}
       </Typography>
-      <LeagueTable league={leagueData.standings.results} />
+      <LeagueTable leagueTeams={leagueTeams} weeklyWinners={weeklyWinners} />
       {leagueTeams && <LeagueTeamCards teams={leagueTeams} />}
-      <WeeklyWinners />
+      <WeeklyWinnersList weeklyWinners={weeklyWinners} />
     </div>
   );
 }

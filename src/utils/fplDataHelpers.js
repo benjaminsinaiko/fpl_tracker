@@ -27,3 +27,10 @@ export function convertTeamData(teamData) {
   );
   return { ...currentTotals, ...allTotals };
 }
+
+export function countWeeklyWins(teamId, allWinners) {
+  return allWinners.reduce((acc, week) => {
+    const isWinner = week.winners.find(winner => winner.id === teamId);
+    return isWinner ? acc + 1 / week.winners.length : acc;
+  }, 0);
+}

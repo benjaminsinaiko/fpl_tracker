@@ -10,6 +10,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
+import { countWeeklyWins } from '../../utils/fplDataHelpers';
+
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
@@ -40,14 +42,15 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function LeagueTable({ league }) {
+export default function LeagueTable({ leagueTeams, weeklyWinners }) {
   const classes = useStyles();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const emptyRows =
     page !== 0
-      ? rowsPerPage - Math.min(rowsPerPage, league.length - page * rowsPerPage)
+      ? rowsPerPage -
+        Math.min(rowsPerPage, leagueTeams.length - page * rowsPerPage)
       : 0;
 
   function handleChangePage(event, newPage) {
@@ -65,12 +68,15 @@ export default function LeagueTable({ league }) {
         <Table size={rowsPerPage === 5 ? 'medium' : 'small'}>
           <TableHead>
             <TableRow>
-              <TableCell>Team</TableCell>
+              <TableCell component='th'>Team</TableCell>
               <TableCell component='th' align='center'>
                 Rank
               </TableCell>
               <TableCell component='th' align='center'>
                 Last
+              </TableCell>
+              <TableCell component='th' align='center'>
+                GW Wins
               </TableCell>
               <TableCell component='th' align='center'>
                 GW Points
@@ -81,13 +87,16 @@ export default function LeagueTable({ league }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {league
+            {leagueTeams
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map(team => (
                 <TableRow key={team.id}>
                   <TableCell scope='row'>{team.entry_name}</TableCell>
                   <TableCell align='center'>{team.rank}</TableCell>
                   <TableCell align='center'>{team.last_rank}</TableCell>
+                  <TableCell align='center'>
+                    {countWeeklyWins(team.entry, weeklyWinners)}
+                  </TableCell>
                   <TableCell align='center'>{team.event_total}</TableCell>
                   <TableCell align='center'>{team.total}</TableCell>
                 </TableRow>
@@ -109,7 +118,7 @@ export default function LeagueTable({ league }) {
       <TablePagination
         rowsPerPageOptions={[5, 10, 20]}
         component='div'
-        count={league.length}
+        count={leagueTeams.length}
         rowsPerPage={rowsPerPage}
         page={page}
         backIconButtonProps={{

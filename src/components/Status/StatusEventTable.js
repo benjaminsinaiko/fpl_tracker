@@ -14,7 +14,7 @@ import useDataApi from '../../hooks/useDataApi';
 const useStyles = makeStyles(theme => ({
   root: {
     minWidth: 350,
-    maxWidth: '100%',
+    maxWidth: 650,
     marginTop: theme.spacing(2),
     overflowX: 'auto',
     boxShadow:
@@ -101,9 +101,7 @@ export default function StatusEventTable() {
             <Typography align='center'>
               League Tables:{' '}
               <span style={{ marginLeft: '10px' }}>
-                {eventStatus.leagues === ''
-                  ? 'Not Started'
-                  : eventStatus.leagues}
+                {eventStatus.leagues === '' ? '-' : eventStatus.leagues}
               </span>
             </Typography>
           </div>

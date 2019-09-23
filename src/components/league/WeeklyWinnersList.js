@@ -8,8 +8,10 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: '100%',
-    maxWidth: 350,
+    width: 500,
+    [theme.breakpoints.down('xs')]: {
+      width: 350,
+    },
   },
   heading: {
     flexBasis: '33.33%',
@@ -80,6 +82,9 @@ export default function WeeklyWinnersList({ weeklyWinners }) {
 
   return (
     <div className={classes.root}>
+      <Typography variant='h6' align='center' gutterBottom>
+        Weekly Winners
+      </Typography>
       {weeklyWinners &&
         weeklyWinners.map((week, index) => (
           <ExpansionPanel
