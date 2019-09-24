@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import NextIcon from '@material-ui/icons/NavigateNext';
 import BeforeIcon from '@material-ui/icons/NavigateBefore';
 
-import { convertTeamData } from '../../utils/fplDataHelpers';
 import TeamCard from './TeamCard';
 
 const useStyles = makeStyles(theme => ({

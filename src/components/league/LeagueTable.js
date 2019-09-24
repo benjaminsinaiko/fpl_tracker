@@ -62,6 +62,11 @@ export default function LeagueTable({ leagueTeams, weeklyWinners }) {
     setRowsPerPage(+event.target.value);
   }
 
+  function winsDisplay(teamId, winnersArray) {
+    const wins = countWeeklyWins(teamId, winnersArray);
+    return wins > 0 ? wins : '-';
+  }
+
   return (
     <Paper className={classes.root} elevation={3}>
       <div className={classes.table}>
@@ -95,7 +100,7 @@ export default function LeagueTable({ leagueTeams, weeklyWinners }) {
                   <TableCell align='center'>{team.rank}</TableCell>
                   <TableCell align='center'>{team.last_rank}</TableCell>
                   <TableCell align='center'>
-                    {countWeeklyWins(team.entry, weeklyWinners)}
+                    {winsDisplay(team.entry, weeklyWinners)}
                   </TableCell>
                   <TableCell align='center'>{team.event_total}</TableCell>
                   <TableCell align='center'>{team.total}</TableCell>

@@ -5,13 +5,18 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles(theme => ({
   root: {
+    marginBottom: theme.spacing(3),
     width: 500,
     [theme.breakpoints.down('xs')]: {
       width: 350,
     },
+  },
+  divider: {
+    borderBottom: '1px solid rgba(50,3,54,.4)',
   },
   heading: {
     flexBasis: '33.33%',
@@ -31,7 +36,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary,
     '& span': {
       fontSize: '1.1em',
-      color: '#0155a2',
+      color: '#f6247b',
       marginLeft: 2,
     },
   },
@@ -42,7 +47,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'flex-end',
     '& span': {
       fontSize: '1.2em',
-      color: '#0155a2',
+      color: '#f6247b',
     },
   },
   topScores: {
@@ -117,6 +122,7 @@ export default function WeeklyWinnersList({ weeklyWinners }) {
                 </Typography>
               </div>
             </ExpansionPanelSummary>
+            <Divider className={classes.divider} variant='middle' />
             <ExpansionPanelDetails className={classes.teamExpansion}>
               {week.winners.map(winner => (
                 <React.Fragment key={winner.id}>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from '@reach/router';
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
@@ -8,7 +8,6 @@ import StatsIcon from '@material-ui/icons/Equalizer';
 import LeagueIcon from '@material-ui/icons/FormatListNumbered';
 import SettingsIcon from '@material-ui/icons/SettingsApplications';
 
-import { IdsContext } from '../../contexts/idsContext';
 import SettingsDrawer from '../userSettings/SettingsDrawer';
 
 const useStyles = makeStyles({
@@ -27,8 +26,6 @@ export default function BottomNav({ path }) {
     setValue(path);
   }, [path]);
 
-  const { leagueData, teamData } = useContext(IdsContext);
-  // const noIds = !leagueData && !teamData;
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = open => event => {
