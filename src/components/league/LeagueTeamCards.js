@@ -37,24 +37,8 @@ const cardsPerPage = 10;
 export default function LeagueTeamCards({ teams }) {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
-  const [cardData, setCardData] = useState();
   const [page, setPage] = useState(0);
   const numPages = Math.ceil(teams.length / cardsPerPage) - 1;
-
-  useEffect(() => {
-    if (teams.length) {
-      const cardData = teams.map(team => {
-        const newCurrent = convertTeamData(team.current);
-        return {
-          ...team,
-          past: team.past,
-          chips: team.chips,
-          current: newCurrent,
-        };
-      });
-      setCardData(cardData);
-    }
-  }, [teams]);
 
   function handlePageNext() {
     setPage(page => page + 1);
@@ -71,18 +55,17 @@ export default function LeagueTeamCards({ teams }) {
             <BeforeIcon className={classes.nextIcon} />
           </IconButton>
         ) : null}
-        {cardData &&
-          cardData
-            .slice(page * cardsPerPage, page * cardsPerPage + cardsPerPage)
-            .map(card => (
-              <TeamCard
-                key={card.id}
-                teamData={card}
-                expanded={expanded}
-                setExpanded={setExpanded}
-                className={classes.scrollCard}
-              />
-            ))}
+        {teams
+          .slice(page * cardsPerPage, page * cardsPerPage + cardsPerPage)
+          .map(card => (
+            <TeamCard
+              key={card.id}
+              teamData={card}
+              expanded={expanded}
+              setExpanded={setExpanded}
+              className={classes.scrollCard}
+            />
+          ))}
         {page < numPages ? (
           <IconButton onClick={handlePageNext}>
             <NextIcon className={classes.nextIcon} />

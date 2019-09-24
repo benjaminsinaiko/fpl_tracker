@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -10,6 +10,8 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+import { convertTeamData } from '../../utils/fplDataHelpers';
 
 const useStyles = makeStyles(theme => ({
   cardRoot: {
@@ -99,9 +101,21 @@ const useStyles = makeStyles(theme => ({
 
 export default function TeamCard({ teamData, expanded, setExpanded }) {
   const classes = useStyles();
-  const { current, past, chips } = teamData;
+  const [cardData, setCardData] = useState({});
+  const { current, past, chips } = cardData;
 
-  if (!teamData) {
+  useEffect(() => {
+    const convertedCurrent = convertTeamData(teamData.current);
+    const newCardData = {
+      ...teamData,
+      past: teamData.past,
+      chips: teamData.chips,
+      current: convertedCurrent,
+    };
+    setCardData(newCardData);
+  }, [teamData]);
+
+  if (!current) {
     return null;
   }
 
