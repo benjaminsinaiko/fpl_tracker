@@ -7,7 +7,7 @@ import Slide from '@material-ui/core/Slide';
 
 import { IdsDispatchContext } from '../../contexts/idsContext';
 import useDataApi from '../../hooks/useDataApi';
-import { teamUrl } from '../../apis/FPL';
+import { getTeamUrl } from '../../apis/FPL';
 import LeagueSelect from './LeagueSelect';
 
 const useStyles = makeStyles(theme => ({
@@ -42,6 +42,13 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
   },
+  apiLink: {
+    textAlign: 'center',
+    '& p, button, span': {
+      fontSize: '.8em',
+      color: '#f6247b',
+    },
+  },
 }));
 
 const initialState = '';
@@ -67,7 +74,7 @@ export default function TeamSearch({ handleCancel }) {
   };
 
   function handleSetTeam() {
-    callTeamApi(teamUrl(team));
+    callTeamApi(getTeamUrl(team));
   }
 
   function handleSetIds() {
@@ -129,23 +136,38 @@ export default function TeamSearch({ handleCancel }) {
       </div>
       {teamData && (
         <Slide direction='up' in={!!teamData} mountOnEnter unmountOnExit>
-          <div className={classes.leagueBox}>
-            <LeagueSelect
-              teamData={teamData}
-              setLeague={setLeague}
-              callLeagueApi={callLeagueApi}
-            />
-            <Button
-              disabled={!league}
-              onClick={handleSetIds}
-              variant='contained'
-              size='small'
-              style={{
-                backgroundColor: leagueError ? '#f6a418' : '#01f780',
-              }}
-              className={classes.editActionsButton}>
-              Set Ids
-            </Button>
+          <div>
+            <div className={classes.leagueBox}>
+              <LeagueSelect
+                teamData={teamData}
+                setLeague={setLeague}
+                callLeagueApi={callLeagueApi}
+              />
+              <Button
+                disabled={!league}
+                onClick={handleSetIds}
+                variant='contained'
+                size='small'
+                style={{
+                  backgroundColor: leagueError ? '#f6a418' : '#01f780',
+                }}
+                className={classes.editActionsButton}>
+                Set Ids
+              </Button>
+            </div>
+            {leagueError && (
+              <div className={classes.apiLink}>
+                <Typography>Try this link to force auth from FPL</Typography>
+                <Button
+                  variant='outlined'
+                  size='small'
+                  href={`https://fantasy.premierleague.com/api/leagues-classic/${league}/standings/?page_new_entries=1&page_standings=1&phase=1`}
+                  rel='noopener noreferrer'
+                  target='_blank'>
+                  FPL API
+                </Button>
+              </div>
+            )}
           </div>
         </Slide>
       )}

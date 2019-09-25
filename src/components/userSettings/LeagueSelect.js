@@ -4,7 +4,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
-import { leagueUrl } from '../../apis/FPL';
+import { getLeagueUrl } from '../../apis/FPL';
 
 const useStyles = makeStyles(theme => ({
   editBox: {
@@ -43,7 +43,9 @@ export default function LeagueSelect({ teamData, setLeague, callLeagueApi }) {
 
   function handleLeagueClick(e, index) {
     const leagueId = teamData.leagues.classic[index].id;
-    callLeagueApi(leagueUrl(leagueId));
+    const leagueUrl = getLeagueUrl(leagueId);
+
+    callLeagueApi(leagueUrl);
     setLeague(leagueId);
     setSelectedIndex(index);
   }
