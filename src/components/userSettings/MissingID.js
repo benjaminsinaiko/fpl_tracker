@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from '@reach/router';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -49,6 +50,15 @@ const useStyles = makeStyles({
         '0px 1px 1px -3px rgba(224,0,76,.6), 0px 1px 1px 1px rgba(224,0,76,.5), 0px 1px 1px 3px rgba(224,0,76,.24)',
     },
   },
+  help: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    '& a': {
+      color: '#04e8f7',
+      textDecoration: 'none',
+    },
+  },
 });
 
 export default function MissingID({ idName }) {
@@ -68,7 +78,12 @@ export default function MissingID({ idName }) {
             {idName} ID
           </Typography>
         </div>
-        <Typography color='textSecondary'>add in Settings</Typography>
+        <div className={classes.help}>
+          <Typography color='textSecondary'>add in Settings</Typography>
+          <Typography component={Link} to='/help'>
+            Get Help
+          </Typography>
+        </div>
       </Paper>
     </div>
   );

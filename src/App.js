@@ -11,6 +11,7 @@ import BottomNav from './components/layout/BottomNav';
 import StatusPage from './components/status/StatusPage';
 import LeaguePage from './components/league/LeaguePage';
 import TeamPage from './components/team/TeamPage';
+import HelpPage from './components/help/HelpPage';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
                 <StatusPage path='/' />
                 <LeaguePage path='/league' />
                 <TeamPage path='/team' />
+                <HelpPage path='/help' />
               </Router>
               <Location>
                 {({ location }) => <BottomNav path={location.pathname} />}
