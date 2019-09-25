@@ -125,23 +125,17 @@ export default function HelpPage() {
               If there is an Auth Error try:{' '}
             </Typography>
             <Typography className={classes.secondaryListItem}>
-              - Toggle between Points tab and My Team tab{' '}
-            </Typography>
-            <Typography className={classes.secondaryListItem}>
-              - Log out and back in{' '}
+              - Log out of Official FPL site, and back in{' '}
               <span role='img' aria-label='not thrilled face'>
                 😩
               </span>{' '}
             </Typography>
             <Typography className={classes.secondaryListItem}>
-              - Try this link to grab cookies from FPL Site...
+              - Toggle between Points tab and My Team tab{' '}
             </Typography>
-            <a
-              href='https://fantasy.premierleague.com/api/leagues-classic/12345/standings/?page_new_entries=1&page_standings=1&phase=1'
-              target='_blank'
-              rel='noopener noreferrer'>
-              FPL League API Data
-            </a>
+            <Typography className={classes.secondaryListItem}>
+              - Try the link in Settings to grab cookies from FPL Site...
+            </Typography>
             <Typography className={classes.secondaryListItem}>
               ...then try entering IDs again.
             </Typography>
