@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 
 import { IdsContext } from '../../contexts/idsContext';
 import MissingID from '../userSettings/MissingID';
+import TeamRanks from './TeamRanks';
 
 const useStyles = makeStyles(theme => ({
   teamRoot: {
@@ -11,13 +12,10 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    minHeight: '90vh',
-    paddingBottom: 60,
   },
   teamName: {
     fontSize: '2em',
     color: '#320336',
-    margin: '24px 16px',
     wordBreak: 'break-all',
   },
 }));
@@ -25,6 +23,7 @@ const useStyles = makeStyles(theme => ({
 export default function TeamPage() {
   const classes = useStyles();
   const { teamData } = useContext(IdsContext);
+  // console.log(teamData);
 
   if (!teamData) return <MissingID idName='Team' />;
 
@@ -34,6 +33,7 @@ export default function TeamPage() {
       <Typography variant='h4' color='secondary'>
         {teamData.name}
       </Typography>
+      <TeamRanks />
     </div>
   );
 }
