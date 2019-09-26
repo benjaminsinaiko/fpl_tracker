@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ArrowUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDownIcon from '@material-ui/icons/ArrowDropDown';
@@ -8,37 +7,54 @@ import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
 import { IdsContext } from '../../contexts/idsContext';
 
+const BOX_HEIGHT = '50px';
+const BOX_WIDTH = '70%';
+
 const useStyles = makeStyles(theme => ({
   rankRoot: {
+    width: '75%',
     display: 'flex',
-    display: 'column',
-    width: 350,
-    marginTop: theme.spacing(2),
-    marginTBottom: theme.spacing(2),
+    flexDirection: 'column',
+    marginBottom: theme.spacing(2),
+    marginLeft: theme.spacing(1),
   },
   overallSection: {
     display: 'flex',
   },
-  overallRank: {
-    width: '80%',
+  currentRank: {
+    height: BOX_HEIGHT,
+    width: BOX_WIDTH,
     display: 'flex',
-    justifyContent: 'space-around',
-    '& p': {
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    '& p:last-child': {
       fontSize: '1.5em',
-      color: '#8d36f7',
+    },
+  },
+  overallRank: {
+    height: BOX_HEIGHT,
+    width: BOX_WIDTH,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    color: '#8d36f7',
+    '& p:last-child': {
+      fontSize: '1.5em',
     },
   },
   lastRank: {
-    width: '80%',
+    width: BOX_WIDTH,
     display: 'flex',
-    justifyContent: 'space-around',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     '& p': {
-      fontSize: '.9em',
-      color: '#320336',
+      fontSize: '.8em',
+      color: '#6f6f68',
     },
   },
   movement: {
     display: 'flex',
+    justifyContent: 'center',
     alignItems: 'center',
     '& p': {
       fontSize: '.8em',
@@ -55,7 +71,7 @@ export default function TeamRanks() {
   const [overallData, setOverallData] = useState({});
   const rank = overallData.entry_rank;
   const lastRank = overallData.entry_last_rank;
-  console.log(overallData);
+  // console.log(overallData);
 
   useEffect(() => {
     const overallLeague = teamData.leagues.classic.filter(
@@ -79,11 +95,15 @@ export default function TeamRanks() {
 
   return (
     <div className={classes.rankRoot}>
-      <Typography>Rank</Typography>
+      <div className={classes.currentRank}>
+        <Typography>Current</Typography>
+        <Typography>{teamData.summary_event_rank.toLocaleString()}</Typography>
+      </div>
+
       <div className={classes.overallSection}>
         <div className={classes.overallRank}>
-          <Typography>{rank.toLocaleString()}</Typography>
           <Typography>Overall</Typography>
+          <Typography>{rank.toLocaleString()}</Typography>
         </div>
         <div className={classes.movement}>
           {rankArrow}
@@ -94,9 +114,10 @@ export default function TeamRanks() {
           </Typography>
         </div>
       </div>
+
       <div className={classes.lastRank}>
-        <Typography>{lastRank.toLocaleString()}</Typography>
         <Typography>Previous</Typography>
+        <Typography>{lastRank.toLocaleString()}</Typography>
       </div>
     </div>
   );
