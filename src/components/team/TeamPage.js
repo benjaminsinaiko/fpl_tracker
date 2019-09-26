@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 
+import { AllDataContext } from '../../contexts/allDataContext';
 import { IdsContext } from '../../contexts/idsContext';
 import MissingID from '../userSettings/MissingID';
 import TeamPoints from './TeamPoints';
@@ -15,6 +16,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   teamName: {
     marginTop: theme.spacing(3),
     fontSize: '2em',
@@ -24,10 +26,17 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(1),
     marginLeft: theme.spacing(1),
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     width: 450,
     [theme.breakpoints.down('xs')]: {
       width: 350,
     },
+  },
+  allTotals: {
+    fontSize: '.7em',
+    color: '#f6247b',
   },
   pointsRank: {
     width: '100%',
@@ -38,8 +47,16 @@ const useStyles = makeStyles(theme => ({
 
 export default function TeamPage() {
   const classes = useStyles();
+  const { total_players, events } = useContext(AllDataContext);
   const { teamData } = useContext(IdsContext);
-  // console.log(teamData);
+  const [highScore, setHighScore] = useState('');
+
+  useEffect(() => {
+    if (events) {
+      const current = events.find(event => event.is_current === true);
+      setHighScore(current.highest_score);
+    }
+  }, [events]);
 
   if (!teamData) return <MissingID idName='Team' />;
 
@@ -52,6 +69,11 @@ export default function TeamPage() {
       </div>
       <div className={classes.pointsRankHeader}>
         <Typography variant='subtitle1'>Points / Rank</Typography>
+        {highScore && (
+          <Typography className={classes.allTotals}>
+            {highScore} high / {total_players.toLocaleString()} teams
+          </Typography>
+        )}
       </div>
       <Paper elevation={5} className={classes.pointsRank}>
         <TeamPoints />

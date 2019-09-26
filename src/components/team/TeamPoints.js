@@ -1,9 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import ArrowUpIcon from '@material-ui/icons/ArrowDropUp';
-import ArrowDownIcon from '@material-ui/icons/ArrowDropDown';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
 import { IdsContext } from '../../contexts/idsContext';
 
@@ -50,7 +47,7 @@ export default function TeamRanks() {
   const { teamData } = useContext(IdsContext);
   const gwPoints = teamData.summary_event_points;
   const totalPoints = teamData.summary_overall_points;
-  console.log(teamData);
+  // console.log(total_players);
 
   // useEffect
 
