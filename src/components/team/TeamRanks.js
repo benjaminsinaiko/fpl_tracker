@@ -71,7 +71,7 @@ export default function TeamRanks() {
   const [overallData, setOverallData] = useState({});
   const rank = overallData.entry_rank;
   const lastRank = overallData.entry_last_rank;
-  // console.log(overallData);
+  const teamRank = teamData.summary_event_rank;
 
   useEffect(() => {
     const overallLeague = teamData.leagues.classic.filter(
@@ -97,7 +97,7 @@ export default function TeamRanks() {
     <div className={classes.rankRoot}>
       <div className={classes.currentRank}>
         <Typography>Current</Typography>
-        <Typography>{teamData.summary_event_rank.toLocaleString()}</Typography>
+        <Typography>{teamRank ? teamRank.toLocaleString() : '-'}</Typography>
       </div>
 
       <div className={classes.overallSection}>
