@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function TeamRanks() {
+export default function TeamPoints() {
   const classes = useStyles();
   const { teamData } = useContext(IdsContext);
   const gwPoints = teamData.summary_event_points;

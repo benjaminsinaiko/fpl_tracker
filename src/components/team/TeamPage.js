@@ -8,6 +8,7 @@ import { IdsContext } from '../../contexts/idsContext';
 import MissingID from '../userSettings/MissingID';
 import TeamPoints from './TeamPoints';
 import TeamRanks from './TeamRanks';
+import Week1Team from './Week1Team';
 
 const useStyles = makeStyles(theme => ({
   teamRoot: {
@@ -15,8 +16,8 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    marginBottom: 80,
   },
-
   teamName: {
     marginTop: theme.spacing(3),
     fontSize: '2em',
@@ -79,6 +80,7 @@ export default function TeamPage() {
         <TeamPoints />
         <TeamRanks />
       </Paper>
+      <Week1Team />
     </div>
   );
 }
