@@ -17,13 +17,14 @@ function makeMyTeam(data) {
     entry: data.id,
     entry_name: data.name,
     player_name: `${data.player_first_name} ${data.player_last_name}`,
+    url: getTeamUrl({ entry: data.id }),
   };
 }
 
 export function LeagueTeamsProvider({ children }) {
   const { leagueData, teamData } = useContext(IdsContext);
   const [leagueTeams, setLeagueTeams] = useState([]);
-  console.log('leagueTEams', leagueTeams);
+  console.log('leagueTeams', leagueTeams);
 
   const firstUpdate = useRef(true);
   useEffect(() => {
@@ -36,11 +37,9 @@ export function LeagueTeamsProvider({ children }) {
         const withUrls = leagueData.standings.results.map(team => {
           return { ...team, url: getTeamUrl(team) };
         });
-        console.log('withURLS', withUrls);
-
         if (!includesMyTeam) {
           const myTeam = makeMyTeam(teamData);
-          return withUrls.push(myTeam);
+          withUrls.push(myTeam);
         }
         const promiseArray = withUrls.map(team =>
           axios.get(team.url).then(res => {
