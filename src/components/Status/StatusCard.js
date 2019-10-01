@@ -32,7 +32,8 @@ const useStyles = makeStyles(theme => ({
 export default function StatusCard({ current }) {
   const classes = useStyles();
   const avgScore = current.average_entry_score;
-  const hightScore = current.average_highest_score;
+  const hightScore = current.highest_score;
+  console.log(current);
 
   if (!current) {
     return null;
