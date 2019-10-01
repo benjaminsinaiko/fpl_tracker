@@ -22,8 +22,6 @@ export function IdsProvider({ children }) {
     const { leagueData, teamData } = JSON.parse(
       window.localStorage.getItem('ids'),
     );
-    console.log('league', leagueData);
-    console.log('team', teamData);
     leagueData && dispatch({ type: 'SET_LEAGUE', leagueData: leagueData });
     teamData && dispatch({ type: 'SET_TEAM', teamData: teamData });
   }, [dispatch]);

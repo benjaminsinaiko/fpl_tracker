@@ -58,7 +58,7 @@ export default function LeagueTeamCards({ teams }) {
           .slice(page * cardsPerPage, page * cardsPerPage + cardsPerPage)
           .map(card => (
             <TeamCard
-              key={card.id}
+              key={card.entry}
               teamData={card}
               expanded={expanded}
               setExpanded={setExpanded}

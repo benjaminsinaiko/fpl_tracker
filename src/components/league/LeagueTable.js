@@ -102,8 +102,12 @@ export default function LeagueTable({ leagueTeams, weeklyWinners }) {
                   <TableCell align='center'>
                     {winsDisplay(team.entry, weeklyWinners)}
                   </TableCell>
-                  <TableCell align='center'>{team.event_total}</TableCell>
-                  <TableCell align='center'>{team.total}</TableCell>
+                  <TableCell align='center'>
+                    {team.current[team.current.length - 1].points}
+                  </TableCell>
+                  <TableCell align='center'>
+                    {team.current[team.current.length - 1].total_points}
+                  </TableCell>
                 </TableRow>
               ))}
             {emptyRows > 0 && (

@@ -256,7 +256,7 @@ export default function TeamCard({ teamData, expanded, setExpanded }) {
                   Season
                 </Typography>
                 <Typography variant='subtitle1' gutterBottom>
-                  Total Points
+                  Points
                 </Typography>
                 <Typography variant='subtitle1' gutterBottom>
                   Rank

@@ -52,8 +52,6 @@ export default function TeamPage() {
   const { teamData } = useContext(IdsContext);
   const [highScore, setHighScore] = useState('');
 
-  // console.log(teamData);
-
   useEffect(() => {
     if (events) {
       const current = events.find(event => event.is_current === true);

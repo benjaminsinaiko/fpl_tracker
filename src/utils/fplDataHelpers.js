@@ -1,5 +1,5 @@
 export function getTeamUrl(team) {
-  return `/api/entry/${team.entry}/history/`;
+  return `/api/entry/${team.entry}/`;
 }
 
 export function convertTeamData(teamData) {

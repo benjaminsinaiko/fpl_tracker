@@ -24,7 +24,6 @@ function makeMyTeam(data) {
 export function LeagueTeamsProvider({ children }) {
   const { leagueData, teamData } = useContext(IdsContext);
   const [leagueTeams, setLeagueTeams] = useState([]);
-  console.log('leagueTeams', leagueTeams);
 
   const firstUpdate = useRef(true);
   useEffect(() => {
@@ -41,14 +40,43 @@ export function LeagueTeamsProvider({ children }) {
           const myTeam = makeMyTeam(teamData);
           withUrls.push(myTeam);
         }
+
+        function getTeamHistory(team) {
+          return axios.get(`${team.url}history/`);
+        }
+        function getTeamData(team) {
+          return axios.get(team.url);
+        }
+        function getTeamLeague(leagues) {
+          return leagues.find(league => league.id === leagueData.league.id);
+        }
         const promiseArray = withUrls.map(team =>
-          axios.get(team.url).then(res => {
-            return { ...team, ...res.data };
-          }),
+          axios.all([getTeamHistory(team), getTeamData(team)]).then(
+            axios.spread((hist, league) => {
+              const leagueData = getTeamLeague(league.data.leagues.classic);
+
+              return {
+                entry: team.entry,
+                entry_name: team.entry_name,
+                id: team.id,
+                player_name: team.player_name,
+                rank: leagueData.entry_rank,
+                last_rank: leagueData.entry_last_rank,
+                url: team.url,
+                ...hist.data,
+              };
+            }),
+          ),
         );
         try {
           const teamsData = await Promise.all(promiseArray);
-          setLeagueTeams(teamsData.sort((a, b) => a.rank_sort - b.rank_sort));
+          setLeagueTeams(
+            teamsData.sort(
+              (a, b) =>
+                b.current[b.current.length - 1].total_points -
+                a.current[a.current.length - 1].total_points,
+            ),
+          );
         } catch (err) {
           console.log(err);
         }
