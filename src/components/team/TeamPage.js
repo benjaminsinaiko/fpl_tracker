@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 
 import { AllDataContext } from '../../contexts/allDataContext';
 import { IdsContext } from '../../contexts/idsContext';
+import { LeagueTeamsContext } from '../../contexts/leagueTeamsContext';
 import MissingID from '../userSettings/MissingID';
 import TeamPoints from './TeamPoints';
 import TeamRanks from './TeamRanks';
@@ -42,6 +43,7 @@ const useStyles = makeStyles(theme => ({
   pointsRank: {
     width: '100%',
     maxWidth: 450,
+    minHeight: 120,
     display: 'flex',
   },
 }));
@@ -50,7 +52,9 @@ export default function TeamPage() {
   const classes = useStyles();
   const { total_players, events } = useContext(AllDataContext);
   const { teamData } = useContext(IdsContext);
+  const leagueTeams = useContext(LeagueTeamsContext);
   const [highScore, setHighScore] = useState('');
+  const [myTeam, setMyTeam] = useState(null);
 
   useEffect(() => {
     if (events) {
@@ -58,6 +62,11 @@ export default function TeamPage() {
       setHighScore(current.highest_score);
     }
   }, [events]);
+
+  useEffect(() => {
+    const mTeam = leagueTeams.filter(team => team.entry === teamData.id);
+    setMyTeam(...mTeam);
+  }, [teamData, leagueTeams]);
 
   if (!teamData) return <MissingID idName='Team' />;
 
@@ -76,9 +85,14 @@ export default function TeamPage() {
           </Typography>
         )}
       </div>
+
       <Paper elevation={5} className={classes.pointsRank}>
-        <TeamPoints />
-        <TeamRanks />
+        {myTeam && (
+          <>
+            <TeamPoints myTeam={myTeam} />
+            <TeamRanks myTeam={myTeam} />
+          </>
+        )}
       </Paper>
       <Week1Team />
     </div>

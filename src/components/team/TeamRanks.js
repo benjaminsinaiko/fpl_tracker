@@ -1,11 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import ArrowUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-
-import { IdsContext } from '../../contexts/idsContext';
 
 const BOX_HEIGHT = '50px';
 const BOX_WIDTH = '70%';
@@ -42,7 +40,7 @@ const useStyles = makeStyles(theme => ({
       fontSize: '1.5em',
     },
   },
-  lastRank: {
+  lastOverallRank: {
     width: BOX_WIDTH,
     display: 'flex',
     alignItems: 'center',
@@ -63,31 +61,18 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const overallLeagueId = 314;
-
-export default function TeamRanks() {
+export default function TeamRanks({ myTeam }) {
   const classes = useStyles();
-  const { teamData } = useContext(IdsContext);
-  const [overallData, setOverallData] = useState({});
-  const rank = overallData.entry_rank;
-  const lastRank = overallData.entry_last_rank;
-  const teamRank = teamData.summary_event_rank;
 
-  useEffect(() => {
-    const overallLeague = teamData.leagues.classic.filter(
-      league => league.id === overallLeagueId,
-    );
-    setOverallData(...overallLeague);
-  }, [teamData]);
-
-  if (Object.keys(overallData).length === 0) {
-    return null;
-  }
+  const lastOverallRank =
+    myTeam.current[myTeam.current.length - 2].overall_rank;
+  const overallRank = myTeam.current[myTeam.current.length - 1].overall_rank;
+  const currentRank = myTeam.current[myTeam.current.length - 1].rank;
 
   let rankArrow;
-  if (rank - lastRank < 0) {
+  if (overallRank - lastOverallRank < 0) {
     rankArrow = <ArrowUpIcon style={{ color: '#01f780' }} />;
-  } else if (rank - lastRank > 0) {
+  } else if (overallRank - lastOverallRank > 0) {
     rankArrow = <ArrowDownIcon style={{ color: 'red' }} />;
   } else {
     rankArrow = <ArrowRightIcon />;
@@ -97,27 +82,29 @@ export default function TeamRanks() {
     <div className={classes.rankRoot}>
       <div className={classes.currentRank}>
         <Typography>Current</Typography>
-        <Typography>{teamRank ? teamRank.toLocaleString() : '-'}</Typography>
+        <Typography>
+          {currentRank ? currentRank.toLocaleString() : '-'}
+        </Typography>
       </div>
 
       <div className={classes.overallSection}>
         <div className={classes.overallRank}>
           <Typography>Overall</Typography>
-          <Typography>{rank.toLocaleString()}</Typography>
+          <Typography>{overallRank.toLocaleString()}</Typography>
         </div>
         <div className={classes.movement}>
           {rankArrow}
           <Typography>
-            {rank - lastRank === 0
+            {overallRank - lastOverallRank === 0
               ? 'No Change'
-              : (lastRank - rank).toLocaleString()}
+              : (lastOverallRank - overallRank).toLocaleString()}
           </Typography>
         </div>
       </div>
 
-      <div className={classes.lastRank}>
+      <div className={classes.lastOverallRank}>
         <Typography>Previous</Typography>
-        <Typography>{lastRank.toLocaleString()}</Typography>
+        <Typography>{lastOverallRank.toLocaleString()}</Typography>
       </div>
     </div>
   );

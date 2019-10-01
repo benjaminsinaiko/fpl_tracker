@@ -62,7 +62,7 @@ export default function Week1Team() {
   return (
     <div className={classes.teamRoot}>
       <Typography variant='subtitle1' className={classes.title}>
-        Week 1 Team: what if?
+        Week 1 Team
       </Typography>
       <div className={classes.teamHeader}>
         <Typography>Points: {calcPoints(week1Team.slice(0, 11))}</Typography>

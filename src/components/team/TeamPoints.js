@@ -1,8 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-
-import { IdsContext } from '../../contexts/idsContext';
 
 const BOX_HEIGHT = '50px';
 
@@ -42,18 +40,10 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function TeamPoints() {
+export default function TeamPoints({ myTeam }) {
   const classes = useStyles();
-  const { teamData } = useContext(IdsContext);
-  const gwPoints = teamData.summary_event_points;
-  const totalPoints = teamData.summary_overall_points;
-  // console.log(total_players);
-
-  // useEffect
-
-  if (!teamData) {
-    return null;
-  }
+  const gwPoints = myTeam.current[myTeam.current.length - 1].points;
+  const totalPoints = myTeam.current[myTeam.current.length - 1].total_points;
 
   return (
     <div className={classes.pointsRoot}>
