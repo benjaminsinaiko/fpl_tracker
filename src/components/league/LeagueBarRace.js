@@ -1,15 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import { ResponsiveBar } from '@nivo/bar';
 
 const useStyles = makeStyles(theme => ({
   raceRoot: {
     width: 800,
     height: 650,
-    border: '1px solid red',
+    paddingBottom: 60,
     [theme.breakpoints.down('xs')]: {
       width: 350,
+    },
+  },
+  raceHeader: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    '& button': {
+      color: '#8d36f7',
     },
   },
 }));
@@ -95,7 +103,7 @@ export default function LeagueBarRace({ leagueTeams }) {
     }
   }, [leagueTeams]);
 
-  function weekInc() {
+  function runWeekly() {
     if (current < leaguePoints.length - 1) {
       const timer = setInterval(() => {
         setCurrent(cur => cur + 1);
@@ -104,9 +112,13 @@ export default function LeagueBarRace({ leagueTeams }) {
     }
   }
 
+  function restartWeekly() {
+    setCurrent(0);
+  }
+
   useEffect(() => {
-    // leaguePoints && weekInc();
-  }, [leaguePoints, current]);
+    leaguePoints && runWeekly();
+  }, [leaguePoints, runWeekly]);
 
   if (!leaguePoints) {
     return null;
@@ -118,7 +130,14 @@ export default function LeagueBarRace({ leagueTeams }) {
 
   return (
     <div className={classes.raceRoot}>
-      <Typography variant='h6'>Pts Race - GW {current + 1}</Typography>
+      <div className={classes.raceHeader}>
+        <Typography variant='h6'>Pts Race - GW {current + 1}</Typography>
+        <Button
+          disabled={current !== leaguePoints.length - 1}
+          onClick={restartWeekly}>
+          Restart
+        </Button>
+      </div>
       <ResponsiveBar
         layout='horizontal'
         margin={{ top: 26, right: 10, bottom: 26, left: 10 }}

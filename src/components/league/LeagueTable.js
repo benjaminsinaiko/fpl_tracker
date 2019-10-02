@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     width: '95vw',
     maxWidth: 650,
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(4),
     boxShadow:
       '0px 1px 8px 0px rgba(246,164,24,0.6), 0px 3px 4px 0px rgba(246,164,24,0.5), 0px 3px 3px -2px rgba(246,164,24,0.24)',
     '& p': {

@@ -31,7 +31,7 @@ export default function LeaguePage() {
   const classes = useStyles();
   const { leagueData } = useContext(IdsContext);
   const leagueTeams = useContext(LeagueTeamsContext);
-  // const { weeklyWinners } = useWeeklyWinners();
+  const { weeklyWinners } = useWeeklyWinners();
 
   if (!leagueData) {
     return <MissingID idName='League' />;
@@ -42,10 +42,10 @@ export default function LeaguePage() {
       <Typography variant='h1' className={classes.leagueName}>
         {leagueData.league.name}
       </Typography>
-      {/* <LeagueTable leagueTeams={leagueTeams} weeklyWinners={weeklyWinners} /> */}
-      {/* {leagueTeams && <LeagueTeamCards teams={leagueTeams} />} */}
+      <LeagueTable leagueTeams={leagueTeams} weeklyWinners={weeklyWinners} />
       <LeagueBarRace leagueTeams={leagueTeams} />
-      {/* <WeeklyWinnersList weeklyWinners={weeklyWinners} /> */}
+      {leagueTeams && <LeagueTeamCards teams={leagueTeams} />}
+      <WeeklyWinnersList weeklyWinners={weeklyWinners} />
     </div>
   );
 }
