@@ -8,6 +8,7 @@ import useWeeklyWinners from '../../hooks/useWeeklyWinners';
 import MissingID from '../userSettings/MissingID';
 import LeagueTable from './LeagueTable';
 import LeagueTeamCards from './LeagueTeamCards';
+import LeagueBarRace from './LeagueBarRace';
 import WeeklyWinnersList from './WeeklyWinnersList';
 
 const useStyles = makeStyles(theme => ({
@@ -16,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     minHeight: '90vh',
-    paddingBottom: 60,
+    paddingBottom: 80,
   },
   leagueName: {
     fontSize: '2em',
@@ -30,7 +31,7 @@ export default function LeaguePage() {
   const classes = useStyles();
   const { leagueData } = useContext(IdsContext);
   const leagueTeams = useContext(LeagueTeamsContext);
-  const { weeklyWinners } = useWeeklyWinners();
+  // const { weeklyWinners } = useWeeklyWinners();
 
   if (!leagueData) {
     return <MissingID idName='League' />;
@@ -41,9 +42,10 @@ export default function LeaguePage() {
       <Typography variant='h1' className={classes.leagueName}>
         {leagueData.league.name}
       </Typography>
-      <LeagueTable leagueTeams={leagueTeams} weeklyWinners={weeklyWinners} />
-      {leagueTeams && <LeagueTeamCards teams={leagueTeams} />}
-      <WeeklyWinnersList weeklyWinners={weeklyWinners} />
+      {/* <LeagueTable leagueTeams={leagueTeams} weeklyWinners={weeklyWinners} /> */}
+      {/* {leagueTeams && <LeagueTeamCards teams={leagueTeams} />} */}
+      <LeagueBarRace leagueTeams={leagueTeams} />
+      {/* <WeeklyWinnersList weeklyWinners={weeklyWinners} /> */}
     </div>
   );
 }
