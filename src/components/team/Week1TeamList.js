@@ -10,6 +10,10 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles(theme => ({
   teamListRoot: {
     width: '100%',
+    '& ul': {
+      paddingRight: 0,
+      paddingLeft: 0,
+    },
   },
   playerItem: {
     width: '100%',
@@ -41,6 +45,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+function isCpt(player) {
+  return player.original.is_captain ? true : false;
+}
+function isViceCpt(player) {
+  return player.original.is_vice_captain ? true : false;
+}
+
 export default function Week1TeamList({ players }) {
   const classes = useStyles();
 
@@ -58,7 +69,9 @@ export default function Week1TeamList({ players }) {
               <div className={classes.playerItem}>
                 <div className={classes.playerInfo}>
                   <Typography>
-                    {starter.first_name} {starter.second_name} |{' '}
+                    {isCpt(starter) && <span>(c)</span>}{' '}
+                    {isViceCpt(starter) && <span>(v)</span>}{' '}
+                    {starter.first_name[0]}. {starter.second_name} |{' '}
                     <span className={classes.teamInitials}>
                       {starter.team.short_name}
                     </span>
@@ -66,7 +79,9 @@ export default function Week1TeamList({ players }) {
                   <Typography>
                     Pts:{' '}
                     <span className={classes.numbers}>
-                      {starter.total_points}
+                      {isCpt(starter)
+                        ? starter.total_points * 2
+                        : starter.total_points}
                     </span>
                   </Typography>
                 </div>
