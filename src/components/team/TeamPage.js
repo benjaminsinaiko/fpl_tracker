@@ -7,6 +7,7 @@ import { IdsContext } from '../../contexts/idsContext';
 import { LeagueTeamsContext } from '../../contexts/leagueTeamsContext';
 import MissingID from '../userSettings/MissingID';
 import TeamOverall from './TeamOverall';
+import TeamCurrent from './TeamCurrent';
 import Week1Team from './Week1Team';
 
 const useStyles = makeStyles(theme => ({
@@ -41,7 +42,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function TeamPage() {
   const classes = useStyles();
-  const { total_players, events } = useContext(AllDataContext);
+  const { total_players } = useContext(AllDataContext);
   const { teamData } = useContext(IdsContext);
   const leagueTeams = useContext(LeagueTeamsContext);
   const [myTeam, setMyTeam] = useState(null);
@@ -62,23 +63,8 @@ export default function TeamPage() {
       </div>
 
       {myTeam && <TeamOverall myTeam={myTeam} totalPlayers={total_players} />}
+      {myTeam && <TeamCurrent myTeam={myTeam} />}
 
-      {/* <div className={classes.pointsRankHeader}>
-        <Typography variant='subtitle1'>Points / Rank</Typography>
-        {highScore && (
-          <Typography className={classes.allTotals}>
-            {highScore} high / {total_players.toLocaleString()} teams
-          </Typography>
-        )}
-      </div> */}
-
-      {/* <Paper elevation={5} className={classes.pointsRankHeader}>
-        {myTeam && (
-          <>
-            <TeamPoints myTeam={myTeam} />
-          </>
-        )}
-      </Paper> */}
       <Week1Team />
     </div>
   );

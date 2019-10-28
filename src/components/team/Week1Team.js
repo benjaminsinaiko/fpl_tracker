@@ -82,8 +82,7 @@ export default function Week1Team() {
   return (
     <div className={classes.teamRoot}>
       <Typography variant='subtitle1' className={classes.title}>
-        What If?{' '}
-        <span style={{ fontSize: '.8em' }}>(Original Team Untouched)</span>
+        What If? <span style={{ fontSize: '.8em' }}>(GW1 Team Untouched)</span>
       </Typography>
       <div className={classes.teamExpansion}>
         <ExpansionPanel>

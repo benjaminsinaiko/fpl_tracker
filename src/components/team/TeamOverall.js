@@ -61,8 +61,6 @@ export default function TeamOverall({ myTeam, totalPlayers }) {
   const { response } = useAxios('/api/leagues-classic/314/standings/');
   const [topScore, setTopScore] = useState(null);
 
-  console.log('topScore', topScore);
-
   const overallRank = myTeam.current[myTeam.current.length - 1].overall_rank;
   const lastOverallRank =
     myTeam.current[myTeam.current.length - 2].overall_rank;
@@ -83,6 +81,10 @@ export default function TeamOverall({ myTeam, totalPlayers }) {
     }
     response && getTopScore();
   }, [response]);
+
+  if (!myTeam || !totalPlayers) {
+    return null;
+  }
 
   return (
     <div className={classes.root}>
