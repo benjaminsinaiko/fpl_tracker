@@ -131,9 +131,6 @@ export default function HelpPage() {
               </span>{' '}
             </Typography>
             <Typography className={classes.secondaryListItem}>
-              - Toggle between Points tab and My Team tab{' '}
-            </Typography>
-            <Typography className={classes.secondaryListItem}>
               - Try the link in Settings to grab cookies from FPL Site...
             </Typography>
             <Typography className={classes.secondaryListItem}>

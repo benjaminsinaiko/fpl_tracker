@@ -86,6 +86,16 @@ export default function TeamSearch({ handleCancel }) {
     }, 500);
   }
 
+  function getCookies() {
+    const wnd = window.open(
+      `https://fantasy.premierleague.com/api/leagues-classic/${league}/standings/?page_new_entries=1&page_standings=1&phase=1`,
+    );
+    setTimeout(() => {
+      wnd.close();
+      callLeagueApi('');
+    }, 50);
+  }
+
   const leagueDisplayText = leagueError ? 'Auth Error' : league;
 
   return (
@@ -142,6 +152,7 @@ export default function TeamSearch({ handleCancel }) {
                 teamData={teamData}
                 setLeague={setLeague}
                 callLeagueApi={callLeagueApi}
+                leagueError={leagueError}
               />
               <Button
                 disabled={!league}
@@ -158,12 +169,7 @@ export default function TeamSearch({ handleCancel }) {
             {leagueError && (
               <div className={classes.apiLink}>
                 <Typography>Try this link to force auth from FPL</Typography>
-                <Button
-                  variant='outlined'
-                  size='small'
-                  href={`https://fantasy.premierleague.com/api/leagues-classic/${league}/standings/?page_new_entries=1&page_standings=1&phase=1`}
-                  rel='noopener noreferrer'
-                  target='_blank'>
+                <Button variant='outlined' size='small' onClick={getCookies}>
                   FPL API
                 </Button>
               </div>

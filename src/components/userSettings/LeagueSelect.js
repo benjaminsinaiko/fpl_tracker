@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -37,7 +37,12 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function LeagueSelect({ teamData, setLeague, callLeagueApi }) {
+export default function LeagueSelect({
+  teamData,
+  setLeague,
+  callLeagueApi,
+  leagueError,
+}) {
   const classes = useStyles();
   const [selectedIndex, setSelectedIndex] = useState();
 
@@ -49,6 +54,12 @@ export default function LeagueSelect({ teamData, setLeague, callLeagueApi }) {
     setLeague(leagueId);
     setSelectedIndex(index);
   }
+
+  useEffect(() => {
+    if (leagueError) {
+      setSelectedIndex(false);
+    }
+  }, [leagueError]);
 
   return (
     <div className={classes.editBox}>

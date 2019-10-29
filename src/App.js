@@ -16,8 +16,8 @@ import HelpPage from './components/help/HelpPage';
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <IdsProvider>
-        <div className='App'>
+      <div className='App'>
+        <IdsProvider>
           <AllDataProvider>
             <LeagueTeamsProvider>
               <Navbar />
@@ -32,8 +32,8 @@ function App() {
               </Location>
             </LeagueTeamsProvider>
           </AllDataProvider>
-        </div>
-      </IdsProvider>
+        </IdsProvider>
+      </div>
     </ThemeProvider>
   );
 }

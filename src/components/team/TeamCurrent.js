@@ -1,12 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import ArrowUpIcon from '@material-ui/icons/ArrowDropUp';
-import ArrowDownIcon from '@material-ui/icons/ArrowDropDown';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-
-import useAxios from '../../hooks/useAxios';
 
 const useStyles = makeStyles(theme => ({
   root: {
