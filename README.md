@@ -1,3 +1,51 @@
+![FPL Tracker](./src/ui/assets/trackerLogo.jpg)
+
+# FPL Tracker
+
+This project was started to automate a manual spreadsheet for keeping track of weekly PL stats and to learn a little React. FPL Tracker uses the Premier League's unofficial API for all Global and Private league data.
+
+**FPL Tracker** is live on [Netlify](https://netlify.com/):
+
+[https://fpl-tracker.netlify.com/](https://fpl-tracker.netlify.com/)
+
+## How To Use
+
+### Installing
+
+```bash
+# Clone this repository
+$ git clone https://github.com/benjaminsinaiko/fpl_tracker
+
+# Go into the repository
+$ cd fpl_tracker
+
+# Install dependencies
+$ npm install
+
+# Run the app
+$ npm start
+```
+
+## Credits
+
+The source for all League, Team, and Player data comes from the [Premier League's](https://fantasy.premierleague.com/) unofficial Fantasy API. Info on this can be found with a simple reddit search.
+
+FPL Tracker uses the following open source packages:
+
+- [React](https://reactjs.org/)
+- [Reach Router](https://reach.tech/router)
+- [Material UI](https://material-ui.com/)
+- [axios](https://github.com/axios/axios/)
+- [Nivo](https://nivo.rocks/)
+- [Chart.js](https://www.chartjs.org/)
+- [Moment.js](https://momentjs.com/)
+
+## License
+
+MIT
+
+# From Create React App
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
