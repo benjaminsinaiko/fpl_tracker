@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -8,6 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
 
 import useDataApi from '../../hooks/useDataApi';
 
@@ -30,14 +31,14 @@ const useStyles = makeStyles(theme => ({
     },
   },
   table: {
-    minWidth: 650,
+    minWidth: 450,
     [theme.breakpoints.down('xs')]: {
       minWidth: '100%',
     },
   },
-  footer: {
-    margin: theme.spacing(3),
+  tableStatus: {
     '& span': {
+      marginLeft: theme.spacing(3),
       fontSize: '1.3em',
       color: '#8d36f7',
     },
@@ -63,16 +64,28 @@ export default function StatusEventTable() {
     callApi('/api/event-status');
   }, [callApi]);
 
+  if (!eventStatus) {
+    return null;
+  }
+
   return (
     <Paper className={classes.root} elevation={3}>
-      <Typography variant='h6'>Points Status</Typography>
+      <div className={classes.tableStatus}>
+        <Typography variant='h6'>
+          League Tables:{' '}
+          <span style={{ marginLeft: '10px' }}>
+            {eventStatus.leagues === '' ? '-' : eventStatus.leagues}
+          </span>
+        </Typography>
+      </div>
+      <Divider color='primary' variant='middle' />
       {error || !eventStatus ? (
         <div className={classes.updating}>
           <h2>Games updating</h2>
         </div>
       ) : (
         <>
-          <Table className={classes.table}>
+          <Table className={classes.table} size='small'>
             <TableHead>
               <TableRow>
                 <TableCell>Date</TableCell>
@@ -96,15 +109,6 @@ export default function StatusEventTable() {
               ))}
             </TableBody>
           </Table>
-
-          <div className={classes.footer}>
-            <Typography align='center'>
-              League Tables:{' '}
-              <span style={{ marginLeft: '10px' }}>
-                {eventStatus.leagues === '' ? '-' : eventStatus.leagues}
-              </span>
-            </Typography>
-          </div>
         </>
       )}
     </Paper>

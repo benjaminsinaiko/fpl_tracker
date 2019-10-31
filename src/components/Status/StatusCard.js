@@ -16,6 +16,9 @@ const useStyles = makeStyles(theme => ({
     minWidth: 475,
     boxShadow:
       '0px 1px 8px 0px rgba(1,85,162,0.6), 0px 3px 4px 0px rgba(1,85,162,0.5), 0px 3px 3px -2px rgba(1,85,162,0.24)',
+    [theme.breakpoints.down('xs')]: {
+      minWidth: '100%',
+    },
   },
   header: {
     display: 'flex',
@@ -24,8 +27,8 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(1),
   },
   title: {
-    color: '#0155a2',
     fontSize: '1.3em',
+    color: '#320336',
   },
   scoreBox: {
     marginTop: theme.spacing(2),
@@ -42,6 +45,9 @@ const useStyles = makeStyles(theme => ({
     marginRight: 'auto',
     marginLeft: 'auto',
     marginTop: theme.spacing(2),
+    [theme.breakpoints.down('xs')]: {
+      width: '100%',
+    },
   },
   playerStats: {
     display: 'flex',
@@ -51,6 +57,9 @@ const useStyles = makeStyles(theme => ({
     },
     '& p:last-child': {
       color: '#0155a2',
+      [theme.breakpoints.down('xs')]: {
+        fontSize: '.9em',
+      },
     },
   },
 }));
@@ -65,7 +74,7 @@ export default function StatusCard() {
   useEffect(() => {
     const currentGW = getCurrentGW(events);
     setCurrent(currentGW);
-  });
+  }, [events]);
 
   if (!current || !elements) {
     return null;
@@ -75,11 +84,10 @@ export default function StatusCard() {
     <Card className={classes.card} raised>
       <CardContent className={classes.CardContent}>
         <div className={classes.header}>
-          <Typography className={classes.title} color='textSecondary'>
-            {current.name}
+          <Typography className={classes.title} variant='h6'>
+            GW Stats
           </Typography>
           <Chip
-            size='small'
             label={current.finished ? 'Finished' : 'In Progress'}
             color={current.finished ? 'secondary' : 'primary'}
             variant='outlined'

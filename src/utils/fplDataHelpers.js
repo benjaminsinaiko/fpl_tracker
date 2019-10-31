@@ -34,3 +34,18 @@ export function countWeeklyWins(teamId, allWinners) {
     return isWinner ? acc + 1 / week.winners.length : acc;
   }, 0);
 }
+
+export function getCurrentGW(events) {
+  const currentGW = events.find(event => event.is_current === true);
+  return currentGW;
+}
+
+export function getNextGW(events) {
+  const nextGW = events.find(event => event.is_next === true);
+  return nextGW;
+}
+
+export function getPlayerName(playerId, allPlayers) {
+  const player = allPlayers.find(playerData => playerData.id === playerId);
+  return `${player.first_name[0]}. ${player.second_name}`;
+}
