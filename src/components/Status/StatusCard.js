@@ -72,8 +72,11 @@ export default function StatusCard() {
   const hightScore = current ? current.highest_score : '-';
 
   useEffect(() => {
-    const currentGW = getCurrentGW(events);
-    setCurrent(currentGW);
+    function getCurrent() {
+      const currentGW = getCurrentGW(events);
+      setCurrent(currentGW);
+    }
+    events && getCurrent();
   }, [events]);
 
   if (!current || !elements) {

@@ -17,22 +17,22 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className='App'>
-        <IdsProvider>
-          <AllDataProvider>
-            <LeagueTeamsProvider>
-              <Navbar />
-              <Router>
-                <StatusPage path='/' />
-                <LeaguePage path='/league' />
-                <TeamPage path='/team' />
-                <HelpPage path='/help' />
-              </Router>
-              <Location>
-                {({ location }) => <BottomNav path={location.pathname} />}
-              </Location>
-            </LeagueTeamsProvider>
-          </AllDataProvider>
-        </IdsProvider>
+        {/* <IdsProvider> */}
+        <AllDataProvider>
+          {/* <LeagueTeamsProvider> */}
+          <Navbar />
+          <Router>
+            <StatusPage path='/' />
+            <LeaguePage path='/league' />
+            <TeamPage path='/team' />
+            <HelpPage path='/help' />
+          </Router>
+          <Location>
+            {({ location }) => <BottomNav path={location.pathname} />}
+          </Location>
+          {/* </LeagueTeamsProvider> */}
+        </AllDataProvider>
+        {/* </IdsProvider> */}
       </div>
     </ThemeProvider>
   );

@@ -10,40 +10,39 @@ import StatusCountdown from './StatusCountdown';
 import StatusPointsChart from './StatusPointsChart';
 
 import { AllDataContext } from '../../contexts/allDataContext';
+import { getCurrentGW } from '../../utils/fplDataHelpers';
 
 export default function StatusPage() {
   const classes = useStyles();
   const { events } = useContext(AllDataContext);
-  const [current, setCurrent] = useState(null);
-  const [next, setNext] = useState(null);
+  const [current, setCurrent] = useState();
 
   useEffect(() => {
-    function getEvents() {
-      const cur = events.find(event => event.is_current === true);
-      setCurrent(cur);
-      const next = events.find(event => event.is_next === true);
-      setNext(next);
+    function getCurrent(params) {
+      const currentGW = getCurrentGW(events);
+      setCurrent(currentGW);
     }
-    events && getEvents();
+    events && getCurrent();
   }, [events]);
-
-  if (!next) {
-    return null;
-  }
 
   return (
     <Container className={classes.statusRoot}>
       <Typography align='center' variant='h5' gutterBottom>
         Next Deadline
       </Typography>
-      <StatusCountdown current={current} next={next} />
+      <StatusCountdown />
       <Typography align='center' variant='h5' gutterBottom>
         Current Gameweek
       </Typography>
-      <StatusCard current={current} />
-      {current.chip_plays && <ChipsUsed chips={current.chip_plays} />}
+      <Typography
+        align='center'
+        style={{ fontSize: '.8em', fontStyle: 'italic', color: '#e0004c' }}>
+        {current ? current.name : 'Gameweek -'}
+      </Typography>
       <StatusEventTable />
-      <StatusPointsChart events={events} />
+      <StatusCard />
+      <ChipsUsed />
+      {/* <StatusPointsChart events={events} /> */}
     </Container>
   );
 }
