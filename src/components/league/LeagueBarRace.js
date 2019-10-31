@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -103,14 +103,14 @@ export default function LeagueBarRace({ leagueTeams }) {
     }
   }, [leagueTeams]);
 
-  function runWeekly() {
+  const runWeekly = useCallback(() => {
     if (current < leaguePoints.length - 1) {
       const timer = setInterval(() => {
         setCurrent(cur => cur + 1);
         clearInterval(timer);
       }, 2000);
     }
-  }
+  }, [leaguePoints, current]);
 
   function restartWeekly() {
     setCurrent(0);
