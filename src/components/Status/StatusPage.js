@@ -42,7 +42,7 @@ export default function StatusPage() {
       <StatusEventTable />
       <StatusCard />
       <ChipsUsed />
-      {/* <StatusPointsChart events={events} /> */}
+      <StatusPointsChart />
     </Container>
   );
 }

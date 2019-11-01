@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
+import { AllDataContext } from '../../contexts/allDataContext';
 import PointsChart from './PointsChart';
 
 const useStyles = makeStyles(theme => ({
@@ -17,8 +18,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function StatusPointsChart({ events }) {
+export default function StatusPointsChart() {
   const classes = useStyles();
+  const { events } = useContext(AllDataContext);
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -34,6 +36,10 @@ export default function StatusPointsChart({ events }) {
     }
     events && getData();
   }, [events]);
+
+  if (!events) {
+    return null;
+  }
 
   return (
     <div className={classes.root}>
