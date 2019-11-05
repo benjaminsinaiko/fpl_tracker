@@ -8,6 +8,7 @@ import { LeagueTeamsContext } from '../../contexts/leagueTeamsContext';
 import MissingID from '../userSettings/MissingID';
 import TeamOverall from './TeamOverall';
 import TeamCurrent from './TeamCurrent';
+import TeamPtsDist from './TeamPtsDist';
 import Week1Team from './Week1Team';
 
 const useStyles = makeStyles(theme => ({
@@ -62,10 +63,11 @@ export default function TeamPage() {
         </Typography>
       </div>
 
-      {myTeam && <TeamOverall myTeam={myTeam} totalPlayers={total_players} />}
-      {myTeam && <TeamCurrent myTeam={myTeam} />}
+      {/* {myTeam && <TeamOverall myTeam={myTeam} totalPlayers={total_players} />}
+      {myTeam && <TeamCurrent myTeam={myTeam} />} */}
 
-      <Week1Team />
+      {myTeam && <TeamPtsDist myTeam={myTeam} />}
+      {/* <Week1Team /> */}
     </div>
   );
 }

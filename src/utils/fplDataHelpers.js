@@ -49,3 +49,22 @@ export function getPlayerName(playerId, allPlayers) {
   const player = allPlayers.find(playerData => playerData.id === playerId);
   return `${player.first_name[0]}. ${player.second_name}`;
 }
+
+export function addPosition(positionId) {
+  switch (positionId) {
+    case 1: {
+      return { singular_name: 'Goalkeeper', singular_name_short: 'GKP' };
+    }
+    case 2: {
+      return { singular_name: 'Defender', singular_name_short: 'DEF' };
+    }
+    case 3: {
+      return { singular_name: 'Midfielder', singular_name_short: 'MID' };
+    }
+    case 4: {
+      return { singular_name: 'Forward', singular_name_short: 'FWD' };
+    }
+    default:
+      return;
+  }
+}

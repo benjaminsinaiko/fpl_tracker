@@ -22,8 +22,8 @@ function App() {
             <LeagueTeamsProvider>
               <Navbar />
               <Router>
-                <StatusPage path='/' />
-                <LeaguePage path='/league' />
+                {/* <StatusPage path='/' />
+                <LeaguePage path='/league' /> */}
                 <TeamPage path='/team' />
                 <HelpPage path='/help' />
               </Router>
