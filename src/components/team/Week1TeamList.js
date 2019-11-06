@@ -63,7 +63,7 @@ export default function Week1TeamList({ players }) {
             <ListItem>
               <ListItemAvatar>
                 <Avatar className={classes.playPosition}>
-                  {starter.position.singular_name_short}
+                  {starter.original.position.singular_name_short}
                 </Avatar>
               </ListItemAvatar>
               <div className={classes.playerItem}>
@@ -115,7 +115,7 @@ export default function Week1TeamList({ players }) {
             <ListItem>
               <ListItemAvatar>
                 <Avatar className={classes.benchPosition}>
-                  {bench.position.singular_name_short}
+                  {bench.original.position.singular_name_short}
                 </Avatar>
               </ListItemAvatar>
               <div className={classes.playerItem}>

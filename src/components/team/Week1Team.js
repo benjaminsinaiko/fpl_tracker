@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -6,7 +6,6 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import { IdsContext } from '../../contexts/idsContext';
 import useWeek1TeamPts from '../../hooks/useWeek1TeamPts';
 import Week1TeamList from './Week1TeamList';
 
@@ -72,10 +71,9 @@ function calcValue(players) {
 
 export default function Week1Team() {
   const classes = useStyles();
-  const { teamData } = useContext(IdsContext);
-  const [week1Team, error] = useWeek1TeamPts(teamData.id);
+  const week1Team = useWeek1TeamPts();
 
-  if (!week1Team.length || error) {
+  if (!week1Team.length) {
     return null;
   }
 
