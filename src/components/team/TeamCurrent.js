@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+
+import { LeagueTeamsContext } from '../../contexts/leagueTeamsContext';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,6 +16,7 @@ const useStyles = makeStyles(theme => ({
   currentMain: {
     display: 'flex',
     justifyContent: 'space-evenly',
+    color: '#f6247b',
     '& p': {
       fontSize: '1.8em',
     },
@@ -27,9 +30,20 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function TeamCurrent({ myTeam }) {
+export default function TeamCurrent() {
   const classes = useStyles();
-  const currentGW = myTeam.current[myTeam.current.length - 1];
+  const { myTeam } = useContext(LeagueTeamsContext);
+  const [currentGW, setCurrentGW] = useState();
+
+  useEffect(() => {
+    if (myTeam) {
+      setCurrentGW(myTeam.current[myTeam.current.length - 1]);
+    }
+  }, [myTeam]);
+
+  if (!currentGW) {
+    return null;
+  }
 
   return (
     <div className={classes.root}>
