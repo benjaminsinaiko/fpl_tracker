@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -6,6 +6,8 @@ import ArrowUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
+import { AllDataContext } from '../../contexts/allDataContext';
+import { LeagueTeamsContext } from '../../contexts/leagueTeamsContext';
 import useAxios from '../../hooks/useAxios';
 
 const useStyles = makeStyles(theme => ({
@@ -55,16 +57,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function TeamOverall({ myTeam, totalPlayers }) {
-  const classes = useStyles();
-  const totalPoints = myTeam.current[myTeam.current.length - 1].total_points;
-  const { response } = useAxios('/api/leagues-classic/314/standings/');
-  const [topScore, setTopScore] = useState(null);
-
-  const overallRank = myTeam.current[myTeam.current.length - 1].overall_rank;
-  const lastOverallRank =
-    myTeam.current[myTeam.current.length - 2].overall_rank;
-
+function getRankMove(overallRank, lastOverallRank) {
   let rankArrow;
   if (overallRank - lastOverallRank < 0) {
     rankArrow = <ArrowUpIcon style={{ color: '#01f780' }} />;
@@ -73,6 +66,18 @@ export default function TeamOverall({ myTeam, totalPlayers }) {
   } else {
     rankArrow = <ArrowRightIcon />;
   }
+  return rankArrow;
+}
+
+export default function TeamOverall() {
+  const classes = useStyles();
+  const { total_players: totalPlayers } = useContext(AllDataContext);
+  const { myTeam } = useContext(LeagueTeamsContext);
+  const { response } = useAxios('/api/leagues-classic/314/standings/');
+  const [topScore, setTopScore] = useState(null);
+  const [totalPoints, setTotalPoints] = useState(0);
+  const [lastOverallRank, setLastOverallRank] = useState(0);
+  const [overallRank, setOverallRank] = useState(0);
 
   useEffect(() => {
     function getTopScore() {
@@ -81,6 +86,16 @@ export default function TeamOverall({ myTeam, totalPlayers }) {
     }
     response && getTopScore();
   }, [response]);
+
+  useEffect(() => {
+    function setStats() {
+      const current = myTeam.current;
+      setTotalPoints(current[current.length - 1].total_points);
+      setLastOverallRank(current[current.length - 2].overall_rank);
+      setOverallRank(current[current.length - 1].overall_rank);
+    }
+    myTeam && setStats();
+  }, [myTeam]);
 
   if (!myTeam || !totalPlayers) {
     return null;
@@ -104,7 +119,7 @@ export default function TeamOverall({ myTeam, totalPlayers }) {
           </Typography>
           <Typography variant='body1'>
             out of {''}
-            {totalPlayers.toLocaleString()}
+            {totalPlayers.toLocaleString() || '-'}
           </Typography>
         </div>
       </Paper>
@@ -112,7 +127,7 @@ export default function TeamOverall({ myTeam, totalPlayers }) {
         <Typography>last rank</Typography>
         <Typography>{lastOverallRank.toLocaleString()}</Typography>
         <div className={classes.movement}>
-          {rankArrow}
+          {getRankMove(overallRank, lastOverallRank)}
           <Typography>
             {overallRank - lastOverallRank === 0
               ? 'No Change'
