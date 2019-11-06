@@ -21,9 +21,14 @@ function makeMyTeam(data) {
   };
 }
 
+function findMyTeam(teams, teamId) {
+  return teams.find(team => team.entry === teamId);
+}
+
 export function LeagueTeamsProvider({ children }) {
   const { leagueData, teamData } = useContext(IdsContext);
   const [leagueTeams, setLeagueTeams] = useState([]);
+  const [myTeam, setMyTeam] = useState();
 
   const firstUpdate = useRef(true);
   useEffect(() => {
@@ -77,6 +82,7 @@ export function LeagueTeamsProvider({ children }) {
                 a.current[a.current.length - 1].total_points,
             ),
           );
+          setMyTeam(findMyTeam(teamsData, teamData.id));
         } catch (err) {
           console.log(err);
         }
@@ -87,7 +93,7 @@ export function LeagueTeamsProvider({ children }) {
   }, [leagueData, teamData]);
 
   return (
-    <LeagueTeamsContext.Provider value={leagueTeams}>
+    <LeagueTeamsContext.Provider value={{ leagueTeams, myTeam }}>
       {children}
     </LeagueTeamsContext.Provider>
   );

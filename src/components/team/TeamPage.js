@@ -45,13 +45,16 @@ export default function TeamPage() {
   const classes = useStyles();
   const { total_players } = useContext(AllDataContext);
   const { teamData } = useContext(IdsContext);
-  const leagueTeams = useContext(LeagueTeamsContext);
-  const [myTeam, setMyTeam] = useState(null);
+  const { leagueTeams, myTeam } = useContext(LeagueTeamsContext);
+  // const [myTeam, setMyTeam] = useState(null);
 
-  useEffect(() => {
-    const mTeam = leagueTeams.filter(team => team.entry === teamData.id);
-    setMyTeam(...mTeam);
-  }, [teamData, leagueTeams]);
+  console.log('leagueTeams', leagueTeams);
+  console.log('myTeam', myTeam);
+
+  // useEffect(() => {
+  //   const mTeam = leagueTeams.filter(team => team.entry === teamData.id);
+  //   setMyTeam(...mTeam);
+  // }, [teamData, leagueTeams]);
 
   if (!teamData) return <MissingID idName='Team' />;
 
