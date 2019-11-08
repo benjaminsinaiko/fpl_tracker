@@ -74,7 +74,7 @@ export default function StatusEventTable() {
         <Typography variant='h6'>
           League Tables:{' '}
           <span style={{ marginLeft: '10px' }}>
-            {eventStatus.leagues === '' ? '-' : eventStatus.leagues}
+            {eventStatus.leagues === '' ? 'In Progress' : eventStatus.leagues}
           </span>
         </Typography>
       </div>
