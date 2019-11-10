@@ -1,0 +1,1674 @@
+[
+  [
+    {
+      "element": 47,
+      "position": {
+        "singular_name": "Goalkeeper",
+        "singular_name_short": "GKP"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 141,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 37,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 182,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 191,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 2,
+      "is_captain": true,
+      "is_vice_captain": false
+    },
+    {
+      "element": 420,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 265,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 214,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": true
+    },
+    {
+      "element": 67,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 234,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 166,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 281,
+      "position": {
+        "singular_name": "Goalkeeper",
+        "singular_name_short": "GKP"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 421,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 458,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 274,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    }
+  ],
+  [
+    {
+      "element": 47,
+      "position": {
+        "singular_name": "Goalkeeper",
+        "singular_name_short": "GKP"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 141,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 37,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 182,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 274,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 265,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 191,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 2,
+      "is_captain": true,
+      "is_vice_captain": false
+    },
+    {
+      "element": 421,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 214,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": true
+    },
+    {
+      "element": 166,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 67,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 281,
+      "position": {
+        "singular_name": "Goalkeeper",
+        "singular_name_short": "GKP"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 234,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 420,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 458,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    }
+  ],
+  [
+    {
+      "element": 47,
+      "position": {
+        "singular_name": "Goalkeeper",
+        "singular_name_short": "GKP"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 141,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 37,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 182,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 297,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 239,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": true
+    },
+    {
+      "element": 191,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 421,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 214,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 2,
+      "is_captain": true,
+      "is_vice_captain": false
+    },
+    {
+      "element": 166,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 67,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 281,
+      "position": {
+        "singular_name": "Goalkeeper",
+        "singular_name_short": "GKP"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 420,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 234,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 274,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    }
+  ],
+  [
+    {
+      "element": 47,
+      "position": {
+        "singular_name": "Goalkeeper",
+        "singular_name_short": "GKP"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 141,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 182,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 297,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 274,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": true
+    },
+    {
+      "element": 287,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 191,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 421,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 214,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 2,
+      "is_captain": true,
+      "is_vice_captain": false
+    },
+    {
+      "element": 166,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 67,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 281,
+      "position": {
+        "singular_name": "Goalkeeper",
+        "singular_name_short": "GKP"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 234,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 37,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 239,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    }
+  ],
+  [
+    {
+      "element": 47,
+      "position": {
+        "singular_name": "Goalkeeper",
+        "singular_name_short": "GKP"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 141,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 182,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 297,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 206,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": true
+    },
+    {
+      "element": 463,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 191,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 243,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 214,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 2,
+      "is_captain": true,
+      "is_vice_captain": false
+    },
+    {
+      "element": 534,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 210,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 281,
+      "position": {
+        "singular_name": "Goalkeeper",
+        "singular_name_short": "GKP"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 42,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 468,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 287,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    }
+  ],
+  [
+    {
+      "element": 47,
+      "position": {
+        "singular_name": "Goalkeeper",
+        "singular_name_short": "GKP"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 141,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 42,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 182,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 297,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 463,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 287,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 191,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 468,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 210,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 2,
+      "is_captain": true,
+      "is_vice_captain": false
+    },
+    {
+      "element": 534,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 281,
+      "position": {
+        "singular_name": "Goalkeeper",
+        "singular_name_short": "GKP"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 206,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": true
+    },
+    {
+      "element": 214,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 243,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    }
+  ],
+  [
+    {
+      "element": 47,
+      "position": {
+        "singular_name": "Goalkeeper",
+        "singular_name_short": "GKP"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 182,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 206,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 42,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 191,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 2,
+      "is_captain": true,
+      "is_vice_captain": false
+    },
+    {
+      "element": 287,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 214,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 463,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 215,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": true
+    },
+    {
+      "element": 534,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 460,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 281,
+      "position": {
+        "singular_name": "Goalkeeper",
+        "singular_name_short": "GKP"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 468,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 297,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 141,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    }
+  ],
+  [
+    {
+      "element": 47,
+      "position": {
+        "singular_name": "Goalkeeper",
+        "singular_name_short": "GKP"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 529,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 206,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 182,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 297,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 287,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 191,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 463,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 214,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 2,
+      "is_captain": true,
+      "is_vice_captain": false
+    },
+    {
+      "element": 468,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 460,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": true
+    },
+    {
+      "element": 281,
+      "position": {
+        "singular_name": "Goalkeeper",
+        "singular_name_short": "GKP"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 215,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 42,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 534,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    }
+  ],
+  [
+    {
+      "element": 47,
+      "position": {
+        "singular_name": "Goalkeeper",
+        "singular_name_short": "GKP"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 529,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 42,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 182,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 297,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 287,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 215,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 463,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 214,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 2,
+      "is_captain": true,
+      "is_vice_captain": false
+    },
+    {
+      "element": 460,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": true
+    },
+    {
+      "element": 534,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 281,
+      "position": {
+        "singular_name": "Goalkeeper",
+        "singular_name_short": "GKP"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 206,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 191,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 468,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    }
+  ],
+  [
+    {
+      "element": 47,
+      "position": {
+        "singular_name": "Goalkeeper",
+        "singular_name_short": "GKP"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 182,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 181,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 529,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 42,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 191,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 214,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": true
+    },
+    {
+      "element": 463,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 215,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 2,
+      "is_captain": true,
+      "is_vice_captain": false
+    },
+    {
+      "element": 460,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 534,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 281,
+      "position": {
+        "singular_name": "Goalkeeper",
+        "singular_name_short": "GKP"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 297,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 287,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 468,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    }
+  ],
+  [
+    {
+      "element": 47,
+      "position": {
+        "singular_name": "Goalkeeper",
+        "singular_name_short": "GKP"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 182,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 181,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 529,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 42,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 191,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 214,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 2,
+      "is_captain": true,
+      "is_vice_captain": false
+    },
+    {
+      "element": 463,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 215,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": true
+    },
+    {
+      "element": 460,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 534,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 281,
+      "position": {
+        "singular_name": "Goalkeeper",
+        "singular_name_short": "GKP"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 297,
+      "position": {
+        "singular_name": "Defender",
+        "singular_name_short": "DEF"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 287,
+      "position": {
+        "singular_name": "Midfielder",
+        "singular_name_short": "MID"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    },
+    {
+      "element": 468,
+      "position": {
+        "singular_name": "Forward",
+        "singular_name_short": "FWD"
+      },
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false
+    }
+  ]
+]

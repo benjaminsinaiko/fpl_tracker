@@ -2,13 +2,13 @@ import React, { useState, useEffect, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
-import { AllDataContext } from '../../contexts/allDataContext';
 import { IdsContext } from '../../contexts/idsContext';
 import { LeagueTeamsContext } from '../../contexts/leagueTeamsContext';
+import { WeeklyPicksContext } from '../../contexts/weeklyPicksContext';
 import MissingID from '../userSettings/MissingID';
 import TeamOverall from './TeamOverall';
 import TeamCurrent from './TeamCurrent';
-import TeamPtsDist from './TeamPtsDist';
+import TeamWeeklyPicks from './TeamWeeklyPicks';
 import Week1Team from './Week1Team';
 
 const useStyles = makeStyles(theme => ({
@@ -43,18 +43,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function TeamPage() {
   const classes = useStyles();
-  const { total_players } = useContext(AllDataContext);
   const { teamData } = useContext(IdsContext);
-  const { leagueTeams, myTeam } = useContext(LeagueTeamsContext);
-  // const [myTeam, setMyTeam] = useState(null);
-
-  console.log('leagueTeams', leagueTeams);
-  console.log('myTeam', myTeam);
-
-  // useEffect(() => {
-  //   const mTeam = leagueTeams.filter(team => team.entry === teamData.id);
-  //   setMyTeam(...mTeam);
-  // }, [teamData, leagueTeams]);
 
   if (!teamData) return <MissingID idName='Team' />;
 
@@ -66,11 +55,11 @@ export default function TeamPage() {
         </Typography>
       </div>
 
-      {/* {myTeam && <TeamOverall myTeam={myTeam} totalPlayers={total_players} />}
-      {myTeam && <TeamCurrent myTeam={myTeam} />} */}
+      <TeamOverall />
+      <TeamCurrent />
 
-      {myTeam && <TeamPtsDist myTeam={myTeam} />}
-      {/* <Week1Team /> */}
+      <TeamWeeklyPicks />
+      <Week1Team />
     </div>
   );
 }

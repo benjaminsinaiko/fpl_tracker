@@ -30,11 +30,15 @@ const useStyles = makeStyles(theme => ({
 export default function LeaguePage() {
   const classes = useStyles();
   const { leagueData } = useContext(IdsContext);
-  const leagueTeams = useContext(LeagueTeamsContext);
+  const { leagueTeams } = useContext(LeagueTeamsContext);
   const { weeklyWinners } = useWeeklyWinners();
 
   if (!leagueData) {
     return <MissingID idName='League' />;
+  }
+
+  if (!leagueTeams) {
+    return null;
   }
 
   return (

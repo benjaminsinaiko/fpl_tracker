@@ -1,20 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { ResponsiveBar } from '@nivo/bar';
 import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 
+import { WeeklyPicksContext } from '../../contexts/weeklyPicksContext';
+
 const useStyles = makeStyles(theme => ({
-  barRoot: {
-    width: '100%',
-    maxWidth: 450,
-    height: 500,
-  },
   pointsBar: {
     width: '100%',
     height: '100%',
   },
 }));
+
+function getPtsByPosition(gameweek) {
+  return gameweek.reduce(
+    (acc, player) => {
+      acc[0][player.position.singular_name_short] += player.gw_points;
+      if (player.multiplier > 0) {
+        acc[1][player.position.singular_name_short] += player.gw_points;
+      } else {
+        acc[2][player.position.singular_name_short] += player.gw_points;
+      }
+      return acc;
+    },
+    [
+      { GKP: 0, DEF: 0, MID: 0, FWD: 0 },
+      { GKP: 0, DEF: 0, MID: 0, FWD: 0 },
+      { GKP: 0, DEF: 0, MID: 0, FWD: 0 },
+    ],
+  );
+}
 
 function makeChartData(pointsObj, index) {
   const total = calcTotal(pointsObj);
@@ -49,51 +66,69 @@ function calcTotal(ptsObj) {
   return Object.values(ptsObj).reduce((acc, cur) => acc + cur);
 }
 
-export default function PointsByPositionBar({ points }) {
+export default function PointsByPositionBar() {
   const classes = useStyles();
+  const weeklyPicks = useContext(WeeklyPicksContext);
+  const [pointsByPosition, setPointsByPosition] = useState();
   const [chartData, setChartData] = useState();
   const [btnIndex, setBtnIndex] = useState(1);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    const data = makeChartData(points[btnIndex], btnIndex);
-    setChartData([data[0]]);
-    setTotal(data[1]);
-  }, [points, btnIndex]);
+    function getPoints() {
+      const points = getPtsByPosition(weeklyPicks.flat());
+      setPointsByPosition(points);
+    }
+    weeklyPicks && getPoints();
+  }, [weeklyPicks]);
+
+  useEffect(() => {
+    function makeChart() {
+      const data = makeChartData(pointsByPosition[btnIndex], btnIndex);
+      setChartData([data[0]]);
+      setTotal(data[1]);
+    }
+    pointsByPosition && makeChart();
+  }, [pointsByPosition, btnIndex]);
 
   const onSelectBtn = index => e => {
     setBtnIndex(index);
   };
 
+  if (!chartData) {
+    return null;
+  }
+
   return (
     <div className={classes.pointsBar}>
-      <div className={classes.buttonsGroup}>
-        <ButtonGroup fullWidth aria-label='full width outlined button group'>
-          <Button
-            variant={btnIndex === 0 ? 'contained' : 'outlined'}
-            color='primary'
-            onClick={onSelectBtn(0)}>
-            All
-          </Button>
-          <Button
-            variant={btnIndex === 1 ? 'contained' : 'outlined'}
-            color='primary'
-            onClick={onSelectBtn(1)}>
-            Played
-          </Button>
-          <Button
-            variant={btnIndex === 2 ? 'contained' : 'outlined'}
-            color='primary'
-            onClick={onSelectBtn(2)}>
-            Bench
-          </Button>
-        </ButtonGroup>
-      </div>
+      <ButtonGroup fullWidth aria-label='full width outlined button group'>
+        <Button
+          variant={btnIndex === 0 ? 'contained' : 'outlined'}
+          color='primary'
+          onClick={onSelectBtn(0)}>
+          All
+        </Button>
+        <Button
+          variant={btnIndex === 1 ? 'contained' : 'outlined'}
+          color='primary'
+          onClick={onSelectBtn(1)}>
+          Played
+        </Button>
+        <Button
+          variant={btnIndex === 2 ? 'contained' : 'outlined'}
+          color='primary'
+          onClick={onSelectBtn(2)}>
+          Bench
+        </Button>
+      </ButtonGroup>
+      <Typography align='center' style={{ marginTop: 10 }}>
+        Total - {total}
+      </Typography>
       <ResponsiveBar
         data={chartData}
         keys={['GKP', 'DEF', 'MID', 'FWD']}
         indexBy='type'
-        margin={{ top: 50, right: 80, bottom: 50, left: 40 }}
+        margin={{ top: 10, right: 80, bottom: 150, left: 40 }}
         padding={0.25}
         groupMode='stacked'
         colors={['#e2f700', '#04e8f7', '#01f780', '#f6247b']}

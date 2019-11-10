@@ -46,7 +46,7 @@ function getWeeklyWinners(ptsArray) {
 }
 
 export default function useGroupByWeek() {
-  const leagueTeams = useContext(LeagueTeamsContext);
+  const { leagueTeams } = useContext(LeagueTeamsContext);
 
   const [weeklyData, setWeeklyData] = useState([]);
   const [weeklyWinners, setWeeklyWinners] = useState([]);

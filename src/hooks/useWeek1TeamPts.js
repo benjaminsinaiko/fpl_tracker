@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from 'react';
 
 import { AllDataContext } from '../contexts/allDataContext';
 import { WeeklyPicksContext } from '../contexts/weeklyPicksContext';
-import { addPosition } from '../utils/fplDataHelpers';
 
 function addTeam(teams, teamId) {
   return teams.find(team => team.id === teamId);
