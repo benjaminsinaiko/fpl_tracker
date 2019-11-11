@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
 import { IdsContext } from '../../contexts/idsContext';
-import { LeagueTeamsContext } from '../../contexts/leagueTeamsContext';
-import { WeeklyPicksContext } from '../../contexts/weeklyPicksContext';
 import MissingID from '../userSettings/MissingID';
 import TeamOverall from './TeamOverall';
 import TeamCurrent from './TeamCurrent';

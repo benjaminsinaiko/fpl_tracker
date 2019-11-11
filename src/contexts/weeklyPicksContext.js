@@ -5,8 +5,6 @@ import { AllDataContext } from './allDataContext';
 import { LeagueTeamsContext } from './leagueTeamsContext';
 import { addPosition } from '../utils/fplDataHelpers';
 
-import samplePicks from '../apis/samplePicks.json';
-
 export const WeeklyPicksContext = createContext();
 
 function getPicksUrl(teamId, gameweek) {

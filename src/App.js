@@ -1,5 +1,5 @@
-import React from 'react';
-import { Router, Location } from '@reach/router';
+import React, { useEffect } from 'react';
+import { Router, Match, Location } from '@reach/router';
 import { ThemeProvider } from '@material-ui/styles';
 
 import { IdsProvider } from './contexts/idsContext';
@@ -14,6 +14,13 @@ import LeaguePage from './components/league/LeaguePage';
 import TeamPage from './components/team/TeamPage';
 import HelpPage from './components/help/HelpPage';
 
+function ScrollRestoration() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+  return null;
+}
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -22,6 +29,9 @@ function App() {
           <AllDataProvider>
             <LeagueTeamsProvider>
               <WeeklyPicksProvider>
+                <Match path=''>
+                  {props => <ScrollRestoration {...props} />}
+                </Match>
                 <Navbar />
                 <Router>
                   <StatusPage path='/' />
