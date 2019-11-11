@@ -1,8 +1,9 @@
 # example netlify.toml
 [build]
   command = "npm run build"
+  base = "fpl_tracker/"
+  publish = "fpl_tracker/build/"
   functions = "functions" # not strictly required but putting this for convenience
-  publish = "./build"
 
 [[redirects]]
 from = "/*"
