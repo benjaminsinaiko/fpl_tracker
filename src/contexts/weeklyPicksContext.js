@@ -96,10 +96,6 @@ export function WeeklyPicksProvider({ children }) {
     noPtsPicks && addPtsToPlayers();
   }, [noPtsPicks]);
 
-  if (!weeklyPicks) {
-    return null;
-  }
-
   return (
     <WeeklyPicksContext.Provider value={weeklyPicks}>
       {children}
