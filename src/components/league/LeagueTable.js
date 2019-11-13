@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -10,6 +10,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
+import { LeagueTeamsContext } from '../../contexts/leagueTeamsContext';
+import useWeeklyWinners from '../../hooks/useWeeklyWinners';
 import { countWeeklyWins } from '../../utils/fplDataHelpers';
 
 const useStyles = makeStyles(theme => ({
@@ -42,8 +44,10 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function LeagueTable({ leagueTeams, weeklyWinners }) {
+export default function LeagueTable() {
   const classes = useStyles();
+  const { leagueTeams } = useContext(LeagueTeamsContext);
+  const { weeklyWinners } = useWeeklyWinners();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -65,6 +69,10 @@ export default function LeagueTable({ leagueTeams, weeklyWinners }) {
   function winsDisplay(teamId, winnersArray) {
     const wins = countWeeklyWins(teamId, winnersArray);
     return wins > 0 ? wins : '-';
+  }
+
+  if (!leagueTeams) {
+    return null;
   }
 
   return (
@@ -100,7 +108,9 @@ export default function LeagueTable({ leagueTeams, weeklyWinners }) {
                   <TableCell align='center'>{team.rank}</TableCell>
                   <TableCell align='center'>{team.last_rank}</TableCell>
                   <TableCell align='center'>
-                    {winsDisplay(team.entry, weeklyWinners)}
+                    {weeklyWinners.length
+                      ? winsDisplay(team.entry, weeklyWinners)
+                      : '-'}
                   </TableCell>
                   <TableCell align='center'>
                     {team.current[team.current.length - 1].points}
