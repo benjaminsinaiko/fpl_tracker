@@ -71,7 +71,7 @@ export default function LeagueTable() {
     return wins > 0 ? wins : '-';
   }
 
-  if (!leagueTeams) {
+  if (!weeklyWinners) {
     return null;
   }
 

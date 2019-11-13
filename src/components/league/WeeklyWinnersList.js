@@ -191,29 +191,3 @@ export default function WeeklyWinnersList({ weeklyWinners }) {
     </div>
   );
 }
-
-// {
-//   winners.reverse().map((week, index) => (
-//     <ExpansionPanel
-//       key={index}
-//       expanded={expanded === index}
-//       onChange={handleChange(index)}>
-//       <ExpansionPanelSummary
-//         expandIcon={<ExpandMoreIcon />}
-//         aria-controls='panel1bh-content'
-//         id='panel1bh-header'>
-//         <Typography className={classes.heading}>
-//           GW {winners.length - index}
-//         </Typography>
-//         <Typography className={classes.secondaryHeading}>
-//           League High Score: {week.score}
-//         </Typography>
-//       </ExpansionPanelSummary>
-//       <ExpansionPanelDetails>
-//         {week.winners.map(winner => (
-//           <Typography key={winner.id}>{winner.team}</Typography>
-//         ))}
-//       </ExpansionPanelDetails>
-//     </ExpansionPanel>
-//   ));
-// }

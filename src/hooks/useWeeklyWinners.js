@@ -45,14 +45,13 @@ function getWeeklyWinners(ptsArray) {
   return findWinners;
 }
 
-export default function useGroupByWeek() {
+export default function useWeeklyWinners() {
   const { leagueTeams } = useContext(LeagueTeamsContext);
-
   const [weeklyData, setWeeklyData] = useState([]);
   const [weeklyWinners, setWeeklyWinners] = useState([]);
 
   useEffect(() => {
-    if (leagueTeams) {
+    if (leagueTeams.length) {
       const weekly = groupPtsByWeek(leagueTeams);
       setWeeklyData(weekly);
       setWeeklyWinners(getWeeklyWinners(weekly).reverse());
