@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import NextIcon from '@material-ui/icons/NavigateNext';
 import BeforeIcon from '@material-ui/icons/NavigateBefore';
 
+import { LeagueTeamsContext } from '../../contexts/leagueTeamsContext';
 import TeamCard from './TeamCard';
 
 const useStyles = makeStyles(theme => ({
@@ -33,17 +34,22 @@ const useStyles = makeStyles(theme => ({
 
 const cardsPerPage = 10;
 
-export default function LeagueTeamCards({ teams }) {
+export default function LeagueTeamCards() {
   const classes = useStyles();
+  const { leagueTeams } = useContext(LeagueTeamsContext);
   const [expanded, setExpanded] = useState(false);
   const [page, setPage] = useState(0);
-  const numPages = Math.ceil(teams.length / cardsPerPage) - 1;
+  const numPages = Math.ceil(leagueTeams.length / cardsPerPage) - 1;
 
   function handlePageNext() {
     setPage(page => page + 1);
   }
   function handlePageBack() {
     setPage(page => page - 1);
+  }
+
+  if (!leagueTeams) {
+    return null;
   }
 
   return (
@@ -54,7 +60,7 @@ export default function LeagueTeamCards({ teams }) {
             <BeforeIcon className={classes.nextIcon} />
           </IconButton>
         ) : null}
-        {teams
+        {leagueTeams
           .slice(page * cardsPerPage, page * cardsPerPage + cardsPerPage)
           .map(card => (
             <TeamCard
