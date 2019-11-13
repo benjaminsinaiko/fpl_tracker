@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
@@ -6,6 +6,8 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Divider from '@material-ui/core/Divider';
+
+import { LeagueTeamsContext } from '../../contexts/leagueTeamsContext';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,23 +33,23 @@ const useStyles = makeStyles(theme => ({
   event: {
     color: '#320336',
   },
-  winnersCount: {
-    fontSize: '.7em',
-    color: theme.palette.text.secondary,
-    '& span': {
-      fontSize: '1.1em',
-      color: '#f6247b',
-      marginLeft: 2,
-    },
-  },
   secondaryHeading: {
     color: theme.palette.text.secondary,
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     '& span': {
       fontSize: '1.2em',
       color: '#f6247b',
+    },
+  },
+  winnersCount: {
+    fontSize: '.7em',
+    color: theme.palette.text.secondary,
+    '& span': {
+      fontSize: '.9em',
+      color: '#f6247b',
+      marginLeft: 2,
     },
   },
   topScores: {
@@ -75,10 +77,27 @@ const useStyles = makeStyles(theme => ({
       color: '#f6247b',
     },
   },
+  myTeamDivider: {
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+  },
+  myTeamName: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    color: '#0155a2',
+    '& p': {
+      fontSize: '.8em',
+    },
+  },
 }));
+
+function myTeamWinner(myTeam, winners) {
+  return winners.some(winner => winner.id === myTeam.entry);
+}
 
 export default function WeeklyWinnersList({ weeklyWinners }) {
   const classes = useStyles();
+  const { myTeam } = useContext(LeagueTeamsContext);
   const [expanded, setExpanded] = useState(0);
 
   const handleChange = panel => (event, isExpanded) => {
@@ -104,9 +123,6 @@ export default function WeeklyWinnersList({ weeklyWinners }) {
                 <Typography variant='subtitle1' className={classes.event}>
                   GW {weeklyWinners.length - index}
                 </Typography>
-                <Typography className={classes.winnersCount}>
-                  Winners: <span>{week.winners.length}</span>
-                </Typography>
               </div>
               <div className={classes.secondaryHeading}>
                 <Typography className={classes.topScores}>
@@ -118,6 +134,14 @@ export default function WeeklyWinnersList({ weeklyWinners }) {
                     {week.winners[0].rank
                       ? week.winners[0].rank.toLocaleString()
                       : '-'}
+                  </span>
+                </Typography>
+                <Typography className={classes.winnersCount}>
+                  Winner: <span>{week.winners[0].team}</span>
+                  <span>
+                    {week.winners.length > 1
+                      ? ` + ${week.winners.length - 1}`
+                      : null}
                   </span>
                 </Typography>
               </div>
@@ -140,6 +164,27 @@ export default function WeeklyWinnersList({ weeklyWinners }) {
                   </div>
                 </React.Fragment>
               ))}
+              {myTeam && myTeamWinner(myTeam, week.winners) ? null : (
+                <React.Fragment>
+                  <Divider className={classes.myTeamDivider} />
+                  <div className={classes.myTeamName}>
+                    <Typography>{myTeam.entry_name}</Typography>
+                    <Typography>{myTeam.player_name}</Typography>
+                  </div>
+                  <div className={classes.teamScores}>
+                    <Typography>
+                      Total points:{' '}
+                      <span>{myTeam.current.reverse()[index].points}</span>
+                    </Typography>
+                    <Typography>
+                      Transfers cost:{' '}
+                      <span>
+                        {myTeam.current.reverse()[index].event_transfers_cost}
+                      </span>
+                    </Typography>
+                  </div>
+                </React.Fragment>
+              )}
             </ExpansionPanelDetails>
           </ExpansionPanel>
         ))}
