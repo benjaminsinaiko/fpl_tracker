@@ -112,9 +112,13 @@ export default function LeagueBarRace() {
 
   useInterval(
     () => {
-      setCurrent(current + 1);
+      if (current === leaguePoints.length - 1) {
+        setIsRunning(false);
+      } else {
+        setCurrent(current + 1);
+      }
     },
-    isRunning ? 2000 : null,
+    isRunning ? 1500 : null,
   );
 
   function startRace() {
@@ -126,6 +130,9 @@ export default function LeagueBarRace() {
   function restartRace() {
     setIsRunning(false);
     setCurrent(0);
+    setTimeout(() => {
+      setIsRunning(true);
+    }, 1500);
   }
 
   if (!leaguePoints) {
@@ -141,11 +148,13 @@ export default function LeagueBarRace() {
       <div className={classes.raceHeader}>
         <Typography variant='h6'>Pts Race - GW {current + 1}</Typography>
         <div>
-          <Button
-            onClick={current === 0 ? startRace : stopRace}
-            style={{ color: isRunning ? '#e0004c' : '#006831' }}>
-            {!isRunning ? 'Start' : 'Stop'}
-          </Button>
+          {current === leaguePoints.length - 1 ? null : (
+            <Button
+              onClick={!isRunning ? startRace : stopRace}
+              style={{ color: isRunning ? '#e0004c' : '#006831' }}>
+              {!isRunning ? 'Start' : 'Stop'}
+            </Button>
+          )}
           <Button disabled={current === 0} onClick={restartRace}>
             Restart
           </Button>
