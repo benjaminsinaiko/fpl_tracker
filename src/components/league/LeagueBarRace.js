@@ -1,8 +1,11 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { ResponsiveBar } from '@nivo/bar';
+
+import { LeagueTeamsContext } from '../../contexts/leagueTeamsContext';
+import useInterval from '../../hooks/useInterval';
 
 const useStyles = makeStyles(theme => ({
   raceRoot: {
@@ -81,44 +84,49 @@ const BarComponent = props => {
   );
 };
 
-export default function LeagueBarRace({ leagueTeams }) {
+function calcWeeklyPts(leagueTeams) {
+  return leagueTeams.reduce((acc, team) => {
+    team.current.forEach((week, i) => {
+      if (!acc[i]) {
+        acc[i] = [];
+      }
+      acc[i].push({ id: team.entry_name, value: week.total_points });
+    });
+    return acc;
+  }, []);
+}
+
+export default function LeagueBarRace() {
   const classes = useStyles();
-  const [current, setCurrent] = useState(0);
+  const { leagueTeams } = useContext(LeagueTeamsContext);
   const [leaguePoints, setLeaguePoints] = useState(null);
+  const [current, setCurrent] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
-    let weeklyPoints;
-    if (leagueTeams.length) {
-      weeklyPoints = leagueTeams.reduce((acc, team) => {
-        team.current.forEach((week, i) => {
-          if (!acc[i]) {
-            acc[i] = [];
-          }
-          acc[i].push({ id: team.entry_name, value: week.total_points });
-        });
-
-        return acc;
-      }, []);
-      setLeaguePoints(weeklyPoints);
+    if (leagueTeams.length > 0) {
+      const weeklyPts = calcWeeklyPts(leagueTeams);
+      setLeaguePoints(weeklyPts);
     }
   }, [leagueTeams]);
 
-  const runWeekly = useCallback(() => {
-    if (current < leaguePoints.length - 1) {
-      const timer = setInterval(() => {
-        setCurrent(cur => cur + 1);
-        clearInterval(timer);
-      }, 2000);
-    }
-  }, [leaguePoints, current]);
+  useInterval(
+    () => {
+      setCurrent(current + 1);
+    },
+    isRunning ? 2000 : null,
+  );
 
-  function restartWeekly() {
+  function startRace() {
+    setIsRunning(true);
+  }
+  function stopRace() {
+    setIsRunning(false);
+  }
+  function restartRace() {
+    setIsRunning(false);
     setCurrent(0);
   }
-
-  useEffect(() => {
-    leaguePoints && runWeekly();
-  }, [leaguePoints, runWeekly]);
 
   if (!leaguePoints) {
     return null;
@@ -132,11 +140,16 @@ export default function LeagueBarRace({ leagueTeams }) {
     <div className={classes.raceRoot}>
       <div className={classes.raceHeader}>
         <Typography variant='h6'>Pts Race - GW {current + 1}</Typography>
-        <Button
-          disabled={current !== leaguePoints.length - 1}
-          onClick={restartWeekly}>
-          Restart
-        </Button>
+        <div>
+          <Button
+            onClick={current === 0 ? startRace : stopRace}
+            style={{ color: isRunning ? '#e0004c' : '#006831' }}>
+            {!isRunning ? 'Start' : 'Stop'}
+          </Button>
+          <Button disabled={current === 0} onClick={restartRace}>
+            Restart
+          </Button>
+        </div>
       </div>
       <ResponsiveBar
         layout='horizontal'
