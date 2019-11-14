@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
     height: theme.spacing(8),
     display: 'flex',
     color: '#fff',
-    backgroundColor: '#f6a418',
+    backgroundColor: '#0155a2',
     '& div': {
       justifyContent: 'space-around',
       alignItems: 'center',

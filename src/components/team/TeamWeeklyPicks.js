@@ -2,8 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
+import PointsPie from './PointsPie';
 import AvgPointsPositionBar from './AvgPointsPositionBar';
-import PointsByPositionBar from './PointsByPositionBar';
 
 const useStyles = makeStyles(theme => ({
   weeklyRoot: {
@@ -15,10 +15,12 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(2),
   },
   positionChart: {
+    marginTop: 25,
     width: '100%',
-    height: 500,
+    height: 550,
   },
   avgChart: {
+    marginTop: 25,
     width: '100%',
     height: 400,
   },
@@ -31,7 +33,7 @@ export default function TeamWeeklyPicks() {
     <div className={classes.weeklyRoot}>
       <div className={classes.positionChart}>
         <Typography className={classes.header}>Points By Position</Typography>
-        <PointsByPositionBar />
+        <PointsPie />
       </div>
       <div className={classes.avgChart}>
         <Typography className={classes.header}>

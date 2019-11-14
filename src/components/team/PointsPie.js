@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { ResponsiveBar } from '@nivo/bar';
+import { ResponsivePie } from '@nivo/pie';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
@@ -33,46 +33,20 @@ function getPtsByPosition(gameweek) {
   );
 }
 
-function makeChartData(pointsObj, index) {
-  const total = calcTotal(pointsObj);
-  let type;
-  switch (index) {
-    case 0: {
-      type = 'All Points';
-      break;
-    }
-    case 1: {
-      type = 'Played Points';
-      break;
-    }
-    case 2: {
-      type = 'Bench Points';
-      break;
-    }
-    default: {
-      break;
-    }
-  }
-  return [
-    {
-      type: type,
-      ...pointsObj,
-    },
-    total,
-  ];
+function makeChartData(pointsObj) {
+  const total = Object.values(pointsObj).reduce((acc, cur) => acc + cur);
+  const data = Object.entries(pointsObj).map(pos => {
+    return { id: pos[0], label: pos[0], value: pos[1] };
+  });
+  return [[...data], total];
 }
 
-function calcTotal(ptsObj) {
-  return Object.values(ptsObj).reduce((acc, cur) => acc + cur);
-}
-
-export default function PointsByPositionBar() {
+export default function PointsPie() {
   const classes = useStyles();
   const weeklyPicks = useContext(WeeklyPicksContext);
   const [pointsByPosition, setPointsByPosition] = useState();
   const [chartData, setChartData] = useState();
   const [btnIndex, setBtnIndex] = useState(1);
-  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     function getPoints() {
@@ -84,12 +58,13 @@ export default function PointsByPositionBar() {
 
   useEffect(() => {
     function makeChart() {
-      const data = makeChartData(pointsByPosition[btnIndex], btnIndex);
-      setChartData([data[0]]);
-      setTotal(data[1]);
+      const dataArray = pointsByPosition.map(ptsType => {
+        return makeChartData(ptsType);
+      });
+      setChartData(dataArray);
     }
     pointsByPosition && makeChart();
-  }, [pointsByPosition, btnIndex]);
+  }, [pointsByPosition]);
 
   const onSelectBtn = index => e => {
     setBtnIndex(index);
@@ -122,61 +97,38 @@ export default function PointsByPositionBar() {
         </Button>
       </ButtonGroup>
       <Typography align='center' style={{ marginTop: 10 }}>
-        Total - {total}
+        Total - {chartData[btnIndex][1]}
       </Typography>
-      <ResponsiveBar
-        data={chartData}
-        keys={['GKP', 'DEF', 'MID', 'FWD']}
-        indexBy='type'
-        margin={{ top: 10, right: 80, bottom: 150, left: 40 }}
-        padding={0.25}
-        groupMode='stacked'
+      <ResponsivePie
+        data={chartData[btnIndex][0]}
+        margin={{ top: -20, right: 50, bottom: 120, left: 50 }}
+        startAngle={-90}
+        endAngle={270}
+        innerRadius={0.5}
+        padAngle={0.7}
+        cornerRadius={3}
         colors={['#e2f700', '#04e8f7', '#01f780', '#f6247b']}
-        borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
-        axisTop={null}
-        axisRight={null}
-        axisBottom={{
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-        }}
-        axisLeft={{
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-        }}
-        labelSkipWidth={12}
-        labelSkipHeight={12}
-        labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
-        legends={[
-          {
-            dataFrom: 'keys',
-            anchor: 'bottom-right',
-            direction: 'column',
-            justify: false,
-            translateX: 120,
-            translateY: 0,
-            itemsSpacing: 2,
-            itemWidth: 100,
-            itemHeight: 20,
-            itemDirection: 'left-to-right',
-            itemOpacity: 0.85,
-            symbolSize: 20,
-            effects: [
-              {
-                on: 'hover',
-                style: {
-                  itemOpacity: 1,
-                },
-              },
-            ],
-          },
-        ]}
+        borderWidth={1}
+        borderColor={{ from: 'color', modifiers: [['darker', 0.2]] }}
+        radialLabelsSkipAngle={10}
+        radialLabelsTextXOffset={6}
+        radialLabelsTextColor='#333333'
+        radialLabelsLinkOffset={0}
+        radialLabelsLinkDiagonalLength={10}
+        radialLabelsLinkHorizontalLength={10}
+        radialLabelsLinkStrokeWidth={1}
+        radialLabelsLinkColor={{ from: 'color' }}
+        slicesLabelsSkipAngle={10}
+        slicesLabelsTextColor='#333333'
+        animate={true}
+        motionStiffness={90}
+        motionDamping={15}
         tooltip={({ id, value, color }) => (
           <div style={{ color }}>
-            {id}: {value} ({Math.floor((value / total) * 100)}%)
+            {id}: {value} ({Math.floor((value / chartData[btnIndex][1]) * 100)}
+            %)
             <hr />
-            Total: {total}
+            Total: {chartData[btnIndex][1]}
           </div>
         )}
         theme={{
@@ -186,9 +138,26 @@ export default function PointsByPositionBar() {
             },
           },
         }}
-        animate={true}
-        motionStiffness={90}
-        motionDamping={15}
+        legends={[
+          {
+            anchor: 'bottom',
+            direction: 'row',
+            translateY: -10,
+            itemWidth: 70,
+            itemHeight: 18,
+            itemTextColor: '#999',
+            symbolSize: 18,
+            symbolShape: 'circle',
+            effects: [
+              {
+                on: 'hover',
+                style: {
+                  itemTextColor: '#000',
+                },
+              },
+            ],
+          },
+        ]}
       />
     </div>
   );

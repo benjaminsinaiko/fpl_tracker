@@ -52,10 +52,8 @@ export default function TeamPage() {
           {teamData.name}
         </Typography>
       </div>
-
       <TeamOverall />
       <TeamCurrent />
-
       <TeamWeeklyPicks />
       <Week1Team />
     </div>
