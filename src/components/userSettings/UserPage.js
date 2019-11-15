@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
+import UserCloseBtn from './UserCloseBtn';
 import IDsDisplay from './IDsDisplay';
 import IDsEdit from './IDsEdit';
 
@@ -24,6 +25,7 @@ export default function UserPage() {
 
   return (
     <div className={classes.userRoot}>
+      <UserCloseBtn />
       <div className={classes.editBox}>
         <IDsDisplay />
         <IDsEdit />
