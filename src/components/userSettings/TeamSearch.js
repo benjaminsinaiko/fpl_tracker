@@ -3,9 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 
-import { IdsDispatchContext } from '../../contexts/idsContext';
+import { IdsContext, IdsDispatchContext } from '../../contexts/idsContext';
 import useDataApi from '../../hooks/useDataApi';
 import { getTeamUrl } from '../../apis/FPL';
 import LeagueSelect from './LeagueSelect';
@@ -15,6 +17,8 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
     '& div': {
       marginRight: theme.spacing(0.25),
       marginLeft: theme.spacing(0.25),
@@ -51,12 +55,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const initialState = '';
-
 export default function TeamSearch({ handleCancel }) {
   const classes = useStyles();
-  const [team, setTeam] = useState(initialState);
+  const {
+    teamData: { id },
+  } = useContext(IdsContext);
+  const [team, setTeam] = useState(id);
   const [league, setLeague] = useState('');
+  const [isUpdating, setIsUpdating] = useState(false);
   const dispatch = useContext(IdsDispatchContext);
   const {
     data: teamData,
@@ -77,13 +83,21 @@ export default function TeamSearch({ handleCancel }) {
     callTeamApi(getTeamUrl(team));
   }
 
+  function handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      handleSetTeam();
+    }
+  }
+
   function handleSetIds() {
+    setIsUpdating(true);
     dispatch({ type: 'SET_TEAM', teamData: teamData });
     dispatch({ type: 'SET_LEAGUE', leagueData: leagueData ? leagueData : '' });
 
     setTimeout(() => {
-      handleCancel();
-    }, 500);
+      setIsUpdating(false);
+      window.history.back();
+    }, 1800);
   }
 
   function getCookies() {
@@ -108,6 +122,7 @@ export default function TeamSearch({ handleCancel }) {
               id='team-id'
               label='Set Team ID'
               onChange={handleChange}
+              onKeyPress={handleKeyPress}
               value={team}
               margin='dense'
               autoComplete='team-id'
@@ -177,6 +192,23 @@ export default function TeamSearch({ handleCancel }) {
           </div>
         </Slide>
       )}
+      <div>
+        <Dialog
+          open={isUpdating}
+          aria-labelledby='alert-dialog-updating-title'
+          aria-describedby='alert-dialog-updating-description'>
+          <DialogTitle id='alert-dialog-updating-title'>
+            {'FPL Team/League IDs'}
+          </DialogTitle>
+          <Typography
+            variant='h5'
+            align='center'
+            color='secondary'
+            gutterBottom>
+            UPDATING
+          </Typography>
+        </Dialog>
+      </div>
     </div>
   );
 }

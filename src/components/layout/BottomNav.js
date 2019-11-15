@@ -8,8 +8,6 @@ import StatsIcon from '@material-ui/icons/Equalizer';
 import LeagueIcon from '@material-ui/icons/FormatListNumbered';
 import SettingsIcon from '@material-ui/icons/SettingsApplications';
 
-import SettingsDrawer from '../userSettings/SettingsDrawer';
-
 const useStyles = makeStyles({
   root: {
     width: '100%',
@@ -25,18 +23,6 @@ export default function BottomNav({ path }) {
   useEffect(() => {
     setValue(path);
   }, [path]);
-
-  const [drawerOpen, setDrawerOpen] = useState(false);
-
-  const toggleDrawer = open => event => {
-    if (
-      event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
-    ) {
-      return;
-    }
-    setDrawerOpen(open);
-  };
 
   return (
     <BottomNavigation value={value} className={classes.root}>
@@ -63,10 +49,11 @@ export default function BottomNav({ path }) {
       />
       <BottomNavigationAction
         label='Settings'
+        value='/user'
+        component={Link}
+        to='/user'
         icon={<SettingsIcon />}
-        onClick={toggleDrawer(true)}
       />
-      <SettingsDrawer open={drawerOpen} toggle={toggleDrawer} />
     </BottomNavigation>
   );
 }

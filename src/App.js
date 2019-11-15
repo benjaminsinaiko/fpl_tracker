@@ -8,6 +8,7 @@ import { LeagueTeamsProvider } from './contexts/leagueTeamsContext';
 import { WeeklyPicksProvider } from './contexts/weeklyPicksContext';
 import theme from './ui/theme';
 import Navbar from './components/layout/Navbar';
+import UserPage from './components/userSettings/UserPage';
 import BottomNav from './components/layout/BottomNav';
 import StatusPage from './components/status/StatusPage';
 import LeaguePage from './components/league/LeaguePage';
@@ -37,6 +38,7 @@ function App() {
                   <StatusPage path='/' />
                   <LeaguePage path='/league' />
                   <TeamPage path='/team' />
+                  <UserPage path='/user' />
                   <HelpPage path='/help' />
                 </Router>
                 <Location>

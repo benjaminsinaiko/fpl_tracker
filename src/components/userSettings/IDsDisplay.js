@@ -8,11 +8,12 @@ const useStyles = makeStyles(theme => ({
   displayRoot: {
     width: '100%',
     height: 130,
+    backgroundColor: '#04e8f7',
     display: 'flex',
     justifyContent: 'space-evenly',
     alignItems: 'flex-start',
     textAlign: 'center',
-    marginTop: theme.spacing(1),
+    paddingTop: theme.spacing(2),
   },
   idBox: {
     width: '50%',
@@ -30,7 +31,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function IdDisplay() {
+export default function IDsDisplay() {
   const classes = useStyles();
   const ids = useContext(IdsContext);
 

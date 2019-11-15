@@ -50,9 +50,15 @@ export default function LeagueSelect({
     const leagueId = teamData.leagues.classic[index].id;
     const leagueUrl = getLeagueUrl(leagueId);
 
-    callLeagueApi(leagueUrl);
-    setLeague(leagueId);
-    setSelectedIndex(index);
+    const wnd = window.open(
+      `https://fantasy.premierleague.com/api/leagues-classic/${leagueId}/standings/?page_new_entries=1&page_standings=1&phase=1`,
+    );
+    setTimeout(() => {
+      wnd.close();
+      callLeagueApi(leagueUrl);
+      setLeague(leagueId);
+      setSelectedIndex(index);
+    }, 50);
   }
 
   useEffect(() => {

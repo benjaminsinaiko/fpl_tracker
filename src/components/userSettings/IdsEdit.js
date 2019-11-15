@@ -2,11 +2,11 @@ import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import EditIcon from '@material-ui/icons/Edit';
+import CancelIcon from '@material-ui/icons/Clear';
 import ClearIcon from '@material-ui/icons/ClearAll';
 import Slide from '@material-ui/core/Slide';
 
 import { IdsDispatchContext } from '../../contexts/idsContext';
-import IdDisplay from './IdDisplay';
 import TeamSearch from './TeamSearch';
 
 const useStyles = makeStyles(theme => ({
@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function IdsEdit() {
+export default function IDsEdit() {
   const classes = useStyles();
   const [isEdit, setIsEdit] = useState(false);
   const dispatch = useContext(IdsDispatchContext);
@@ -65,39 +65,35 @@ export default function IdsEdit() {
 
   return (
     <div className={classes.editRoot}>
-      {isEdit ? (
+      <div className={classes.buttonGroup}>
+        <Button
+          onClick={!isEdit ? handleClear : handleCancel}
+          variant='contained'
+          className={classes.clearButton}>
+          {!isEdit ? 'Clear' : 'Cancel'}
+          {!isEdit ? (
+            <ClearIcon className={classes.buttonIcon} />
+          ) : (
+            <CancelIcon className={classes.buttonIcon} />
+          )}
+        </Button>
+        <Button
+          disabled={isEdit}
+          onClick={handleOpenEdit}
+          variant='contained'
+          color='primary'
+          className={classes.editButton}>
+          Add / Edit
+          <EditIcon className={classes.buttonIcon} />
+        </Button>
+      </div>
+
+      {isEdit && (
         <Slide direction='up' in={isEdit} mountOnEnter unmountOnExit>
           <div>
-            <Button
-              onClick={handleCancel}
-              size='small'
-              className={classes.cancelButton}>
-              Cancel
-            </Button>
             <TeamSearch handleCancel={handleCancel} />
           </div>
         </Slide>
-      ) : (
-        <>
-          <IdDisplay />
-          <div className={classes.buttonGroup}>
-            <Button
-              onClick={handleClear}
-              variant='contained'
-              className={classes.clearButton}>
-              Clear
-              <ClearIcon className={classes.buttonIcon} />
-            </Button>
-            <Button
-              onClick={handleOpenEdit}
-              variant='contained'
-              color='primary'
-              className={classes.editButton}>
-              Add / Edit
-              <EditIcon className={classes.buttonIcon} />
-            </Button>
-          </div>
-        </>
       )}
     </div>
   );
