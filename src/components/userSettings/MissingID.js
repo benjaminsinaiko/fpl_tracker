@@ -3,8 +3,9 @@ import { Link } from '@reach/router';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   missingCardRoot: {
     height: '80vh',
     display: 'flex',
@@ -54,12 +55,25 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    '& a': {
-      color: '#04e8f7',
-      textDecoration: 'none',
+  },
+  settingsBtn: {
+    color: '#fff',
+    backgroundColor: '#8d36f7',
+    margin: theme.spacing(1),
+    '&:hover': {
+      backgroundColor: '#c182ff',
     },
   },
-});
+  helpBtn: {
+    color: '#f6a418',
+    margin: theme.spacing(1),
+    border: '1px solid #fff',
+    '&:hover': {
+      backgroundColor: '#fff',
+      border: '1px solid #ffc672',
+    },
+  },
+}));
 
 export default function MissingID({ idName }) {
   const classes = useStyles();
@@ -79,10 +93,16 @@ export default function MissingID({ idName }) {
           </Typography>
         </div>
         <div className={classes.help}>
-          <Typography color='textSecondary'>add in Settings</Typography>
-          <Typography component={Link} to='/help'>
-            Get Help
-          </Typography>
+          <Button
+            variant='contained'
+            className={classes.settingsBtn}
+            component={Link}
+            to='/user'>
+            Add IDs
+          </Button>
+          <Button className={classes.helpBtn} component={Link} to='/help'>
+            IDs Help
+          </Button>
         </div>
       </Paper>
     </div>
