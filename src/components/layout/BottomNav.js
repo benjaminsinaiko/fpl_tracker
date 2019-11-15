@@ -15,6 +15,9 @@ const useStyles = makeStyles({
     bottom: 0,
     backgroundColor: '#8d36f7',
   },
+  iconRoot: {
+    padding: '6px 8px 8px',
+  },
 });
 
 export default function BottomNav({ path }) {
@@ -27,6 +30,7 @@ export default function BottomNav({ path }) {
   return (
     <BottomNavigation value={value} className={classes.root}>
       <BottomNavigationAction
+        classes={{ root: classes.iconRoot }}
         label='Status'
         value='/'
         component={Link}
@@ -34,6 +38,7 @@ export default function BottomNav({ path }) {
         icon={<StatusIcon />}
       />
       <BottomNavigationAction
+        classes={{ root: classes.iconRoot }}
         label='League'
         value='/league'
         component={Link}
@@ -41,6 +46,7 @@ export default function BottomNav({ path }) {
         icon={<LeagueIcon />}
       />
       <BottomNavigationAction
+        classes={{ root: classes.iconRoot }}
         label='Team'
         value='/team'
         component={Link}
@@ -48,6 +54,7 @@ export default function BottomNav({ path }) {
         icon={<StatsIcon />}
       />
       <BottomNavigationAction
+        classes={{ root: classes.iconRoot }}
         label='Settings'
         value='/user'
         component={Link}
