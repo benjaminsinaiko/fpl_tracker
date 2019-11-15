@@ -19,6 +19,10 @@ const useStyles = makeStyles(theme => ({
     '& img': {
       maxWidth: 600,
     },
+    '& hr': {
+      margin: theme.spacing(2),
+      backgroundColor: '#8d36f7',
+    },
     [theme.breakpoints.down('xs')]: {
       '& img': {
         width: '100%',
