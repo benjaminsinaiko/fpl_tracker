@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function IDsEdit() {
+export default function IDsEdit({ handleClose }) {
   const classes = useStyles();
   const [isEdit, setIsEdit] = useState(false);
   const dispatch = useContext(IdsDispatchContext);
@@ -91,7 +91,7 @@ export default function IDsEdit() {
       {isEdit && (
         <Slide direction='up' in={isEdit} mountOnEnter unmountOnExit>
           <div>
-            <TeamSearch handleCancel={handleCancel} />
+            <TeamSearch handleCancel={handleCancel} handleClose={handleClose} />
           </div>
         </Slide>
       )}

@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
   idNumber: {
     fontSize: '2.4em',
-    color: '#f6247b',
+    color: '#8d36f7',
   },
   idName: {
     fontSize: '.8em',

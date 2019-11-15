@@ -55,12 +55,12 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function TeamSearch({ handleCancel }) {
+export default function TeamSearch({ handleCancel, handleClose }) {
   const classes = useStyles();
   const {
     teamData: { id },
   } = useContext(IdsContext);
-  const [team, setTeam] = useState(id);
+  const [team, setTeam] = useState(id || '');
   const [league, setLeague] = useState('');
   const [isUpdating, setIsUpdating] = useState(false);
   const dispatch = useContext(IdsDispatchContext);
@@ -92,12 +92,14 @@ export default function TeamSearch({ handleCancel }) {
   function handleSetIds() {
     setIsUpdating(true);
     dispatch({ type: 'SET_TEAM', teamData: teamData });
-    dispatch({ type: 'SET_LEAGUE', leagueData: leagueData ? leagueData : '' });
-
+    dispatch({
+      type: 'SET_LEAGUE',
+      leagueData: leagueData ? leagueData : '',
+    });
     setTimeout(() => {
       setIsUpdating(false);
-      window.history.back();
-    }, 1800);
+      handleClose();
+    }, 1500);
   }
 
   function getCookies() {

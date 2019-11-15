@@ -1,5 +1,4 @@
 import React from 'react';
-import { navigate } from '@reach/router';
 import { makeStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import CloseIcon from '@material-ui/icons/Close';
@@ -7,7 +6,6 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 const useStyles = makeStyles(theme => ({
   fab: {
-    margin: theme.spacing(1),
     margin: 0,
     top: 90,
     left: 25,
@@ -17,23 +15,14 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#f6247b',
     color: '#fff',
     [theme.breakpoints.down('xs')]: {
-      top: 65,
+      top: 60,
       left: 10,
     },
   },
 }));
 
-export default function UserCloseBtn() {
+export default function UserCloseBtn({ handleClose }) {
   const classes = useStyles();
-
-  function closeSettings(params) {
-    if (window.history > 2) {
-      window.history.back();
-    } else {
-      navigate('/');
-    }
-    console.log(window.history);
-  }
 
   return (
     <Tooltip title='Close' aria-label='close' disableFocusListener>
@@ -41,7 +30,7 @@ export default function UserCloseBtn() {
         aria-label='close'
         className={classes.fab}
         size='small'
-        onClick={closeSettings}>
+        onClick={handleClose}>
         <CloseIcon />
       </Fab>
     </Tooltip>
