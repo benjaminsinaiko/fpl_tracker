@@ -80,7 +80,7 @@ export default function HelpPage() {
       </Typography>
       <div>
         <List>
-          <Typography variant='subtitle2' className={classes.teamHelp}>
+          <Typography variant='h6' className={classes.teamHelp}>
             Finding your Team ID
           </Typography>
           <ListItem className={classes.stepItem}>
@@ -121,7 +121,7 @@ export default function HelpPage() {
           </ListItem>
         </List>
         <List>
-          <Typography variant='subtitle2' className={classes.teamHelp}>
+          <Typography variant='h6' className={classes.teamHelp}>
             Issues with League Auth
           </Typography>
           <ListItem className={classes.stepItem}>
