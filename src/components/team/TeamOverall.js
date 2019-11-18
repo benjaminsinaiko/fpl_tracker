@@ -73,7 +73,7 @@ export default function TeamOverall() {
   const classes = useStyles();
   const { total_players: totalPlayers } = useContext(AllDataContext);
   const { myTeam } = useContext(LeagueTeamsContext);
-  const { response } = useAxios('/api/leagues-classic/314/standings/');
+  const { response } = useAxios('/api/leagues-classic/314/standings');
   const [topScore, setTopScore] = useState(null);
   const [totalPoints, setTotalPoints] = useState(0);
   const [lastOverallRank, setLastOverallRank] = useState(0);
