@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
   leagueName: {
     fontSize: '2em',
-    color: '#320336',
+    color: '#01f780',
     margin: '24px 16px',
     wordBreak: 'break-all',
   },

@@ -104,6 +104,10 @@ export default function WeeklyWinnersList({ weeklyWinners }) {
     setExpanded(isExpanded ? panel : false);
   };
 
+  if (!myTeam) {
+    return null;
+  }
+
   return (
     <div className={classes.root}>
       <Typography variant='h6' align='center' gutterBottom>
