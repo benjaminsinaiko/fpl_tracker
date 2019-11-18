@@ -25,8 +25,8 @@ function ScrollRestoration() {
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div className='App'>
-        <IdsProvider>
+      <IdsProvider>
+        <div className='App'>
           <AllDataProvider>
             <LeagueTeamsProvider>
               <WeeklyPicksProvider>
@@ -47,8 +47,8 @@ function App() {
               </WeeklyPicksProvider>
             </LeagueTeamsProvider>
           </AllDataProvider>
-        </IdsProvider>
-      </div>
+        </div>
+      </IdsProvider>
     </ThemeProvider>
   );
 }

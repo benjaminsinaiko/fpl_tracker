@@ -27,8 +27,11 @@ function findMyTeam(teams, teamId) {
 
 export function LeagueTeamsProvider({ children }) {
   const { leagueData, teamData } = useContext(IdsContext);
-  const [leagueTeams, setLeagueTeams] = useState([]);
-  const [myTeam, setMyTeam] = useState();
+
+  const [data, setData] = useState({
+    leagueTeams: [],
+    myTeam: null,
+  });
 
   const firstUpdate = useRef(true);
   useEffect(() => {
@@ -43,7 +46,7 @@ export function LeagueTeamsProvider({ children }) {
         });
         if (!includesMyTeam) {
           const myTeam = makeMyTeam(teamData);
-          withUrls.push(myTeam);
+          withUrls.splice(withUrls.lenght - 1, 1, myTeam);
         }
 
         function getTeamHistory(team) {
@@ -75,25 +78,24 @@ export function LeagueTeamsProvider({ children }) {
         );
         try {
           const teamsData = await Promise.all(promiseArray);
-          setLeagueTeams(
-            teamsData.sort(
-              (a, b) =>
-                b.current[b.current.length - 1].total_points -
-                a.current[a.current.length - 1].total_points,
-            ),
+          const sortedTeams = teamsData.sort(
+            (a, b) =>
+              b.current[b.current.length - 1].total_points -
+              a.current[a.current.length - 1].total_points,
           );
-          setMyTeam(findMyTeam(teamsData, teamData.id));
+          const mTeam = findMyTeam(teamsData, teamData.id);
+          setData({ leagueTeams: sortedTeams, myTeam: mTeam });
         } catch (err) {
           console.log(err);
         }
       }
       firstUpdate.current = false;
     }
-    leagueData && getLeagueData();
+    leagueData && teamData && getLeagueData();
   }, [leagueData, teamData]);
 
   return (
-    <LeagueTeamsContext.Provider value={{ leagueTeams, myTeam }}>
+    <LeagueTeamsContext.Provider value={data}>
       {children}
     </LeagueTeamsContext.Provider>
   );
