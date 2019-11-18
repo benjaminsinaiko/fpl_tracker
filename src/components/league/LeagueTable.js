@@ -103,7 +103,7 @@ export default function LeagueTable() {
             {leagueTeams
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map(team => (
-                <TableRow key={team.id}>
+                <TableRow key={team.entry}>
                   <TableCell scope='row'>{team.entry_name}</TableCell>
                   <TableCell align='center'>{team.rank}</TableCell>
                   <TableCell align='center'>{team.last_rank}</TableCell>
