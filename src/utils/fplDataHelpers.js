@@ -53,16 +53,32 @@ export function getPlayerName(playerId, allPlayers) {
 export function addPosition(positionId) {
   switch (positionId) {
     case 1: {
-      return { singular_name: 'Goalkeeper', singular_name_short: 'GKP' };
+      return {
+        singular_name: 'Goalkeeper',
+        singular_name_short: 'GKP',
+        elementy_type: 1,
+      };
     }
     case 2: {
-      return { singular_name: 'Defender', singular_name_short: 'DEF' };
+      return {
+        singular_name: 'Defender',
+        singular_name_short: 'DEF',
+        elementy_type: 2,
+      };
     }
     case 3: {
-      return { singular_name: 'Midfielder', singular_name_short: 'MID' };
+      return {
+        singular_name: 'Midfielder',
+        singular_name_short: 'MID',
+        elementy_type: 3,
+      };
     }
     case 4: {
-      return { singular_name: 'Forward', singular_name_short: 'FWD' };
+      return {
+        singular_name: 'Forward',
+        singular_name_short: 'FWD',
+        elementy_type: 4,
+      };
     }
     default:
       return;

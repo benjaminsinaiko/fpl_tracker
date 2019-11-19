@@ -58,6 +58,7 @@ export function WeeklyPicksProvider({ children }) {
               return data.picks.map(player => {
                 return {
                   ...player,
+                  roster_order: player.position,
                   position: findPosition(elements, player.element),
                 };
               });

@@ -6,7 +6,7 @@ import { IdsContext } from '../../contexts/idsContext';
 import MissingID from '../userSettings/MissingID';
 import TeamOverall from './TeamOverall';
 import TeamCurrent from './TeamCurrent';
-import TeamRosterInfo from './TeamRosterInfo';
+import TeamRosterTable from './TeamRosterTable';
 import TeamWeeklyPicks from './TeamWeeklyPicks';
 import Week1Team from './Week1Team';
 
@@ -55,7 +55,7 @@ export default function TeamPage() {
       </div>
       <TeamOverall />
       <TeamCurrent />
-      <TeamRosterInfo />
+      <TeamRosterTable />
       <TeamWeeklyPicks />
       <Week1Team />
     </div>
