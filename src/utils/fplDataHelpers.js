@@ -2,6 +2,10 @@ export function getTeamUrl(team) {
   return `/api/entry/${team.entry}/`;
 }
 
+export function getLeagueUrl(leagueId) {
+  return `/api/leagues-classic/${leagueId}/standings/?page_new_entries=1&page_standings=1&phase=1`;
+}
+
 export function convertTeamData(teamData) {
   const currentGW = teamData[teamData.length - 1];
   const currentTotals = {

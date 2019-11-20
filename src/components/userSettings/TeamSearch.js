@@ -9,7 +9,7 @@ import Slide from '@material-ui/core/Slide';
 
 import { IdsContext, IdsDispatchContext } from '../../contexts/idsContext';
 import useDataApi from '../../hooks/useDataApi';
-import { getTeamUrl } from '../../apis/FPL';
+import { getTeamUrl } from '../../utils/fplDataHelpers';
 import LeagueSelect from './LeagueSelect';
 
 const useStyles = makeStyles(theme => ({

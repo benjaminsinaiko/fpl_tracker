@@ -1,19 +1,24 @@
 import React, { createContext, useEffect, useState } from 'react';
 
-import { getAllData } from '../apis/FPL';
+import useAxios from '../hooks/useAxios';
 
 export const AllDataContext = createContext();
 
 export function AllDataProvider({ children }) {
+  const { response, error } = useAxios('/api/bootstrap-static/');
   const [allData, setAllData] = useState([]);
 
   useEffect(() => {
-    async function getData() {
-      const response = await getAllData();
-      setAllData(response);
+    function setData() {
+      if (error) {
+        return;
+      }
+      if (response) {
+        setAllData(response);
+      }
     }
-    getData();
-  }, []);
+    setData();
+  }, [response, error]);
 
   return (
     <AllDataContext.Provider value={allData}>
