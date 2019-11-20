@@ -45,9 +45,9 @@ export default function LeaguePage() {
         {leagueData.league.name}
       </Typography>
       <LeagueTable weeklyWinners={weeklyWinners} />
-      <LeagueBarRace />
-      <LeagueTeamCards />
-      <WeeklyWinnersList weeklyWinners={weeklyWinners} />
+      {/* <LeagueBarRace /> */}
+      {/* <LeagueTeamCards /> */}
+      {/* <WeeklyWinnersList weeklyWinners={weeklyWinners} /> */}
     </div>
   );
 }

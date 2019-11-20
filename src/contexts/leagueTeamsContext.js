@@ -34,16 +34,20 @@ export function LeagueTeamsProvider({ children }) {
   });
 
   const firstUpdate = useRef(true);
+  console.log('firstUpdate', firstUpdate);
   useEffect(() => {
     async function getLeagueData() {
-      const includesMyTeam = leagueData.standings.results.some(
-        team => team.entry === teamData.id,
-      );
-
+      console.log('before if');
       if (!firstUpdate.current) {
+        console.log('inside if');
+
         const withUrls = leagueData.standings.results.map(team => {
-          return { ...team, url: getTeamUrl(team) };
+          return { ...team, url: getTeamUrl(team.entry) };
         });
+        const includesMyTeam = leagueData.standings.results.some(
+          team => team.entry === teamData.id,
+        );
+
         if (!includesMyTeam) {
           const myTeam = makeMyTeam(teamData);
           withUrls.splice(withUrls.lenght - 1, 1, myTeam);
@@ -91,7 +95,7 @@ export function LeagueTeamsProvider({ children }) {
       }
       firstUpdate.current = false;
     }
-    leagueData && teamData && getLeagueData();
+    leagueData && getLeagueData();
   }, [leagueData, teamData]);
 
   return (

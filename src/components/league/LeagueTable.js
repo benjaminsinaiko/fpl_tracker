@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -38,6 +38,7 @@ const useStyles = makeStyles(theme => ({
   },
   table: {
     overflowX: 'auto',
+    height: 420,
     '& th': {
       backgroundColor: '#f6a418',
     },
@@ -56,6 +57,12 @@ export default function LeagueTable() {
       ? rowsPerPage -
         Math.min(rowsPerPage, leagueTeams.length - page * rowsPerPage)
       : 0;
+
+  useEffect(() => {
+    if (leagueTeams.length < 6) {
+      setRowsPerPage(5);
+    }
+  }, [leagueTeams]);
 
   function handleChangePage(event, newPage) {
     setPage(newPage);
