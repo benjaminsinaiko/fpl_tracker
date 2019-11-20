@@ -19,14 +19,15 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(2),
     '& th': {
       height: 60,
-      backgroundColor: '#d1c2d0',
+      backgroundColor: '#8d36f7',
+    },
+    '& span': {
+      color: '#fff',
+      marginLeft: theme.spacing(2),
     },
     '& td': {
       height: 20,
       color: '#320336',
-      textOverflow: 'ellipsis',
-      overflow: 'hidden',
-      whiteSpace: 'nowrap',
     },
   },
   visuallyHidden: {
@@ -45,12 +46,12 @@ const useStyles = makeStyles(theme => ({
   },
   table: {
     display: 'flex',
-    paddingBottom: theme.spacing(3),
   },
   tablePlayer: {
-    width: 40,
+    width: 60,
     '& td': {
       fontSize: '.8em',
+      whiteSpace: 'nowrap',
     },
   },
   tableBody: {
@@ -93,10 +94,10 @@ const headCellPlayer = [{ id: 'roster_order', numeric: true, label: 'Player' }];
 
 const headCellsBody = [
   { id: 'element_type', numeric: true, label: 'Position' },
-  { id: 'selected_by_percent', numeric: true, label: 'Owned %' },
-  { id: 'cost_change_event', numeric: true, label: 'Cost Change' },
+  { id: 'selected_by_percent', numeric: true, label: 'Owned' },
   { id: 'transfers_in_event', numeric: true, label: 'Transfer In' },
   { id: 'transfers_out_event', numeric: true, label: 'Transfer Out' },
+  { id: 'cost_change_event', numeric: true, label: 'Cost Change' },
   { id: 'influence', numeric: true, label: 'Influence' },
   { id: 'creativity', numeric: true, label: 'Creativity' },
   { id: 'threat', numeric: true, label: 'Threat' },
@@ -122,11 +123,13 @@ function EnhancedTableHead(props) {
         {cellLabels.map(headCell => (
           <TableCell
             key={headCell.id}
+            className={orderBy === headCell.id ? classes.highlight : ''}
             align='center'
             padding='none'
             sortDirection={orderBy === headCell.id ? order : false}>
             <TableSortLabel
               active={orderBy === headCell.id}
+              classes={{ root: classes.active }}
               direction={order}
               onClick={createSortHandler(headCell.id)}>
               {headCell.label}
@@ -186,6 +189,9 @@ export default function TeamRosterTable() {
       <Paper elevation={5}>
         <div className={classes.table}>
           <Table size='small' className={classes.tablePlayer}>
+            <caption style={{ color: '#b06a00', fontSize: '0.8em' }}>
+              *On Bench
+            </caption>
             <EnhancedTableHead
               classes={classes}
               order={order}
@@ -201,8 +207,9 @@ export default function TeamRosterTable() {
                       scope='row'
                       align='center'
                       style={{
+                        color: pick.multiplier > 0 ? '' : '#b06a00',
                         backgroundColor:
-                          pick.multiplier > 0 ? '#fff' : '#f4f4f4',
+                          orderBy === 'roster_order' ? '#edd5ff' : '#fff',
                       }}>
                       {`${pick.first_name[0]}. ${pick.second_name}`}
                     </TableCell>
@@ -223,49 +230,145 @@ export default function TeamRosterTable() {
               <TableBody>
                 {stableSort(currentPicks, getSorting(order, orderBy)).map(
                   pick => (
-                    <TableRow
-                      key={pick.id}
-                      style={{
-                        backgroundColor:
-                          pick.multiplier > 0 ? '#fff' : '#f4f4f4',
-                      }}>
-                      <TableCell align='center'>
+                    <TableRow key={pick.id}>
+                      <TableCell
+                        align='center'
+                        style={{
+                          color: pick.multiplier > 0 ? '' : '#b06a00',
+                          backgroundColor:
+                            orderBy === 'element_type' ? '#edd5ff' : '#fff',
+                        }}>
                         {pick.position.singular_name_short}
-                      </TableCell>
-                      <TableCell align='center'>
-                        {`${pick.selected_by_percent}%`}
                       </TableCell>
                       <TableCell
                         align='center'
                         style={{
-                          color:
-                            pick.cost_change_event === 0
-                              ? 'inherit'
-                              : pick.cost_change_event > 0
-                              ? '#01f780'
-                              : '#f6247b',
+                          color: pick.multiplier > 0 ? '' : '#b06a00',
+                          backgroundColor:
+                            orderBy === 'selected_by_percent'
+                              ? '#edd5ff'
+                              : '#fff',
                         }}>
-                        {(pick.cost_change_event / 10).toLocaleString()}
+                        {`${pick.selected_by_percent}%`}
                       </TableCell>
-                      <TableCell align='center' style={{ color: '#01f780' }}>
+                      <TableCell align='center' style={{ color: '#03d662' }}>
                         {pick.transfers_in_event.toLocaleString()}
                       </TableCell>
                       <TableCell align='center' style={{ color: '#f6247b' }}>
                         {pick.transfers_out_event.toLocaleString()}
                       </TableCell>
-                      <TableCell align='center'>{pick.influence}</TableCell>
-                      <TableCell align='center'>{pick.creativity}</TableCell>
-                      <TableCell align='center'>{pick.threat}</TableCell>
-                      <TableCell align='center'>{pick.ict_index}</TableCell>
-                      <TableCell align='center'>{pick.bonus}</TableCell>
-                      <TableCell align='center'>{pick.total_points}</TableCell>
-                      <TableCell align='center'>{pick.goals_scored}</TableCell>
-                      <TableCell align='center'>{pick.assists}</TableCell>
-                      <TableCell align='center'>{pick.clean_sheets}</TableCell>
-                      <TableCell align='center'>
+                      <TableCell
+                        align='center'
+                        style={{
+                          color: pick.multiplier > 0 ? '' : '#b06a00',
+                          backgroundColor:
+                            orderBy === 'cost_change_event'
+                              ? '#edd5ff'
+                              : '#fff',
+                        }}>
+                        {pick.cost_change_event === 0
+                          ? '-'
+                          : (pick.cost_change_event / 10).toLocaleString()}
+                      </TableCell>
+                      <TableCell
+                        align='center'
+                        style={{
+                          color: pick.multiplier > 0 ? '' : '#b06a00',
+                          backgroundColor:
+                            orderBy === 'influence' ? '#edd5ff' : '#fff',
+                        }}>
+                        {pick.influence}
+                      </TableCell>
+                      <TableCell
+                        align='center'
+                        style={{
+                          color: pick.multiplier > 0 ? '' : '#b06a00',
+                          backgroundColor:
+                            orderBy === 'creativity' ? '#edd5ff' : '#fff',
+                        }}>
+                        {pick.creativity}
+                      </TableCell>
+                      <TableCell
+                        align='center'
+                        style={{
+                          color: pick.multiplier > 0 ? '' : '#b06a00',
+                          backgroundColor:
+                            orderBy === 'threat' ? '#edd5ff' : '#fff',
+                        }}>
+                        {pick.threat}
+                      </TableCell>
+                      <TableCell
+                        align='center'
+                        style={{
+                          color: pick.multiplier > 0 ? '' : '#b06a00',
+                          backgroundColor:
+                            orderBy === 'ict_index' ? '#edd5ff' : '#fff',
+                        }}>
+                        {pick.ict_index}
+                      </TableCell>
+                      <TableCell
+                        align='center'
+                        style={{
+                          color: pick.multiplier > 0 ? '' : '#b06a00',
+                          backgroundColor:
+                            orderBy === 'bonus' ? '#edd5ff' : '#fff',
+                        }}>
+                        {pick.bonus}
+                      </TableCell>
+                      <TableCell
+                        align='center'
+                        style={{
+                          color: pick.multiplier > 0 ? '' : '#b06a00',
+                          backgroundColor:
+                            orderBy === 'total_points' ? '#edd5ff' : '#fff',
+                        }}>
+                        {pick.total_points}
+                      </TableCell>
+                      <TableCell
+                        align='center'
+                        style={{
+                          color: pick.multiplier > 0 ? '' : '#b06a00',
+                          backgroundColor:
+                            orderBy === 'goals_scored' ? '#edd5ff' : '#fff',
+                        }}>
+                        {pick.goals_scored}
+                      </TableCell>
+                      <TableCell
+                        align='center'
+                        style={{
+                          color: pick.multiplier > 0 ? '' : '#b06a00',
+                          backgroundColor:
+                            orderBy === 'assists' ? '#edd5ff' : '#fff',
+                        }}>
+                        {pick.assists}
+                      </TableCell>
+                      <TableCell
+                        align='center'
+                        style={{
+                          color: pick.multiplier > 0 ? '' : '#b06a00',
+                          backgroundColor:
+                            orderBy === 'clean_sheets' ? '#edd5ff' : '#fff',
+                        }}>
+                        {pick.clean_sheets}
+                      </TableCell>
+                      <TableCell
+                        align='center'
+                        style={{
+                          color: pick.multiplier > 0 ? '' : '#b06a00',
+                          backgroundColor:
+                            orderBy === 'goals_conceded' ? '#edd5ff' : '#fff',
+                        }}>
                         {pick.goals_conceded}
                       </TableCell>
-                      <TableCell align='center'>{pick.saves}</TableCell>
+                      <TableCell
+                        align='center'
+                        style={{
+                          color: pick.multiplier > 0 ? '' : '#b06a00',
+                          backgroundColor:
+                            orderBy === 'saves' ? '#edd5ff' : '#fff',
+                        }}>
+                        {pick.saves}
+                      </TableCell>
                     </TableRow>
                   ),
                 )}
@@ -276,59 +379,4 @@ export default function TeamRosterTable() {
       </Paper>
     </div>
   );
-}
-
-{
-  /* <TableHead>
-   <TableRow>
-     <TableCell component='th' align='center'>
-       Position
-     </TableCell>
-     <TableCell component='th' align='center'>
-       Owned
-     </TableCell>
-     <TableCell component='th' align='center'>
-       Cost Change
-     </TableCell>
-     <TableCell component='th' align='center'>
-       Transfers In
-     </TableCell>
-     <TableCell component='th' align='center'>
-       Transfers Out
-     </TableCell>
-     <TableCell component='th' align='center'>
-       Influence
-     </TableCell>
-     <TableCell component='th' align='center'>
-       Creativity
-     </TableCell>
-     <TableCell component='th' align='center'>
-       Threat
-     </TableCell>
-     <TableCell component='th' align='center'>
-       ICT Index
-     </TableCell>
-     <TableCell component='th' align='center'>
-       Bonus
-     </TableCell>
-     <TableCell component='th' align='center'>
-       Total Points
-     </TableCell>
-     <TableCell component='th' align='center'>
-       Goals
-     </TableCell>
-     <TableCell component='th' align='center'>
-       Assists
-     </TableCell>
-     <TableCell component='th' align='center'>
-       Clean Sheets
-     </TableCell>
-     <TableCell component='th' align='center'>
-       Goals Conceded
-     </TableCell>
-     <TableCell component='th' align='center'>
-       Saves
-     </TableCell>
-   </TableRow>
- </TableHead>; */
 }
