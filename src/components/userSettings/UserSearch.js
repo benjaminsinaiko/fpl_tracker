@@ -55,7 +55,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function TeamSearch({ handleCancel, handleClose }) {
+export default function UserSearch({ handleCancel, handleClose }) {
   const classes = useStyles();
   const {
     teamData: { id },
@@ -104,7 +104,7 @@ export default function TeamSearch({ handleCancel, handleClose }) {
 
   function getCookies() {
     const wnd = window.open(
-      `https://fantasy.premierleague.com/api/leagues-classic/${league}/standings/?page_new_entries=1&page_standings=1&phase=1`,
+      `https://fantasy.premierleague.com/api/leagues-classic/${league}/standings/?page_new_entries=1&page_standings=1&phase=1/`,
     );
     setTimeout(() => {
       wnd.close();
@@ -120,6 +120,7 @@ export default function TeamSearch({ handleCancel, handleClose }) {
         {!teamData ? (
           <>
             <TextField
+              autoFocus
               error={teamError !== null}
               id='team-id'
               label='Set Team ID'
