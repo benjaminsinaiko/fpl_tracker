@@ -38,12 +38,20 @@ const useStyles = makeStyles(theme => ({
   },
   table: {
     overflowX: 'auto',
-    height: 420,
+    height: 410,
     '& th': {
       backgroundColor: '#f6a418',
     },
+    '& td': {
+      whiteSpace: 'nowrap',
+    },
   },
 }));
+
+function winsDisplay(teamId, winnersArray) {
+  const wins = countWeeklyWins(teamId, winnersArray);
+  return wins > 0 ? +wins.toFixed(2) : '-';
+}
 
 export default function LeagueTable() {
   const classes = useStyles();
@@ -59,7 +67,7 @@ export default function LeagueTable() {
       : 0;
 
   useEffect(() => {
-    if (leagueTeams.length < 6) {
+    if (leagueTeams.length > 0 && leagueTeams.length < 6) {
       setRowsPerPage(5);
     }
   }, [leagueTeams]);
@@ -71,11 +79,6 @@ export default function LeagueTable() {
   function handleChangeRowsPerPage(event) {
     setPage(0);
     setRowsPerPage(+event.target.value);
-  }
-
-  function winsDisplay(teamId, winnersArray) {
-    const wins = countWeeklyWins(teamId, winnersArray);
-    return wins > 0 ? wins : '-';
   }
 
   if (!weeklyWinners) {
