@@ -250,10 +250,26 @@ export default function TeamRosterTable() {
                         }}>
                         {`${pick.selected_by_percent}%`}
                       </TableCell>
-                      <TableCell align='center' style={{ color: '#03d662' }}>
+                      <TableCell
+                        align='center'
+                        style={{
+                          color: '#03d662',
+                          backgroundColor:
+                            orderBy === 'transfers_in_event'
+                              ? '#edd5ff'
+                              : '#fff',
+                        }}>
                         {pick.transfers_in_event.toLocaleString()}
                       </TableCell>
-                      <TableCell align='center' style={{ color: '#f6247b' }}>
+                      <TableCell
+                        align='center'
+                        style={{
+                          color: '#f6247b',
+                          backgroundColor:
+                            orderBy === 'transfers_out_event'
+                              ? '#edd5ff'
+                              : '#fff',
+                        }}>
                         {pick.transfers_out_event.toLocaleString()}
                       </TableCell>
                       <TableCell
