@@ -109,7 +109,7 @@ export default function UserSearch({ handleCancel, handleClose }) {
     setTimeout(() => {
       wnd.close();
       callLeagueApi('');
-    }, 200);
+    }, 500);
   }
 
   const leagueDisplayText = leagueError ? 'Auth Error' : league;
