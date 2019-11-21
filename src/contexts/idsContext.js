@@ -17,8 +17,6 @@ export function IdsProvider({ children }) {
     initialState,
     idsReducer,
   );
-  // console.log('idsData - league', idsData.leagueData);
-  // console.log('idsData - team', idsData.teamData);
 
   useEffect(() => {
     const { leagueData, teamData } = JSON.parse(
