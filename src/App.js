@@ -35,9 +35,9 @@ function App() {
                 </Match>
                 <Navbar />
                 <Router>
-                  {/* <StatusPage path='/' /> */}
+                  <StatusPage path='/' />
                   <LeaguePage path='/league' />
-                  {/* <TeamPage path='/team' /> */}
+                  <TeamPage path='/team' />
                   <UserPage path='/user' />
                   <HelpPage path='/help' />
                 </Router>

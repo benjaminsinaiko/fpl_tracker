@@ -7,7 +7,7 @@ import ClearIcon from '@material-ui/icons/ClearAll';
 import Slide from '@material-ui/core/Slide';
 
 import { IdsDispatchContext } from '../../contexts/idsContext';
-import TeamSearch from './TeamSearch';
+import UserSearch from './UserSearch';
 
 const useStyles = makeStyles(theme => ({
   editRoot: {
@@ -91,7 +91,7 @@ export default function IDsEdit({ handleClose }) {
       {isEdit && (
         <Slide direction='up' in={isEdit} mountOnEnter unmountOnExit>
           <div>
-            <TeamSearch handleCancel={handleCancel} handleClose={handleClose} />
+            <UserSearch handleCancel={handleCancel} handleClose={handleClose} />
           </div>
         </Slide>
       )}

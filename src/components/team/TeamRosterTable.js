@@ -154,22 +154,21 @@ export default function TeamRosterTable() {
   const [order, setOrder] = useState('desc');
   const [orderBy, setOrderBy] = useState('roster_order');
 
-  function addPlayerData(players) {
-    return players.map(player => {
-      const foundData = elements.find(el => {
-        return el.id === player.element;
-      });
-      return { ...player, ...foundData };
-    });
-  }
-
   useEffect(() => {
+    function addPlayerData(players) {
+      return players.map(player => {
+        const foundData = elements.find(el => {
+          return el.id === player.element;
+        });
+        return { ...player, ...foundData };
+      });
+    }
     if (weeklyPicks) {
       const current = weeklyPicks[weeklyPicks.length - 1];
       const curWithData = addPlayerData(current);
       setCurrentPicks(curWithData);
     }
-  }, [weeklyPicks]);
+  }, [elements, weeklyPicks]);
 
   function handleRequestSort(event, property) {
     const isDesc = orderBy === property && order === 'desc';
