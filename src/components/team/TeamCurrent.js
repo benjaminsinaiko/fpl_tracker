@@ -42,6 +42,9 @@ export default function TeamCurrent() {
   const { myTeam } = useContext(LeagueTeamsContext);
   const [currentGW, setCurrentGW] = useState();
 
+  console.log('myTeam', myTeam);
+  console.log('currentGW', currentGW);
+
   useEffect(() => {
     if (myTeam) {
       setCurrentGW(myTeam.current[myTeam.current.length - 1]);
@@ -65,7 +68,7 @@ export default function TeamCurrent() {
           </Typography>
           <Typography>
             <span>#</span>
-            {currentGW.rank.toLocaleString() || '-'}
+            {currentGW.rank ? currentGW.rank.toLocaleString() : ' '}
           </Typography>
         </div>
         <div className={classes.currentSecondary}>
