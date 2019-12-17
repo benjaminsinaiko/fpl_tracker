@@ -157,7 +157,7 @@ export default function LeagueBarRace() {
             </Button>
           )}
           <Button disabled={current === 0} onClick={restartRace}>
-            Restart
+            Start GW1
           </Button>
         </div>
       </div>

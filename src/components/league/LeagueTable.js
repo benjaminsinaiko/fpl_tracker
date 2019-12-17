@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
   },
   table: {
     overflowX: 'auto',
-    height: 410,
+    minHeight: 350,
     '& th': {
       backgroundColor: '#f6a418',
     },
@@ -93,6 +93,9 @@ export default function LeagueTable() {
             <TableRow>
               <TableCell component='th'>Team</TableCell>
               <TableCell component='th' align='center'>
+                GW Points
+              </TableCell>
+              <TableCell component='th' align='center'>
                 Rank
               </TableCell>
               <TableCell component='th' align='center'>
@@ -100,9 +103,6 @@ export default function LeagueTable() {
               </TableCell>
               <TableCell component='th' align='center'>
                 GW Wins
-              </TableCell>
-              <TableCell component='th' align='center'>
-                GW Points
               </TableCell>
               <TableCell component='th' align='center'>
                 Total Points
@@ -115,15 +115,15 @@ export default function LeagueTable() {
               .map(team => (
                 <TableRow key={team.entry}>
                   <TableCell scope='row'>{team.entry_name}</TableCell>
+                  <TableCell align='center'>
+                    {team.current[team.current.length - 1].points}
+                  </TableCell>
                   <TableCell align='center'>{team.rank}</TableCell>
                   <TableCell align='center'>{team.last_rank}</TableCell>
                   <TableCell align='center'>
                     {weeklyWinners.length
                       ? winsDisplay(team.entry, weeklyWinners)
                       : '-'}
-                  </TableCell>
-                  <TableCell align='center'>
-                    {team.current[team.current.length - 1].points}
                   </TableCell>
                   <TableCell align='center'>
                     {team.current[team.current.length - 1].total_points}
