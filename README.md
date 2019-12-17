@@ -42,7 +42,8 @@ FPL Tracker uses the following open source packages:
 
 ## License
 
-MIT
+This project is licensed under the terms of the
+[MIT license](/LICENSE).
 
 # From Create React App
 
