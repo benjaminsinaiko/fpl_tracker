@@ -42,9 +42,6 @@ export default function TeamCurrent() {
   const { myTeam } = useContext(LeagueTeamsContext);
   const [currentGW, setCurrentGW] = useState();
 
-  console.log('myTeam', myTeam);
-  console.log('currentGW', currentGW);
-
   useEffect(() => {
     if (myTeam) {
       setCurrentGW(myTeam.current[myTeam.current.length - 1]);

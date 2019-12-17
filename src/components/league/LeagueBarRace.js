@@ -100,13 +100,14 @@ export default function LeagueBarRace() {
   const classes = useStyles();
   const { leagueTeams } = useContext(LeagueTeamsContext);
   const [leaguePoints, setLeaguePoints] = useState(null);
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState(null);
   const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
     if (leagueTeams.length > 0) {
       const weeklyPts = calcWeeklyPts(leagueTeams);
       setLeaguePoints(weeklyPts);
+      setCurrent(weeklyPts.length - 1);
     }
   }, [leagueTeams]);
 
