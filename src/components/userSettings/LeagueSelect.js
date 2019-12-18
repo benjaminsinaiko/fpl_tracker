@@ -63,7 +63,7 @@ export default function LeagueSelect({
 
   useEffect(() => {
     if (leagueError) {
-      setSelectedIndex(false);
+      setSelectedIndex(null);
     }
   }, [leagueError]);
 

@@ -63,6 +63,7 @@ export default function UserSearch({ handleCancel, handleClose }) {
   const [team, setTeam] = useState(id || '');
   const [league, setLeague] = useState('');
   const [isUpdating, setIsUpdating] = useState(false);
+  const [forceTried, setForceTried] = useState(false);
   const dispatch = useContext(IdsDispatchContext);
   const {
     data: teamData,
@@ -108,8 +109,13 @@ export default function UserSearch({ handleCancel, handleClose }) {
     );
     setTimeout(() => {
       wnd.close();
-      callLeagueApi('');
+      setForceTried(true);
     }, 500);
+  }
+
+  function goToFPL() {
+    window.open(`https://fantasy.premierleague.com`);
+    setForceTried(false);
   }
 
   const leagueDisplayText = leagueError ? 'Auth Error' : league;
@@ -189,6 +195,14 @@ export default function UserSearch({ handleCancel, handleClose }) {
                 <Typography>Try this link to force auth from FPL</Typography>
                 <Button variant='outlined' size='small' onClick={getCookies}>
                   FPL API
+                </Button>
+              </div>
+            )}
+            {forceTried && (
+              <div className={classes.apiLink}>
+                <Typography>Or log in to FPL site and try again...</Typography>
+                <Button variant='outlined' size='small' onClick={goToFPL}>
+                  FPL Website
                 </Button>
               </div>
             )}
