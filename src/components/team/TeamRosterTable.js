@@ -97,6 +97,7 @@ const headCellsBody = [
   { id: 'selected_by_percent', numeric: true, label: 'Owned' },
   { id: 'transfers_in_event', numeric: true, label: 'Transfer In' },
   { id: 'transfers_out_event', numeric: true, label: 'Transfer Out' },
+  { id: 'now_cost', numeric: true, label: 'Cost' },
   { id: 'cost_change_event', numeric: true, label: 'Cost Change' },
   { id: 'influence', numeric: true, label: 'Influence' },
   { id: 'creativity', numeric: true, label: 'Creativity' },
@@ -271,6 +272,15 @@ export default function TeamRosterTable() {
                               : '#fff',
                         }}>
                         {pick.transfers_out_event.toLocaleString()}
+                      </TableCell>
+                      <TableCell
+                        align='center'
+                        style={{
+                          color: pick.multiplier > 0 ? '' : '#b06a00',
+                          backgroundColor:
+                            orderBy === 'now_cost' ? '#edd5ff' : '#fff',
+                        }}>
+                        {(pick.now_cost / 10).toLocaleString()}
                       </TableCell>
                       <TableCell
                         align='center'

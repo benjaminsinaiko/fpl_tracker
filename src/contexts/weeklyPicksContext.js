@@ -30,9 +30,6 @@ function addPointsByWeek(picks, playersData, gameweek) {
       .find(player => player[0].element === pick.element)
       .find(gw => gw.round === gameweek);
 
-    if (!foundPlayer) {
-      console.log('not found', pick.element, gameweek);
-    }
     return {
       ...pick,
       gw_points: foundPlayer ? foundPlayer.total_points : 0,
