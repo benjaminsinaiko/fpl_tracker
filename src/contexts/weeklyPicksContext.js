@@ -3,17 +3,13 @@ import axios from 'axios';
 
 import { AllDataContext } from './allDataContext';
 import { LeagueTeamsContext } from './leagueTeamsContext';
-import { addPosition } from '../utils/fplDataHelpers';
+import {
+  addPosition,
+  getPicksUrl,
+  getPlayerUrl,
+} from '../utils/fplDataHelpers';
 
 export const WeeklyPicksContext = createContext();
-
-function getPicksUrl(teamId, gameweek) {
-  return `/api/entry/${teamId}/event/${gameweek}/picks/`;
-}
-
-function getPlayerUrl(playerId) {
-  return `/api/element-summary/${playerId}/`;
-}
 
 function findPosition(elements, playerElement) {
   const playerEl = elements.find(el => el.id === playerElement);
@@ -33,10 +29,14 @@ function addPointsByWeek(picks, playersData, gameweek) {
     const foundPlayer = playersData
       .find(player => player[0].element === pick.element)
       .find(gw => gw.round === gameweek);
+
+    if (!foundPlayer) {
+      console.log('not found', pick.element, gameweek);
+    }
     return {
       ...pick,
-      gw_points: foundPlayer.total_points,
-      round: foundPlayer.round,
+      gw_points: foundPlayer ? foundPlayer.total_points : 0,
+      round: foundPlayer ? foundPlayer.round : gameweek,
     };
   });
 }
