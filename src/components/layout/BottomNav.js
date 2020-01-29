@@ -39,19 +39,19 @@ export default function BottomNav({ path }) {
       />
       <BottomNavigationAction
         classes={{ root: classes.iconRoot }}
-        label='League'
-        value='/league'
-        component={Link}
-        to='/league'
-        icon={<LeagueIcon />}
-      />
-      <BottomNavigationAction
-        classes={{ root: classes.iconRoot }}
         label='Team'
         value='/team'
         component={Link}
         to='/team'
         icon={<StatsIcon />}
+      />
+      <BottomNavigationAction
+        classes={{ root: classes.iconRoot }}
+        label='League'
+        value='/league'
+        component={Link}
+        to='/league'
+        icon={<LeagueIcon />}
       />
       <BottomNavigationAction
         classes={{ root: classes.iconRoot }}
