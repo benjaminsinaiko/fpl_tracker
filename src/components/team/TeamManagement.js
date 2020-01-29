@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     width: '90%',
     maxWidth: 500,
-    margin: theme.spacing(2),
+    margin: theme.spacing(1),
   },
   paper: {
     padding: theme.spacing(2),
@@ -19,7 +19,6 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary,
     '& span': {
       fontWeight: 'bold',
-      fontStyle: 'italic',
     },
   },
   groupHead: {
