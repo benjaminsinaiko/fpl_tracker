@@ -6,9 +6,10 @@ import { IdsContext } from '../../contexts/idsContext';
 import MissingID from '../userSettings/MissingID';
 import TeamOverall from './TeamOverall';
 import TeamCurrent from './TeamCurrent';
+import TeamManagement from './TeamManagement';
+import Week1Team from './Week1Team';
 import TeamRosterTable from './TeamRosterTable';
 import TeamWeeklyPicks from './TeamWeeklyPicks';
-import Week1Team from './Week1Team';
 
 const useStyles = makeStyles(theme => ({
   teamRoot: {
@@ -55,9 +56,10 @@ export default function TeamPage() {
       </div>
       <TeamOverall />
       <TeamCurrent />
-      <TeamRosterTable />
-      <TeamWeeklyPicks />
+      <TeamManagement />
       <Week1Team />
+      <TeamWeeklyPicks />
+      <TeamRosterTable />
     </div>
   );
 }

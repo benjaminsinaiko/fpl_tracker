@@ -38,7 +38,7 @@ export default function useTeamPtsCompare() {
   const [ptsObj, setPtsObj] = useState();
 
   useEffect(() => {
-    if (weeklyPicks.length) {
+    if (weeklyPicks) {
       setPtsObj(ptsCompare(weeklyPicks));
     }
   }, [weeklyPicks]);

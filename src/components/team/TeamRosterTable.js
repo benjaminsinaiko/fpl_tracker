@@ -183,7 +183,7 @@ export default function TeamRosterTable() {
 
   return (
     <div className={classes.tableRoot}>
-      <Typography align='center' className={classes.tableHeader} gutterBottom>
+      <Typography align='left' className={classes.tableHeader} gutterBottom>
         Current Team
       </Typography>
       <Paper elevation={5}>

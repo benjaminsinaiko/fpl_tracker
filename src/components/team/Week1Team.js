@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
@@ -61,15 +60,6 @@ function calcPoints(players) {
     { total: 0, cpt: 0 },
   );
   return pts;
-}
-function calcValue(players) {
-  const value = players.reduce((acc, player) => {
-    return acc + player.cost_change_start;
-  }, 0);
-  if (value > 0) {
-    return `+${value / 10}`;
-  }
-  return value / 10;
 }
 
 export default function Week1Team() {
