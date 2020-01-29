@@ -15,29 +15,39 @@ const useStyles = makeStyles(theme => ({
       paddingLeft: 0,
     },
   },
+  listItem: {
+    padding: theme.spacing(0.5),
+  },
   playerItem: {
     width: '100%',
   },
   playPosition: {
-    fontSize: '.8em',
+    fontSize: '.7em',
+    width: 30,
+    height: 30,
     backgroundColor: '#01f780',
   },
   benchPosition: {
-    fontSize: '.8em',
+    fontSize: '.7em',
+    width: 30,
+    height: 30,
     backgroundColor: '#f6a418',
   },
   playerInfo: {
     display: 'flex',
     justifyContent: 'space-between',
+    '& p': {
+      fontSize: '.8em',
+    },
   },
   teamInitials: {
-    fontSize: '.7em',
+    fontSize: '.6em',
   },
   playerStats: {
     display: 'flex',
     justifyContent: 'space-between',
     '& p': {
-      fontSize: '.8em',
+      fontSize: '.6em',
     },
   },
   numbers: {
@@ -60,9 +70,9 @@ export default function Week1TeamList({ players }) {
       <List>
         {players.slice(0, 11).map(starter => (
           <React.Fragment key={starter.id}>
-            <ListItem>
+            <ListItem className={classes.listItem}>
               <ListItemAvatar>
-                <Avatar className={classes.playPosition}>
+                <Avatar variant='rounded' className={classes.playPosition}>
                   {starter.original.position.singular_name_short}
                 </Avatar>
               </ListItemAvatar>
@@ -112,9 +122,9 @@ export default function Week1TeamList({ players }) {
       <List>
         {players.slice(11).map(bench => (
           <React.Fragment key={bench.id}>
-            <ListItem>
+            <ListItem className={classes.listItem}>
               <ListItemAvatar>
-                <Avatar className={classes.benchPosition}>
+                <Avatar variant='rounded' className={classes.benchPosition}>
                   {bench.original.position.singular_name_short}
                 </Avatar>
               </ListItemAvatar>
