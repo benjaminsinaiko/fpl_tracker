@@ -9,7 +9,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import useWeek1TeamPts from '../../hooks/useWeek1TeamPts';
 import Week1TeamList from './Week1TeamList';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   teamRoot: {
     width: '90%',
     maxWidth: 500,
@@ -99,7 +99,8 @@ export default function Week1Team() {
             id='panel1a-header'>
             <div className={classes.ptsSummary}>
               <Typography variant='h4'>
-                {calcPoints(week1Team.slice(0, 11)).cpt}
+                {calcPoints(week1Team.slice(0, 11)).cpt}{' '}
+                <span style={{ fontSize: '1rem' }}>(cpt)</span>
               </Typography>
               <div>
                 <Typography>
