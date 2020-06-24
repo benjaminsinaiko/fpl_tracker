@@ -14,7 +14,12 @@ export function AllDataProvider({ children }) {
         return;
       }
       if (response) {
-        setAllData(response);
+        // Remove weeks with no games played
+        const filterNoGames = response.events.filter(
+          (gw) => gw.id < 30 || gw.id > 38,
+        );
+        const allData = { ...response, events: filterNoGames };
+        setAllData(allData);
       }
     }
     setData();

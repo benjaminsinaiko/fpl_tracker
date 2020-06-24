@@ -16,7 +16,7 @@ function makeMyTeam(data) {
 }
 
 function findMyTeam(teams, teamId) {
-  return teams.find(team => team.entry === teamId);
+  return teams.find((team) => team.entry === teamId);
 }
 
 export function LeagueTeamsProvider({ children }) {
@@ -28,14 +28,14 @@ export function LeagueTeamsProvider({ children }) {
   });
 
   async function getLeagueData() {
-    const withUrls = leagueData.standings.results.map(team => {
+    const withUrls = leagueData.standings.results.map((team) => {
       return {
         ...team,
         url: getTeamUrl(team.entry),
       };
     });
     const includesMyTeam = leagueData.standings.results.some(
-      team => team.entry === teamData.id,
+      (team) => team.entry === teamData.id,
     );
     if (!includesMyTeam) {
       const myTeam = makeMyTeam(teamData);
@@ -48,12 +48,20 @@ export function LeagueTeamsProvider({ children }) {
       return axios.get(team.url);
     }
     function getTeamLeague(leagues) {
-      return leagues.find(league => league.id === leagueData.league.id);
+      return leagues.find((league) => league.id === leagueData.league.id);
     }
-    const promiseArray = withUrls.map(team =>
+    const promiseArray = withUrls.map((team) =>
       axios.all([getTeamHistory(team), getTeamData(team)]).then(
         axios.spread((hist, league) => {
           const leagueData = getTeamLeague(league.data.leagues.classic);
+          // Remove weeks with no games played
+          const filteredEvents = hist.data.current.filter(
+            (gw) => gw.event < 30 || gw.event > 38,
+          );
+          const filteredData = {
+            ...hist.data,
+            current: filteredEvents,
+          };
           return {
             entry: team.entry,
             entry_name: team.entry_name,
@@ -62,7 +70,7 @@ export function LeagueTeamsProvider({ children }) {
             rank: leagueData.entry_rank,
             last_rank: leagueData.entry_last_rank,
             url: team.url,
-            ...hist.data,
+            ...filteredData,
           };
         }),
       ),
