@@ -23,19 +23,19 @@ export default function PointsChart({ data }) {
         tickRotation: 0,
       }}
       colors={['#f6247b', '#04e8f7']}
-      enableArea={true}
-      areaOpacity={1}
-      enableGridX={false}
-      enableGridY={false}
-      enableCrosshair={false}
       pointSize={10}
       pointColor={'#fff'}
       pointBorderWidth={2}
       pointBorderColor={{ from: 'serieColor' }}
       pointLabel='y'
       pointLabelYOffset={-12}
+      enableArea={true}
       useMesh={true}
-      yFormat={value => `${value}pts`}
+      areaOpacity={1}
+      enableGridX={false}
+      enableGridY={false}
+      enableCrosshair={false}
+      yFormat={(value) => `${value}pts`}
       enableSlices='x'
       sliceTooltip={({ slice }) => {
         return (
@@ -45,7 +45,7 @@ export default function PointsChart({ data }) {
               padding: '9px 12px',
               border: '1px solid #ccc',
             }}>
-            {slice.points.map(point => (
+            {slice.points.map((point) => (
               <div
                 key={point.id}
                 style={{
