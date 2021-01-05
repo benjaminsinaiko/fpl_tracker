@@ -9,7 +9,7 @@
     "@nivo/line": "^0.62.0",
     "@nivo/pie": "^0.62.0",
     "@reach/router": "^1.3.3",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "http-proxy-middleware": "^0.20.0",
     "moment": "^2.27.0",
     "react": "^16.13.1",
